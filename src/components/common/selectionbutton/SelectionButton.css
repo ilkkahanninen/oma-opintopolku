@@ -1,0 +1,7 @@
+:local(.button) {
+  padding: 0.7rem 2.5rem;
+  border: 1px solid #149ECB;
+  background-color: white;
+  color: #149ECB;
+  font-weight: bold;
+}

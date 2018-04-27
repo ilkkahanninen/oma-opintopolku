@@ -32,7 +32,7 @@ module.exports = {
 
     // https://webpack.js.org/configuration/devtool/#development
     devtool: 'cheap-module-eval-source-map',
-    
+
     cacheBusting: true,
 
     cssSourceMap: true
@@ -40,10 +40,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../src/main/resources/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '../src/main/resources'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 

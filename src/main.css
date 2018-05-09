@@ -14,18 +14,20 @@ h2 {
   font-weight: 600;
 }
 
-/* Greetings */
 #greetings {
   max-width: 1000px;
   margin: auto;
   text-align: center;
 }
 
-/* Login */
 #login {
   max-width: 1000px;
   margin: auto;
   text-align: center;
+}
+
+#content {
+  margin-bottom: 30px;
 }
 
 #login button {

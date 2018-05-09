@@ -4,8 +4,8 @@ import styles from './Home.css';
 
 const Home = () => (
   <Fragment className={styles['content-wrapper']}>
-    <div id="greetings">
-      <h1>Tervetuloa Oma opintopolkuun, Clara Nieminen</h1>
+    <div id="greetings" style={{ display: 'none' }}>
+      <h1>Tervetuloa Oma opintopolkuun<span id="name" />!</h1>
       <p className={styles.subtitle}>
         Oma opintopolussa voit tarkastella omia opintosuorituksia vuosien varrelta,
         tai hakemuksiasi eri oppilaitoksiin.

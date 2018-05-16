@@ -1,0 +1,17 @@
+{
+  "omatsivut": {
+    "title": "Hakemukseni ja opiskelupaikan vastaanottaminen",
+    "item1": "Tarkastele hakemuksiasi ja muokkaa niitä hakuaikana.",
+    "item2": "Näe opiskelijavalinnan tulokset sekä ota opiskelupaikka vastaan.",
+    "button": "Siirry hakemuksiin"
+  },
+  "koski": {
+    "title": "Opintoni",
+    "note": "Tarkastele ja jaa opintotietojasi",
+    "listLabel": "Löytyvät opintotiedot:",
+    "item1": "Peruskoulusta, lukiosta ja ammattikoulusta alkaen vuodelta 2018",
+    "item2": "Ylioppilastutkinnot alkaen vuodelta 1990",
+    "item3": "Korkeakoulusta alkaen vuodelta 1995 (tässä voi olla koulukohtaisia poikkeuksia)",
+    "button": "Siirry opintoihin"
+  }
+}

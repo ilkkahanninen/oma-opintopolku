@@ -1,27 +1,26 @@
 import React, { Fragment } from 'react';
+import { I18n, Trans } from 'react-i18next';
 import Selection from '../selection/Selection';
 import styles from './Home.css';
 
-const Home = () => (
-  <Fragment className={styles['content-wrapper']}>
-    <div id="greetings" style={{ display: 'none' }}>
-      <h1>Tervetuloa Oma opintopolkuun<span id="name" />!</h1>
-      <p className={styles.subtitle}>
-        Oma opintopolussa voit tarkastella omia opintosuorituksia vuosien varrelta,
-        tai hakemuksiasi eri oppilaitoksiin.
-      </p>
-    </div>
-
-    <div id="login">
-      <h2>
-        Kirjautumista varten sinun tulee tunnistautua pankkitunnuksella,
-        mobiilivarmenteella tai sirullisella henkilökortilla.
-      </h2>
-      <button>Kirjaudu sisään</button>
-    </div>
-
-    <Selection />
-  </Fragment>
+const Home = ({ name }) => (
+  <I18n ns="home">
+    {t => (
+      <Fragment>
+        <div id="greetings" style={{ display: 'none' }}>
+          <Trans i18nKey='greeting' name={name}>
+            <h1><span>{name}</span></h1>
+          </Trans>
+          <p className={styles.subtitle}>{t('description')}</p>
+        </div>
+        <div id="login">
+          <h2>{t('login.info')}</h2>
+          <button>{t('common:login')}</button>
+        </div>
+        <Selection />
+      </Fragment>
+    )}
+  </I18n>
 );
 
 export default Home;

@@ -1,0 +1,7 @@
+{
+  "description": "[Oma opintopolku] let's you review your own study achievements from past years, and past applications to different education institutions.",
+  "greeting": "<0>Welcome to [Oma opintopolku], <1>{{name}}<1>!<0>",
+  "login": {
+    "info": "Login requires TUPAS authentication via bank identification, mobile signature or chipcard."
+  }
+}

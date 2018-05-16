@@ -1,0 +1,17 @@
+{
+  "omatsivut": {
+    "title": "My applications and enrollments",
+    "item1": "Preview and edit applications",
+    "item2": "View accepted students",
+    "button": "Go to applications"
+  },
+  "koski": {
+    "title": "My studies",
+    "note": "Preview and share your past study record",
+    "listLabel": "Available studies",
+    "item1": "Elementary, High School and Vocational School after 2018",
+    "item2": "Matriculation examinations after 1990",
+    "item3": "College / University studies after 1995 (with few exceptions)",
+    "button": "Go to studies"
+  }
+}

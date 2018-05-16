@@ -49,7 +49,9 @@ window.Service = {
   },
   getUser() {
     return new Promise((resolve, reject) => {
-      fetch('/oma-opintopolku/session')
+      fetch('/oma-opintopolku/session', {
+        credentials: 'same-origin'
+      })
       .then((response) => {
         if (response.status === 200) {
           response.json().then((data) => {

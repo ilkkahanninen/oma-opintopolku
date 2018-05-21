@@ -16,7 +16,9 @@ class Home extends React.Component {
   }
 
   setUser = (user) => {
-    this.setState({user: user});
+    if (user) {
+      this.setState({user: user, isLoggedIn: true});
+    }
   };
 
   setLoggedIn = (value) => {

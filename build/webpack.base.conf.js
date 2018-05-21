@@ -36,6 +36,7 @@ module.exports = {
     extensions: ['.js', '.json'],
     alias: {
       '@': resolve('src'),
+      'Src': resolve('src'),
       'Static': resolve('static')
     }
   },

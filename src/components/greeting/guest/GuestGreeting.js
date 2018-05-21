@@ -6,7 +6,7 @@ import styles from '../Greeting.css';
 const GuestGreeting = () => (
   <I18n ns="home">
     {t => (
-      <div className={styles['greeting-container']}>
+      <div className={styles['greeting-container-space-below']}>
         <h1>{t('login.info')}</h1>
         <button className={styles['login-button']} onClick={ login }>{t('common:login')}</button>
       </div>

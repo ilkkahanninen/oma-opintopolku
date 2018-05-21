@@ -8,14 +8,25 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      user: {
+        name: ""
+      },
+      isLoggedIn: false
     }
   }
+
+  setUser = (user) => {
+    this.setState({user: user});
+  };
+
+  setLoggedIn = (value) => {
+    this.setState({isLoggedIn: value});
+  };
 
   render() {
     return (
     <Fragment>
-      <Greeting name={name} isLoggedIn={false} />
+      <Greeting name={this.state.user.name} isLoggedIn={this.state.isLoggedIn} />
       <Selection />
     </Fragment>
   )}

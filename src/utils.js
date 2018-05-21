@@ -5,12 +5,12 @@ export function getUser() {
     })
       .then((response) => {
         if (response.status === 200) {
-          response.json().then((data) => {
-            //domLoggedIn(); set isLoggedIn state to true or pass different props to home
-            resolve(data);
+          response.json().then((user) => {
+            window.home.setUser(user);
+            resolve(user);
           })
         } else {
-          //domLoggedOut(); set isLoggedIn state to false or pass different props to home
+          window.home.setLoggedIn(false);
           reject(new Error('No session found!'));
         }
       }).catch(err => {

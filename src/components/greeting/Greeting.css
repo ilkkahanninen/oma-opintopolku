@@ -1,0 +1,25 @@
+:local(.greeting-container) {
+  max-width: 1090px;
+  margin: auto;
+  text-align: center;
+}
+
+:local(.subtitle) {
+  font-size: 20px;
+  letter-spacing: 0.3px;
+  width: 540px;
+}
+
+:local(.identity) {
+  font-weight: bold;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+:local(.login-button) {
+  padding: 0.7rem 2.5rem;
+  font-size: 2.3em;
+  background-color: #149ECB;
+  color: white;
+  border: 0;
+}

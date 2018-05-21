@@ -21,9 +21,7 @@ public class SessionController {
     @GetMapping
     @RequestMapping(value = "/clear")
     public void clearSession() {
-
         // ??
-
     }
 
 }

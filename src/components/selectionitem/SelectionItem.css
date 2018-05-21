@@ -18,12 +18,12 @@
 :local(.title-wrapper) {
   margin: 25px 10px 10px 10px;
   font-weight: 600;
+  display: flex;
 }
 
 :local(.image-wrapper) {
   width: 54px;
   height: 54px;
-  float: left;
   border-radius: 26px;
   background-color: #149ecb;
   display: flex;
@@ -32,11 +32,11 @@
 
 :local(.title) {
   margin: 0 0 0 15px;
-  float: left;
   width: 300px;
   font-weight: 600;
   font-size: 24px;
   color: #149ecb;
+  align-self: center;
 }
 
 :local(.subtitle) {

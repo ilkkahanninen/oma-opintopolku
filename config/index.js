@@ -3,11 +3,14 @@
 const path = require('path')
 
 module.exports = {
+  common: {
+    contentBase: path.resolve(__dirname, '../src/main/resources/public')
+  },
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/oma-opintopolku',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -17,13 +20,6 @@ module.exports = {
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
-    /**
-     * Source Maps
-     */
-
-    // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
 
     cacheBusting: true,
 
@@ -38,14 +34,6 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../src/main/resources/public'),
     assetsSubDirectory: '',
     assetsPublicPath: '/oma-opintopolku',
-
-    /**
-     * Source Maps
-     */
-
-    productionSourceMap: true,
-    // https://webpack.js.org/configuration/devtool/#production
-    devtool: '#source-map',
 
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.

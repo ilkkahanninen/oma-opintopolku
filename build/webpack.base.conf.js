@@ -1,7 +1,10 @@
-'use strict'
-const path = require('path')
-const utils = require('./utils')
-const config = require('../config')
+'use strict';
+const path = require('path');
+const utils = require('./utils');
+const config = require('../config');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -12,29 +15,49 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  plugins: [
+    new CleanWebpackPlugin(['public'], {
+      root: resolve('src/main/resources')
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: resolve('src/main/resources/public'),
+        ignore: ['.*']
+      }
+    ])
+  ],
   output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    path: resolve('src/main/resources/public'),
+    filename: '[name].bundle.js',
+    publicPath: '/oma-opintopolku/',
   },
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
       '@': resolve('src'),
+      'Static': resolve('static')
     }
   },
   module: {
     rules: [
       {
         test: /\.(js)$/,
-        loader: 'babel-loader',
+        use: [ 'babel-loader' ],
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: [
+          { loader: process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader },
+          {
+            loader: 'css-loader',
+            options: {
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -1,17 +1,22 @@
 {
   "omatsivut": {
-    "title": "My applications and enrollments",
-    "item1": "Preview and edit applications",
-    "item2": "View accepted students",
-    "button": "Go to applications"
+    "title": "Applications and accepting an offer of admission",
+    "subtitle": "Apply and follow your admission process.",
+    "icon": "Kirjekuorta esittävä ikoni",
+    "label": "On applications page you can:",
+    "item1": "view your applications and make modifications to them during application period",
+    "item2": "see the results of student admissions",
+    "item3": "accept an offer of admission",
+    "button": "Proceed to applications"
   },
   "koski": {
-    "title": "My studies",
-    "note": "Preview and share your past study record",
-    "listLabel": "Available studies",
-    "item1": "Elementary, High School and Vocational School after 2018",
-    "item2": "Matriculation examinations after 1990",
-    "item3": "College / University studies after 1995 (with few exceptions)",
-    "button": "Go to studies"
+    "title": "My completed studies",
+    "subtitle": "View and share information about your studies",
+    "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+    "label": "Study information available:",
+    "item1": "Basic education and secondary education from 2018 onwards",
+    "item2": "Matriculation examinations from 1990 onwards",
+    "item3": "Higher education from 1995 onwards (varies by higher education institution)",
+    "button": "Proceed to studies"
   }
 }

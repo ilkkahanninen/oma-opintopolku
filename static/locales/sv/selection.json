@@ -1,17 +1,22 @@
 {
   "omatsivut": {
-    "title": "Hakemukseni ja opiskelupaikan vastaanottaminen",
-    "item1": "Tarkastele hakemuksiasi ja muokkaa niitä hakuaikana.",
-    "item2": "Näe opiskelijavalinnan tulokset sekä ota opiskelupaikka vastaan.",
-    "button": "Siirry hakemuksiin"
+    "title": "Ansökningar och mottagande av studieplats",
+    "subtitle": "Sök till utbildning och se hur antagningen framskrider.",
+    "icon": "Kirjekuorta esittävä ikoni",
+    "label": "På ansökningssidan kan du:",
+    "item1": "granska dina ansökningar och bearbeta dem under ansökningstiden",
+    "item2": "se dina antagningsresultat",
+    "item3": "ta emot  studieplatsen",
+    "button": "Fortsätt till ansökningarna"
   },
   "koski": {
-    "title": "Opintoni",
-    "note": "Tarkastele ja jaa opintotietojasi",
-    "listLabel": "Löytyvät opintotiedot:",
-    "item1": "Peruskoulusta, lukiosta ja ammattikoulusta alkaen vuodelta 2018",
-    "item2": "Ylioppilastutkinnot alkaen vuodelta 1990",
-    "item3": "Korkeakoulusta alkaen vuodelta 1995 (tässä voi olla koulukohtaisia poikkeuksia)",
-    "button": "Siirry opintoihin"
+    "title": "Mina studieprestationer",
+    "subtitle": "Granska och dela information om dina studier",
+    "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+    "label": "Tillgänglig information om studier:",
+    "item1": "grundläggande utbildning, gymnasieutbildning och yrkesutbildning från och med 2018",
+    "item2": "studentexamina från och med 1990",
+    "item3": "högskoleutbildning från och med 1995 (varierar enligt högskola)",
+    "button": "Fortsätt till studierna"
   }
 }

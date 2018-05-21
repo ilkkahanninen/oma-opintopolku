@@ -1,15 +1,20 @@
 {
   "omatsivut": {
-    "title": "Hakemukseni ja opiskelupaikan vastaanottaminen",
-    "item1": "Tarkastele hakemuksiasi ja muokkaa niitä hakuaikana.",
-    "item2": "Näe opiskelijavalinnan tulokset sekä ota opiskelupaikka vastaan.",
+    "title": "Hakemukset ja opiskelupaikan vastaanotto",
+    "subtitle": "Hae opiskelemaan ja seuraa valinnan etenemistä.",
+    "icon": "Kirjekuorta esittävä ikoni",
+    "label": "Hakemussivulla voit:",
+    "item1": "tarkastella hakemuksiasi ja muokata niitä hakuaikana",
+    "item2": "nähdä opiskelijavalinnan tulokset",
+    "item3": "ottaa opiskelupaikan vastaan",
     "button": "Siirry hakemuksiin"
   },
   "koski": {
-    "title": "Opintoni",
-    "note": "Tarkastele ja jaa opintotietojasi",
-    "listLabel": "Löytyvät opintotiedot:",
-    "item1": "Peruskoulusta, lukiosta ja ammattikoulusta alkaen vuodelta 2018",
+    "title": "Omat opintosuoritukseni",
+    "subtitle": "Tarkastele ja jaa opintotietojasi.",
+    "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+    "label": "Löytyvät opintotiedot:",
+    "item1": "Peruskoulusta, lukiosta ja ammattikoulusta 2018 alkaen",
     "item2": "Ylioppilastutkinnot alkaen vuodelta 1990",
     "item3": "Korkeakoulusta alkaen vuodelta 1995 (tässä voi olla koulukohtaisia poikkeuksia)",
     "button": "Siirry opintoihin"

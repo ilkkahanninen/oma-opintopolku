@@ -1,6 +1,6 @@
 {
-  "description": "Oma opintopolussa voit tarkastella omia opintosuorituksia vuosien varrelta, tai hakemuksiasi eri oppilaitoksiin.",
-  "greeting": "<0>Tervetuloa Oma opintopolkuun, <1>{{name}}<1>!<0>",
+  "description": "I Min Studieinfo kan du granska dina tidigare studieprestationer eller ansökningar till olika läroanstalter.",
+  "greeting": "Välkommen till Min Studieinfo!",
   "login": {
     "info": "Kirjautumista varten sinun tulee tunnistautua pankkitunnuksella, mobiilivarmenteella tai sirullisella henkilökortilla."
   }

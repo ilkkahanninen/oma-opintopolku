@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import registerServiceWorker from './registerServiceWorker';
 
 
+/*
 function domLoggedIn() {
   let greetings = document.getElementById('greetings');
   greetings.style.display = 'block';
@@ -21,6 +22,7 @@ function domLoggedOut() {
   let login = document.getElementById('login');
   login.style.display = 'block';
 }
+*/
 
 function getLang() {
   if (window.Raamit && typeof window.Raamit.getLanguage === 'function') {
@@ -55,14 +57,14 @@ window.Service = {
       .then((response) => {
         if (response.status === 200) {
           response.json().then((data) => {
-            domLoggedIn();
+            //domLoggedIn(); set isLoggedIn state to true or pass different props to home
             resolve(data);
           })
         } else {
-          domLoggedOut();
+          //domLoggedOut(); set isLoggedIn state to false or pass different props to home
           reject(new Error('No session found!'));
         }
-      }).error(err => {
+      }).catch(err => {
         console.error(err);
         reject(new Error('Failed to fetch session!'));
       });
@@ -70,5 +72,5 @@ window.Service = {
   }
 };
 
-ReactDOM.render(<Home name="Erkki Esimerkki" />, document.getElementById('content'));
+ReactDOM.render(<Home />, document.getElementById('content'));
 registerServiceWorker();

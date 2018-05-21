@@ -2,6 +2,6 @@
   "description": "In My Studyinfo you can view your completed studies and see your applications to Finnish Educational Institutions.",
   "greeting": "Welcome to My Studyinfo!",
   "login": {
-    "info": "Login requires TUPAS authentication via bank identification, mobile signature or chipcard."
+    "info": "You must identify yourself by using Finnish bank identification codes, mobile certificate or certificate card"
   }
 }

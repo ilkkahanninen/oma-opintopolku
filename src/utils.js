@@ -36,7 +36,7 @@ function createLoginUrl(lang) {
 
 function createLogoutUrl() {
   const domain = window.location.origin;
-  return domain + '/omatsivut/Shibboleth.sso/Logout?return=' + domain + '/oma-opintopolku';
+  return domain + '/shibboleth/Logout?return=' + domain + '/oma-opintopolku';
 }
 
 function getLang() {

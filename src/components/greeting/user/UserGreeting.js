@@ -6,11 +6,11 @@ const UserGreeting = ({ user }) => (
   <I18n ns="home">
     {t => (
       <div className={styles['greeting-container']}>
-        <h1>{t('greeting')}</h1>
+        <h1 className={styles.heading}>{t('greeting')}</h1>
         <p className={styles.subtitle}>{t('description')}</p>
         <p className={styles.identity}>
-          <span>{ user.name }</span>
-          <span>s. { user.birthDay}</span>
+          <span className={styles.name}>{ user.name }</span>
+          <span className={styles.birthday}>s. { user.birthDay}</span>
         </p>
       </div>
     )}

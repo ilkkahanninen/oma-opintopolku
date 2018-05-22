@@ -9,7 +9,8 @@ class Home extends React.Component {
     super(props);
     this.state = {
       user: {
-        name: ""
+        name: "",
+        birthDay: new Date()
       },
       isLoggedIn: false
     }
@@ -28,7 +29,7 @@ class Home extends React.Component {
   render() {
     return (
     <Fragment>
-      <Greeting name={this.state.user.name} isLoggedIn={this.state.isLoggedIn} />
+      <Greeting user={this.state.user} isLoggedIn={this.state.isLoggedIn} />
       <Selection />
     </Fragment>
   )}

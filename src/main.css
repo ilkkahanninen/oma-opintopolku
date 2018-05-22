@@ -7,17 +7,15 @@ body {
 h1 {
   font-size: 36px;
   font-weight: 600;
+  width: 500px;
 }
 
 #content {
   margin-bottom: 30px;
 }
 
-.blue {
-  color: #149ECB;
-}
-
-.darkblue {
-  color: #00526C;
+:root {
+  --water-blue: #149ECB;
+  --dark-blue: #00526C;
 }
 

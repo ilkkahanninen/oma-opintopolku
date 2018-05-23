@@ -1,7 +1,6 @@
 'use strict';
 const path = require('path');
 const utils = require('./utils');
-const config = require('../config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');

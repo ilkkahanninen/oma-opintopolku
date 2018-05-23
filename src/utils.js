@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 export function getUser() {
   return new Promise((resolve, reject) => {
     fetch('/oma-opintopolku/session', {
@@ -40,9 +42,29 @@ function createLogoutUrl() {
 }
 
 function getLang() {
-  if (window.Raamit && typeof window.Raamit.getLanguage === 'function') {
-    return window.Raamit.getLanguage();
+  let lang = Cookies.get('lang');
+  if (lang) {
+    return lang;
   }
-  return "FI";
+
+  return getLanguageFromHost();
 }
 
+function getLanguageFromHost(host) {
+  if (!host) { host = document.location.host; }
+
+  let parts = host.split('.');
+  if (parts.length < 2) {
+    return 'fi';
+  }
+
+  let domain = parts[parts.length - 2];
+  if (domain.indexOf('opintopolku') > -1) {
+    return 'fi';
+  } else if (domain.indexOf('studieinfo') > -1) {
+    return 'sv';
+  } else if (domain.indexOf('studyinfo') > -1) {
+    return 'en'
+  }
+  return 'fi'
+}

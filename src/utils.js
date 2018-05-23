@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 
 const domains = {
-  fi: 'https://opintopolku.fi',
-  sv: 'https://studieinfo.fi',
-  en: 'https://studyinfo.fi'
+  FI: 'https://opintopolku.fi',
+  SV: 'https://studieinfo.fi',
+  EN: 'https://studyinfo.fi'
 };
 
 export function getUser() {

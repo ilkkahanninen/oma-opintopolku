@@ -34,7 +34,8 @@ export function login() {
 }
 
 export function logout() {
-  window.location.replace(createLogoutUrl());
+  const lang = getLang().toUpperCase();
+  window.location.replace(createLogoutUrl(lang));
 }
 
 function createLoginUrl(lang) {
@@ -42,7 +43,7 @@ function createLoginUrl(lang) {
   return domain + '/shibboleth/Login' + lang +'?target=' + domain + '/oma-opintopolku';
 }
 
-function createLogoutUrl() {
+function createLogoutUrl(lang) {
   let domain = domains[lang];
   return domain + '/shibboleth/Logout?return=' + domain + '/oma-opintopolku';
 }

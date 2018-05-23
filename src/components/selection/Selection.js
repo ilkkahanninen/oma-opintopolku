@@ -6,7 +6,7 @@ import omatsivutImg from 'Static/img/hakemukseni_white.svg';
 
 const Selection = () => (
   <div className={styles['flex-container']}>
-    <SelectionItem namespace='omatsivut' icon={omatsivutImg} link='/omatsivut/login' />
+    <SelectionItem namespace='omatsivut' icon={omatsivutImg} link='/omatsivut' />
     <SelectionItem namespace='koski' icon={koskiImg} link='/koski/omattiedot' />
   </div>
 );

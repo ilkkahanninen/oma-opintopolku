@@ -1,9 +1,8 @@
 import React from 'react';
 import { I18n} from 'react-i18next';
-import SelectionButton from '../common/selectionbutton/SelectionButton';
 import styles from './SelectionItem.css';
 
-const SelectionItem = ({namespace, icon}) => (
+const SelectionItem = ({namespace, icon, link}) => (
   <I18n ns="selection">
     {t => (
       <div className={styles['flex-item']}>
@@ -26,7 +25,7 @@ const SelectionItem = ({namespace, icon}) => (
           </div>
         </div>
         <div className={styles['btn-holder']}>
-          <SelectionButton text={t(namespace + '.button')} />
+          <a className={styles.link} href={link}>{t(namespace + '.link')}</a>
         </div>
       </div>
     )}

@@ -7,7 +7,7 @@
     "item1": "granska dina ansökningar och bearbeta dem under ansökningstiden",
     "item2": "se dina antagningsresultat",
     "item3": "ta emot  studieplatsen",
-    "button": "Fortsätt till ansökningarna"
+    "link": "Fortsätt till ansökningarna"
   },
   "koski": {
     "title": "Mina studieprestationer",
@@ -17,6 +17,6 @@
     "item1": "grundläggande utbildning, gymnasieutbildning och yrkesutbildning från och med 2018",
     "item2": "studentexamina från och med 1990",
     "item3": "högskoleutbildning från och med 1995 (varierar enligt högskola)",
-    "button": "Fortsätt till studierna"
+    "link": "Fortsätt till studierna"
   }
 }

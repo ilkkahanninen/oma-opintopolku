@@ -7,7 +7,7 @@
     "item1": "tarkastella hakemuksiasi ja muokata niitä hakuaikana",
     "item2": "nähdä opiskelijavalinnan tulokset",
     "item3": "ottaa opiskelupaikan vastaan",
-    "button": "Siirry hakemuksiin"
+    "link": "Siirry hakemuksiin"
   },
   "koski": {
     "title": "Omat opintosuoritukseni",
@@ -17,6 +17,6 @@
     "item1": "Peruskoulusta, lukiosta ja ammattikoulusta 2018 alkaen",
     "item2": "Ylioppilastutkinnot alkaen vuodelta 1990",
     "item3": "Korkeakoulusta alkaen vuodelta 1995 (tässä voi olla koulukohtaisia poikkeuksia)",
-    "button": "Siirry opintoihin"
+    "link": "Siirry opintoihin"
   }
 }

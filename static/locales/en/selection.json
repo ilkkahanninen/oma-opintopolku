@@ -7,7 +7,7 @@
     "item1": "view your applications and make modifications to them during application period",
     "item2": "see the results of student admissions",
     "item3": "accept an offer of admission",
-    "button": "Proceed to applications"
+    "link": "Proceed to applications"
   },
   "koski": {
     "title": "My completed studies",
@@ -17,6 +17,6 @@
     "item1": "Basic education and secondary education from 2018 onwards",
     "item2": "Matriculation examinations from 1990 onwards",
     "item3": "Higher education from 1995 onwards (varies by higher education institution)",
-    "button": "Proceed to studies"
+    "link": "Proceed to studies"
   }
 }

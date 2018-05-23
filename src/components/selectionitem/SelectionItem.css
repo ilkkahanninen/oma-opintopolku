@@ -65,3 +65,12 @@
 :local(.btn-holder) {
   margin: auto auto 15px auto;
 }
+
+:local(.link) {
+  padding: 0.7rem 2.5rem;
+  background-color: #149ECB;
+  font-weight: bold;
+  color: white;
+  border: 0;
+  text-decoration: none;
+}

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "i18next": "^11.3.2",
+    "i18next-browser-languagedetector": "^2.2.0",
     "i18next-xhr-backend": "^1.5.1",
     "js-cookie": "^2.2.0",
     "react": "^16.3.2",

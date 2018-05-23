@@ -1,5 +1,11 @@
 import Cookies from 'js-cookie';
 
+const domains = {
+  fi: 'https://opintopolku.fi',
+  sv: 'https://studieinfo.fi',
+  en: 'https://studyinfo.fi'
+};
+
 export function getUser() {
   return new Promise((resolve, reject) => {
     fetch('/oma-opintopolku/session', {
@@ -32,12 +38,12 @@ export function logout() {
 }
 
 function createLoginUrl(lang) {
-  const domain = window.location.origin;
+  let domain = domains[lang];
   return domain + '/shibboleth/Login' + lang +'?target=' + domain + '/oma-opintopolku';
 }
 
 function createLogoutUrl() {
-  const domain = window.location.origin;
+  let domain = domains[lang];
   return domain + '/shibboleth/Logout?return=' + domain + '/oma-opintopolku';
 }
 

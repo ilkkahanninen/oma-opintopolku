@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 
 const domains = {
-  FI: 'https://opintopolku.fi',
-  SV: 'https://studieinfo.fi',
-  EN: 'https://studyinfo.fi'
+  FI: 'opintopolku.fi',
+  SV: 'studieinfo.fi',
+  EN: 'studyinfo.fi'
 };
 
 export function getUser() {
@@ -39,13 +39,24 @@ export function logout() {
 }
 
 function createLoginUrl(lang) {
-  let domain = domains[lang];
+  const domain = createDomain(lang);
   return domain + '/shibboleth/Login' + lang +'?target=' + domain + '/oma-opintopolku';
 }
 
 function createLogoutUrl(lang) {
-  let domain = domains[lang];
+  const domain = createDomain(lang);
   return domain + '/shibboleth/Logout?return=' + domain + '/oma-opintopolku';
+}
+
+function createDomain(lang) {
+  const origin = document.location.origin;
+  if (origin.includes('https://')) {
+    const domainPrefix = origin.replace(/opintopolku.fi|studyinfo.fi|studieinfo.fi/g, '');
+    const domainSuffix = domains[lang];
+    return domainPrefix + domainSuffix;
+  } else {
+    return 'localhost:8080';
+  }
 }
 
 function getLang() {

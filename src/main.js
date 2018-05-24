@@ -13,4 +13,4 @@ window.Service = {
 };
 
 ReactDOM.render(<Home ref={(home) => {window.home = home}} />, document.getElementById('content'));
-registerServiceWorker();
+//registerServiceWorker();

@@ -1,8 +1,9 @@
 import React from 'react';
 import { I18n} from 'react-i18next';
 import styles from './SelectionItem.css';
+import lukkoImg from 'Static/img/lukko_white.svg';
 
-const SelectionItem = ({namespace, icon, link}) => (
+const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
   <I18n ns="selection">
     {t => (
       <div className={styles['flex-item']}>
@@ -24,8 +25,11 @@ const SelectionItem = ({namespace, icon, link}) => (
             </ul>
           </div>
         </div>
-        <div className={styles['btn-holder']}>
-          <a className={styles.link} href={link}>{t(namespace + '.link')}</a>
+        <div className={styles['link-container']}>
+          <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={link}>
+            { !isLoggedIn ? <img className={styles['link-image']} src={lukkoImg}></img> : null}
+            <span className={styles['link-text']}>{t(namespace + '.link')}</span>
+          </a>
         </div>
       </div>
     )}

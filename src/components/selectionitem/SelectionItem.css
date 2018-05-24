@@ -62,15 +62,31 @@
   -webkit-margin-after: 0;
 }
 
-:local(.btn-holder) {
+:local(.link-container) {
   margin: auto auto 15px auto;
 }
 
 :local(.link) {
-  padding: 0.7rem 2.5rem;
+  display: flex;
   background-color: #149ECB;
   font-weight: bold;
   color: white;
   border: 0;
   text-decoration: none;
+}
+
+:local(.link-loggedin) {
+  padding: 0.7rem 2.5rem;
+}
+
+:local(.link-loggedout) {
+  padding: 0.7rem 2.5rem 0.7rem 1rem;
+}
+
+:local(.link-image) {
+  margin-right: 15px;
+}
+
+:local(.link-text) {
+  line-height: 22px;
 }

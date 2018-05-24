@@ -30,7 +30,7 @@ class Home extends React.Component {
     return (
     <Fragment>
       <Greeting user={this.state.user} isLoggedIn={this.state.isLoggedIn} />
-      <Selection />
+      <Selection isLoggedIn={this.state.isLoggedIn}/>
     </Fragment>
   )}
 }

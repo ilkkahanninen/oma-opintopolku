@@ -25,10 +25,4 @@ public class SessionController {
         return user;
     }
 
-    @GetMapping
-    @RequestMapping(value = "/clear")
-    public void clearSession() {
-        // ??
-    }
-
 }

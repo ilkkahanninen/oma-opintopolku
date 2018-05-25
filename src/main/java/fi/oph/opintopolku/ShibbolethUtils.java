@@ -18,12 +18,12 @@ public class ShibbolethUtils {
 
     public static String parseDisplayName(String etunimet, String sukunimi) {
         // Dekoodataan etunimet ja sukunimi manuaalisesti, koska shibboleth välittää ASCII-enkoodatut request headerit UTF-8 -merkistössä
-        Charset windows1252 = Charset.forName("Windows-1252");
+        Charset ISO88591 = Charset.forName("ISO-8859-1");
         Charset utf8 = Charset.forName("UTF-8");
         StringBuilder builder = new StringBuilder();
 
         if (etunimet != null) {
-            etunimet = new String(etunimet.getBytes(windows1252), utf8);
+            etunimet = new String(etunimet.getBytes(ISO88591), utf8);
             builder.append(etunimet);
         }
 
@@ -32,7 +32,7 @@ public class ShibbolethUtils {
         }
 
         if (sukunimi != null) {
-            sukunimi = new String(sukunimi.getBytes(windows1252), utf8);
+            sukunimi = new String(sukunimi.getBytes(ISO88591), utf8);
             builder.append(sukunimi);
         }
 

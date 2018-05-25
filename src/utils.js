@@ -38,6 +38,15 @@ export function logout() {
   window.location.replace(createLogoutUrl(lang));
 }
 
+export function getLang() {
+  let lang = Cookies.get('lang');
+  if (lang) {
+    return lang;
+  }
+
+  return getLanguageFromHost();
+}
+
 function createLoginUrl(lang) {
   const domain = createDomain(lang);
   return domain + '/shibboleth/Login' + lang +'?target=' + domain + '/oma-opintopolku';
@@ -57,15 +66,6 @@ function createDomain(lang) {
   } else {
     return 'localhost:8080';
   }
-}
-
-function getLang() {
-  let lang = Cookies.get('lang');
-  if (lang) {
-    return lang;
-  }
-
-  return getLanguageFromHost();
 }
 
 function getLanguageFromHost(host) {

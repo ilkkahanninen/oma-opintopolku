@@ -2,6 +2,8 @@ import i18n from 'i18next';
 import Backend from 'i18next-xhr-backend';
 import { reactI18nextModule } from 'react-i18next';
 import LngDetector from 'i18next-browser-languagedetector';
+import DomainDetector from './i18n-domaindetector';
+LngDetector.use(DomainDetector);
 
 i18n
   .use(Backend)
@@ -23,7 +25,7 @@ i18n
       loadPath: '/oma-opintopolku/locales/{{lng}}/{{ns}}.json'
     },
     detection: {
-      order: ['cookie'],
+      order: ['cookie', 'domainDetector'],
       lookupCookie: 'lang',
     }
   });

@@ -7,7 +7,7 @@ const GuestGreeting = () => (
   <I18n ns="home">
     {t => (
       <div className={styles['greeting-container-space-below']}>
-        <h1>{t('login.info')}</h1>
+        <p className={styles['guest-greeting']}>{t('login.info')}</p>
         <button className={styles['login-button']} onClick={ login }>{t('common:login')}</button>
       </div>
     )}

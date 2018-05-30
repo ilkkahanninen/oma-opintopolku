@@ -24,7 +24,7 @@ i18n
       loadPath: '/oma-opintopolku/locales/{{lng}}/{{ns}}.json'
     },
     detection: {
-      order: ['cookie', 'domainDetector'],
+      order: ['cookie'],
       lookupCookie: 'lang',
     }
   });

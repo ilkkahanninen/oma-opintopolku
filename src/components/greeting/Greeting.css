@@ -1,3 +1,9 @@
+@media screen and (max-width: 1090px) {
+  :local(.greeting-container) {
+    margin-left: 15px;
+  }
+}
+
 :local(.greeting-container) {
   display: flex;
   flex-direction: column;

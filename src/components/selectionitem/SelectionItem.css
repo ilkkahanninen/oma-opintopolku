@@ -44,6 +44,12 @@
   flex-shrink: 0;
 }
 
+:local(.icon-image) {
+  width: 21px;
+  height: 21px;
+  margin-top: 16px;
+}
+
 :local(.title) {
   margin: 0 0 0 15px;
   width: 300px;

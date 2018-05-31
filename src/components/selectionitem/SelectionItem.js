@@ -9,7 +9,7 @@ const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
       <div className={styles['flex-item']}>
         <div className={styles['title-wrapper']}>
           <div className={styles['image-wrapper']}>
-            <img src={icon} alt={t(namespace + '.icon')} />
+            <img className={styles['icon-image']} src={icon} alt={t(namespace + '.icon')} />
           </div>
           <h2 className={styles.title}>{t(namespace + '.title')}</h2>
         </div>

@@ -10,7 +10,7 @@ h1 {
 }
 
 #content {
-  margin-bottom: 30px;
+  margin: 0 0.75rem 30px;
 }
 
 :root {

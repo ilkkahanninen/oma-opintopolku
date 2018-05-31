@@ -28,6 +28,7 @@
   font-size: 20px;
   letter-spacing: 0.3px;
   width: 540px;
+  max-width: 100%;
   margin: 0;
 }
 

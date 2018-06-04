@@ -12,13 +12,16 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "core-js": "^2.5.7",
+    "es6-promise": "^4.2.4",
     "i18next": "^11.3.2",
     "i18next-browser-languagedetector": "^2.2.0",
     "i18next-xhr-backend": "^1.5.1",
     "js-cookie": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-i18next": "^7.6.1"
+    "react-i18next": "^7.6.1",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

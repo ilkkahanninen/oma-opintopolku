@@ -1,6 +1,6 @@
 import React from 'react';
 import { I18n } from 'react-i18next';
-import { login } from 'Src/utils.js'
+import { login } from '../../../utils.js'
 import styles from '../Greeting.css';
 
 const GuestGreeting = () => (
@@ -8,7 +8,7 @@ const GuestGreeting = () => (
     {t => (
       <div className={styles['greeting-container-space-below']}>
         <p className={styles['guest-greeting']}>{t('login.info')}</p>
-        <button className={styles['login-button']} onClick={ login }>{t('common:login')}</button>
+        <a className={styles['login-button']} onClick={ login } tabIndex="0">{t('common:login')}</a>
       </div>
     )}
   </I18n>

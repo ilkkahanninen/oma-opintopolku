@@ -102,7 +102,8 @@
 :local(.link) {
   display: flex;
   background-color: #149ECB;
-  font-weight: bold;
+  font-size: 1.125rem;
+  font-weight: 600;
   color: white;
   border: 0;
   text-decoration: none;

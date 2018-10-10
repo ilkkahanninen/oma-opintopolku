@@ -1,0 +1,34 @@
+sudo: required
+language: java
+jdk:
+- oraclejdk8
+services:
+- docker
+cache:
+  directories:
+  - $HOME/.m2
+env:
+  global:
+  # AWS_ACCESS_KEY_ID
+  - secure: "OYsnjP5AyadEQ1wLea3CO0LhfegA2AXzoCeOtgXwbews+7GmdeMPaWJKZBEW8zRtff4S5aZBDrD6q+Qg0CvjXNbzBVULHM66UYJttuC8gWeVW4FQ8vjsjeMeqE0Xpj01wAka2gAbShtvf4eS7Om0RrhrboIj975UYPqnu9pyRaCsXKj08VrFlQ1MUfG8mTHZPkndJ/hX1SMjEMCbJu9JlXGfVe+qwh9zV4//zZcryc4IYvVuqGi1Hpy3su6WApc6dG5dvaKk7rV2OEm0d8lThBywzmE+aiSdzQ7igmaV+cvIQTbh0+xQhT2vGHP8er7t484TIF5xDdtSvw+uwon3XG4+vYakOnZU3IzTmo/xaD5Is5wl/hd1WqLLyIYsflmJNkpH83uAFL4xqeVzXw0hWTJaUZbSG0c74gcvrVwRXVlNT6EPN8C9hA8gJsDNsRpgaW4Tbe2i5MrE+EX6IKLBtwWUHviF6/GeKY0DAjh2U8D/RMIoy3yKxJnujOqFrD86KKiVhWir0iSnGs3uwEBgsNF6WQwTTq8icDCI5GUCm8sqU+B8XPkGyvkxqk16X4Ooquw5sBBxYHLe+A8nggDRI+VvkTNCUj1Sq1vPEPRJIrjHygCcUYKGd55YV6gH/uObQ8dzMi2lY85kQMf7f/OUj/Dlzh3137Cn4Pd8iZpX2XE="
+  # AWS_SECRET_ACCESS_KEY
+  - secure: "TN2pJo0avDIn/LmDnLU+DyVZRfmly5hErtUsMuehNzE9gK5w+Pid7ypM4vhYE7QrApBRBZ3aRjKnJwZTuyFekAzW8xRsuqZCmq76nCT8YXffvH0kLph0mmnXUiXfBOxtYa9uaWnNt/lRHnFglqLStg+8mcKDN731TD4bYHWfRZJBcmmzh/wPYvQlbqLTjkPLUPUTmwUMAm/kJC2e42A3iEp7JnZVvW025HY3rS8mPt/iWT/RFmxf+4dY3+JQytot/E+stF35BnLa6fM+HezXm+75ofMCAmtCqvhADgYbEw74FPCuzeHdH2JvdTYYXEQk8DDRLohrb4Yvceg5EuwokwOocx6Dw25hfTk69ZXRKmPIIriK8fxvHrISOqJ5CLSjmx+zOZczhBauVkj8Ta6hVo+eh2v431VkY64vwdzfWd4XtITeuYrayrxRKcTzIt10EDCH+PleMz6AAe8o8AuwA8RD/gywhz/MWAMTceuh4KVuNxNBfe5em134z7r/is0HKcoooO3AsMVB/tSGosjNHKgx1+7gvn1hs2/HJjSgXhMhni8ee2IKp1v4S2wEu7C+QJdAJl+R0N0uEUwWHa7Ld4u5fkhLdy9A5zKVEbAdi5bVqZMO2eJ4OLWfnxT3X2b85I7nVPcgRj+WM70Xdrtgz+BSlnCftsAg6CLHam8g/c8="
+
+install:
+- git clone https://github.com/Opetushallitus/ci-tools.git
+- source ci-tools/common/setup-tools.sh
+- export ARTIFACT_NAME="oma-opintopolku"
+
+script:
+- mvn clean install -B -Dbranch=${TRAVIS_BRANCH} -Drevision=${TRAVIS_COMMIT} -DbuildNumber=${TRAVIS_BUILD_NUMBER}
+- cp -v target/oma-opintopolku-*.jar $DOCKER_BUILD_DIR/artifact/oma-opintopolku.jar
+
+- export BASE_IMAGE="base-legacy:0.1"
+- ./ci-tools/common/pull-image.sh
+- ./ci-tools/build/build-fatjar.sh $ARTIFACT_NAME
+
+deploy:
+- provider: script
+  script: ./ci-tools/build/upload-image.sh $ARTIFACT_NAME
+  on:
+    all_branches: true

@@ -1,0 +1,26 @@
+:local(.link) {
+  display: flex;
+  color: #149ECB;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: 0;
+  text-decoration: underline;
+}
+
+:local(.link-loggedin) {
+  padding: 0.7rem 2.5rem;
+}
+
+:local(.link-loggedout) {
+  padding: 0.7rem 2.5rem 0.7rem 1rem;
+}
+
+:local(.link-image) {
+  margin-right: 15px;
+  fill: #149ECB;
+}
+
+:local(.link-text) {
+  line-height: 22px;
+}
+

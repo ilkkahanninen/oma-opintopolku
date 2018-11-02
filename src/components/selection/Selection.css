@@ -13,3 +13,18 @@
     margin: 0.5rem auto 0.5rem auto;
   }
 }
+
+:local(.bottom-container) {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 1rem auto;
+  max-width: 1090px;
+}
+
+@media screen and (max-width: 900px) {
+  :local(.bottom-container) {
+    flex-direction: column;
+    width: 30rem;
+    margin: 1rem auto;
+  }
+}

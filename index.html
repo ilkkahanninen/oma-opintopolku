@@ -7,6 +7,36 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var siteId = null;
+      if (document.domain === 'opintopolku.fi') {
+        siteId = '4';
+      } else if (document.domain === 'studieinfo.fi') {
+        siteId = '13';
+      } else if (document.domain === 'studyinfo.fi') {
+        siteId = '14';
+      } else if (document.domain.indexOf('testi') === 0) {
+        siteId = '1';
+      } else if (document.domain.indexOf('demo') === 0) {
+        siteId = '15';
+      }
+
+      if (siteId !== null) {
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//analytiikka.opintopolku.fi/piwik/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', siteId]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      }
+    </script>
+    <!-- End Piwik Code -->
   </head>
   <body>
     <div id="content"></div>

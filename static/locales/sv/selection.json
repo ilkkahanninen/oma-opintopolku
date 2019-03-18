@@ -19,6 +19,16 @@
     "item3": "högskoleutbildning från och med 1995 (varierar enligt högskola)",
     "link": "Fortsätt till studierna"
   },
+  "varda": {
+    "title": "Varhaiskasvatustiedot",
+    "subtitle": "Katsele varhaiskasvatuksen tietovaranto Vardasta löytyviä huollettavasi tietoja.",
+    "icon": "Ikoni lukosta",
+    "label": "Löytyvät tiedot:",
+    "item1": "henkilötiedot",
+    "item2": "varhaiskasvatuspäätökset",
+    "item3": "varhaiskasvatuksen toimipaikat",
+    "link": "Siirry varhaiskasvatustietoihin"
+  },
   "tietojenikaytto": {
     "title": "Hur används mina uppgifter?"
   }

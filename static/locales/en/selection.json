@@ -19,6 +19,16 @@
     "item3": "Higher education from 1995 onwards (varies by higher education institution)",
     "link": "Proceed to studies"
   },
+  "varda": {
+    "title": "Varhaiskasvatustiedot",
+    "subtitle": "Katsele varhaiskasvatuksen tietovaranto Vardasta löytyviä huollettavasi tietoja.",
+    "icon": "Ikoni lukosta",
+    "label": "Löytyvät tiedot:",
+    "item1": "henkilötiedot",
+    "item2": "varhaiskasvatuspäätökset",
+    "item3": "varhaiskasvatuksen toimipaikat",
+    "link": "Siirry varhaiskasvatustietoihin"
+  },
   "tietojenikaytto": {
     "title": "How is my data used?"
   }

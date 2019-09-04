@@ -22,6 +22,10 @@
   "varda": {
     "title": "Varhaiskasvatustiedot",
     "subtitle": "Katsele varhaiskasvatuksen tietovaranto Vardasta löytyviä huollettavasi tietoja.",
+    "subtitleLink": {
+      "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
+      "text": "Lue lisää"
+    },
     "icon": "Ikoni lukosta",
     "label": "Löytyvät tiedot:",
     "item1": "henkilötiedot",

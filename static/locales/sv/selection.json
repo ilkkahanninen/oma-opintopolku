@@ -20,18 +20,18 @@
     "link": "Fortsätt till studierna"
   },
   "varda": {
-    "title": "Varhaiskasvatustiedot",
-    "subtitle": "Katsele varhaiskasvatuksen tietovaranto Vardasta löytyviä huollettavasi tietoja.",
+    "title": "Uppgifter om småbarnspedagogik",
+    "subtitle": "Granska i egenskap av vårdnadshavare uppgifter om ditt barn som finns i Varda, informationsresursen för småbarnspedagogik.",
     "subtitleLink": {
       "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
-      "text": "Lue lisää"
+      "text": "Läs mer"
     },
     "icon": "Ikoni lukosta",
-    "label": "Löytyvät tiedot:",
-    "item1": "henkilötiedot",
-    "item2": "varhaiskasvatuspäätökset",
-    "item3": "varhaiskasvatuksen toimipaikat",
-    "link": "Siirry varhaiskasvatustietoihin"
+    "label": "Tillgänglig information:",
+    "item1": "personuppgifter",
+    "item2": "uppgifter om beslut om småbarnspedagogik",
+    "item3": "uppgifter om barnets deltagande i småbarnspedagogisk verksamhet",
+    "link": "Fortsätt till uppgifterna om småbarnspedagogik"
   },
   "tietojenikaytto": {
     "title": "Hur används mina uppgifter?"

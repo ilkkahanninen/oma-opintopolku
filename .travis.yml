@@ -23,7 +23,7 @@ script:
 - mvn clean install -B -Dbranch=${TRAVIS_BRANCH} -Drevision=${TRAVIS_COMMIT} -DbuildNumber=${TRAVIS_BUILD_NUMBER}
 - cp -v target/oma-opintopolku-*.jar $DOCKER_BUILD_DIR/artifact/oma-opintopolku.jar
 
-- export BASE_IMAGE="baseimage-fatjar:master"
+- export BASE_IMAGE="baseimage-fatjar-openjdk8:master"
 - ./ci-tools/common/pull-image.sh
 - ./ci-tools/build/build-fatjar.sh $ARTIFACT_NAME
 

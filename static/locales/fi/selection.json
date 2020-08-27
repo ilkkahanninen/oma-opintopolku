@@ -19,6 +19,20 @@
     "item3": "korkeakoulusta vuodesta 1995 alkaen (tässä voi olla korkeakoulukohtaisia poikkeuksia)",
     "link": "Siirry opintosuorituksiin"
   },
+  "varda": {
+    "title": "Varhaiskasvatustiedot",
+    "subtitle": "Katsele varhaiskasvatuksen tietovaranto Vardasta löytyviä huollettavasi tietoja.",
+    "subtitleLink": {
+      "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
+      "text": "Lue lisää"
+    },
+    "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+    "label": "Löytyvät tiedot:",
+    "item1": "henkilötiedot",
+    "item2": "varhaiskasvatuspäätökset",
+    "item3": "varhaiskasvatuksen toimipaikat",
+    "link": "Siirry varhaiskasvatustietoihin"
+  },
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"
   }

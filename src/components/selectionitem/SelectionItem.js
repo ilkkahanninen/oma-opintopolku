@@ -15,7 +15,13 @@ const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
         </div>
 
         <div className={styles['content-wrapper']}>
-          <p className={styles.subtitle}>{t(namespace + '.subtitle')}</p>
+          <p className={styles.subtitle}>
+            {t(namespace + '.subtitle')}
+            &nbsp;
+            {t(namespace + '.subtitleLink') !== namespace + '.subtitleLink'
+              ? <a href={t(namespace + '.subtitleLink.href')} target="_blank">{t(namespace + '.subtitleLink.text')}</a>
+              : null}
+          </p>
           <div className={styles['list-wrapper']}>
             <p>{t(namespace + '.label')}</p>
             <ul className={styles.list}>

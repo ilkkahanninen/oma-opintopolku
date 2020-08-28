@@ -21,10 +21,10 @@
   },
   "varda": {
     "title": "Uppgifter om småbarnspedagogik",
-    "subtitle": "Granska i egenskap av vårdnadshavare uppgifter om ditt barn som finns i Varda, informationsresursen för småbarnspedagogik.",
+    "subtitle": "Granska i egenskap av vårdnadshavare uppgifter om ditt barn som finns i informationsresursen inom småbarnspedagogiken Varda.",
     "subtitleLink": {
       "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
-      "text": "Läs mer"
+      "text": "Läs mer om Varda"
     },
     "icon": "Ikoni kahdesta paperiarkista osin limittäin",
     "label": "Tillgänglig information:",

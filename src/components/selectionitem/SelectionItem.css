@@ -38,7 +38,7 @@
   width: 54px;
   height: 54px;
   border-radius: 26px;
-  background-color: #149ecb;
+  background-color: #0a789c;
   display: flex;
   justify-content: center;
   flex-shrink: 0;
@@ -55,7 +55,7 @@
   width: 300px;
   font-weight: 600;
   font-size: 24px;
-  color: #149ecb;
+  color: #0a789c;
   align-self: center;
 }
 
@@ -101,7 +101,7 @@
 
 :local(.link) {
   display: flex;
-  background-color: #149ECB;
+  background-color: #0a789c;
   font-size: 1.125rem;
   font-weight: 600;
   color: white;

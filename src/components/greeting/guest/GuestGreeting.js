@@ -14,7 +14,6 @@ const GuestGreeting = () => (
       <div className={styles['greeting-container-space-below']}>
         <h1 className={styles['guest-header']}>{t('login.header')}</h1>
         <p className={styles['guest-greeting']}>{t('login.info')}</p>
-        <a href="" className={styles['login-button']} onClick={ handleLoginClick } tabIndex="0">{t('common:login')}</a>
       </div>
     )}
   </I18n>

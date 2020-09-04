@@ -2,6 +2,7 @@
   "description": "Oma opintopolussa voit tarkastella omia opintosuorituksia vuosien varrelta, tai hakemuksiasi eri oppilaitoksiin.",
   "greeting": "Tervetuloa Oma opintopolkuun!",
   "login": {
-    "info": "Kirjautumista varten sinun tulee tunnistautua pankkitunnuksella, mobiilivarmenteella tai sirullisella henkilökortilla."
+    "header": "Kirjautuminen Oma Opintopolkuun",
+    "info": "Kirjautumista varten sinun tulee tunnistautua pankkitunnuksella, mobiilivarmenteella tai sirullisella henkilökortilla. Kirjaudut sisään valitessasi mihin palveluun siirryt."
   }
 }

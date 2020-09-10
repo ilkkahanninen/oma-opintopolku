@@ -9,6 +9,7 @@ const domains = {
 export function getUser() {
   return new Promise((resolve, reject) => {
     fetch('/oma-opintopolku/session', {
+      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
       credentials: 'same-origin'
     })
       .then((response) => {

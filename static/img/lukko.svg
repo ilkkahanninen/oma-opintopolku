@@ -5,7 +5,7 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Kirjautuminen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Mvp-kirjautumattoman-Lander-sivu" transform="translate(-300.000000, -577.000000)" fill="#149ECB">
+        <g id="Mvp-kirjautumattoman-Lander-sivu" transform="translate(-300.000000, -577.000000)" fill="#0a789c">
             <g id="Lukko-symboli" transform="translate(300.000000, 577.000000)">
                 <path d="M7,13.9146471 L7,17 L8,17 L8,13.9146471 C8.58259619,13.7087289 9,13.1531094 9,12.5 C9,11.6715729 8.32842712,11 7.5,11 C6.67157288,11 6,11.6715729 6,12.5 C6,13.1531094 6.41740381,13.7087289 7,13.9146471 Z M3,7 L3,2 C3,0.8954305 3.8954305,2.02906125e-16 5,0 L10,0 C11.1045695,-2.02906125e-16 12,0.8954305 12,2 L12,7 L15,7 L15,22 L0,22 L0,7 L3,7 Z M5,2 L5,7 L10,7 L10,2 L5,2 Z" id="Combined-Shape"></path>
             </g>

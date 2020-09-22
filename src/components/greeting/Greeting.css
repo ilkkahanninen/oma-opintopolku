@@ -17,6 +17,9 @@
   text-align: center;
 }
 
+:local(.guest-header) {
+}
+
 :local(.guest-greeting) {
   font-size: 1.5rem;
   font-weight: 500;
@@ -45,13 +48,3 @@
   margin-left: 10px;
 }
 
-:local(.login-button) {
-  padding: 0.7rem 2.5rem;
-  font-size: 1.125rem;
-  background-color: #149ecb;
-  color: #fff;
-  border: 0;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 600;
-}

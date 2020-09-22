@@ -9,7 +9,7 @@ const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
       <div className={styles['flex-item']}>
         <div className={styles['title-wrapper']}>
           <div className={styles['image-wrapper']}>
-            <img className={styles['icon-image']} src={icon} alt={t(namespace + '.icon')} />
+            <img className={styles['icon-image']} src={icon} alt="" />
           </div>
           <h2 className={styles.title}>{t(namespace + '.title')}</h2>
         </div>
@@ -33,7 +33,6 @@ const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
         </div>
         <div className={styles['link-container']}>
           <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={link}>
-            { !isLoggedIn ? <img className={styles['link-image']} src={lukkoImg}></img> : null}
             <span className={styles['link-text']}>{t(namespace + '.link')}</span>
           </a>
         </div>

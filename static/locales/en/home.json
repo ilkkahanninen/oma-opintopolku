@@ -2,6 +2,7 @@
   "description": "In My Studyinfo you can view your completed studies and see your applications to Finnish Educational Institutions.",
   "greeting": "Welcome to My Studyinfo!",
   "login": {
-    "info": "You must identify yourself by using Finnish bank identification codes, mobile certificate or certificate card"
+    "header": "Log in to My Studyinfo",
+    "info": "In order to log in you must identify yourself by using Finnish bank identification codes, mobile certificate or certificate card. You will be logged in after you have selected the service that you wish to access."
   }
 }

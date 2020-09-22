@@ -7,7 +7,7 @@
     "item1": "granska dina ansökningar och bearbeta dem under ansökningstiden",
     "item2": "se dina antagningsresultat",
     "item3": "ta emot  studieplatsen",
-    "link": "Fortsätt till ansökningarna"
+    "link": "Fortsätt till ansökningarna (kräver identifiering)"
   },
   "koski": {
     "title": "Mina studieprestationer",
@@ -17,7 +17,7 @@
     "item1": "grundläggande utbildning, gymnasieutbildning och yrkesutbildning från och med 2018",
     "item2": "studentexamina från och med 1990",
     "item3": "högskoleutbildning från och med 1995 (varierar enligt högskola)",
-    "link": "Fortsätt till studierna"
+    "link": "Fortsätt till studierna (kräver identifiering)"
   },
   "varda": {
     "title": "Uppgifter om småbarnspedagogik",
@@ -31,7 +31,7 @@
     "item1": "personuppgifter",
     "item2": "uppgifter om beslut om småbarnspedagogik",
     "item3": "uppgifter om barnets deltagande i småbarnspedagogisk verksamhet",
-    "link": "Fortsätt till uppgifterna om småbarnspedagogik"
+    "link": "Fortsätt till uppgifterna om småbarnspedagogik (kräver identifiering)"
   },
   "tietojenikaytto": {
     "title": "Hur används mina uppgifter?"

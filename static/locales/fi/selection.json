@@ -7,7 +7,7 @@
     "item1": "tarkastella hakemuksiasi ja muokata niitä hakuaikana",
     "item2": "nähdä opiskelijavalinnan tulokset",
     "item3": "ottaa opiskelupaikan vastaan",
-    "link": "Siirry hakemuksiin"
+    "link": "Siirry hakemuksiin (vaatii tunnistautumisen)"
   },
   "koski": {
     "title": "Omat opintosuoritukseni",
@@ -17,7 +17,7 @@
     "item1": "peruskoulusta, lukiosta ja ammatillisista oppilaitoksista vuodesta 2018 alkaen",
     "item2": "ylioppilastutkinnot vuodesta 1990 alkaen",
     "item3": "korkeakoulusta vuodesta 1995 alkaen (tässä voi olla korkeakoulukohtaisia poikkeuksia)",
-    "link": "Siirry opintosuorituksiin"
+    "link": "Siirry opintosuorituksiin (vaatii tunnistautumisen)"
   },
   "varda": {
     "title": "Varhaiskasvatustiedot",
@@ -31,7 +31,7 @@
     "item1": "henkilötiedot",
     "item2": "varhaiskasvatuspäätökset",
     "item3": "varhaiskasvatuksen toimipaikat",
-    "link": "Siirry varhaiskasvatustietoihin"
+    "link": "Siirry varhaiskasvatustietoihin (vaatii tunnistautumisen)"
   },
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"

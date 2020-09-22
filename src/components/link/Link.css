@@ -1,6 +1,6 @@
 :local(.link) {
   display: flex;
-  color: #149ECB;
+  color: #0a789c;
   font-size: 1.125rem;
   font-weight: 600;
   border: 0;
@@ -17,7 +17,7 @@
 
 :local(.link-image) {
   margin-right: 15px;
-  fill: #149ECB;
+  fill: #0a789c;
 }
 
 :local(.link-text) {

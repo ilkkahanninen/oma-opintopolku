@@ -30,8 +30,32 @@ export function getUser() {
 }
 
 export function login() {
+  const valtuudet = false;
   const lang = getLang().toUpperCase();
-  window.location.replace(createLoginUrl(lang));
+  //window.location.replace(createLoginUrl(lang, valtuudet));
+
+  // return new Promise((resolve, reject) => {
+    fetch(createLoginUrl(lang, valtuudet), {
+      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+      redirect: 'follow',
+      credentials: 'same-origin'
+    })
+      .then((response) => {
+        window.location.href = response.url;
+        // if (response.status === 200) {
+        //   response.json().then((user) => {
+        //     getUser()
+        //     resolve(user);
+        //   })
+        // } else {
+        //   window.home.setLoggedIn(false);
+        //  // reject(new Error('No session found!'));
+        // }
+      }).catch(err => {
+      console.error(err);
+      //reject(new Error('Failed to fetch session!'));
+    });
+  // });
 }
 
 export function logout() {
@@ -48,14 +72,15 @@ export function getLang() {
   return getLanguageFromHost();
 }
 
-function createLoginUrl(lang) {
+function createLoginUrl(lang, valtuudet) {
   const domain = createDomain(lang);
-  return domain + '/shibboleth/Login' + lang +'?target=' + domain + '/oma-opintopolku';
+  return domain + '/oma-opintopolku/session';
+  //return domain + '/cas-oppija/login?locale=' + lang + '&valtuudet=' + valtuudet + '&service=' + domain + '/oma-opintopolku/initsession';
 }
 
 function createLogoutUrl(lang) {
   const domain = createDomain(lang);
-  return domain + '/shibboleth/Logout?return=' + domain + '/oma-opintopolku';
+  return domain + '/cas-oppija/logout?service=' + domain + '/oma-opintopolku';
 }
 
 function createDomain(lang) {
@@ -70,7 +95,9 @@ function createDomain(lang) {
 }
 
 function getLanguageFromHost(host) {
-  if (!host) { host = document.location.host; }
+  if (!host) {
+    host = document.location.host;
+  }
 
   let parts = host.split('.');
   if (parts.length < 2) {

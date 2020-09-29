@@ -29,6 +29,53 @@ export function getUser() {
   });
 }
 
+export function getUser() {
+  const service = `${window.location.protocol}//${window.location.hostname}/oppija-raamit`;
+  fetch(`/cas-oppija/user/current/attributes?service=${service}`, {
+    headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+    credentials: 'same-origin' })      .then((response) => {
+    if (response.status === 200) {
+      response.json().then((user) => {
+        window.home.setUser(user);
+        resolve(user);
+      })
+    } else {
+      window.home.setLoggedIn(false);
+      reject(new Error('No session found!'));
+    }
+  }).catch(err => {
+    console.error(err);
+    reject(new Error('Failed to fetch session!'));
+  });
+}
+
+
+/*
+export function getUser() {
+  const service = `${window.location.protocol}//${window.location.hostname}/oppija-raamit`;
+  fetch(`/cas-oppija/user/current/attributes?service=${service}`, {
+    headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+    credentials: 'same-origin' })
+    .then(okResponseToJson)
+    .then(attributesToUser)
+    .then(window.home.setUser);
+}
+
+function okResponseToJson(response) {
+  if (!response.ok) {
+    throw new Error(response);
+  }
+  return response.json();
+}
+
+function attributesToUser(attributes) {
+  return {
+    impersonator: attributes.impersonatorPersonName,
+    name: attributes.personName
+  };
+}*/
+
+
 export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();

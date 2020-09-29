@@ -30,8 +30,9 @@ export function getUser() {
 }
 
 export function login() {
+  const valtuudet = false;
   const lang = getLang().toUpperCase();
-  window.location.replace(createLoginUrl(lang));
+  window.location.replace(createLoginUrl(lang, valtuudet));
 }
 
 export function logout() {
@@ -48,14 +49,17 @@ export function getLang() {
   return getLanguageFromHost();
 }
 
-function createLoginUrl(lang) {
+cas.oppija.login=${cas.oppija.url}/login?locale=$1&valtuudet=$2&service=$3
+cas.oppija.logout=${cas.oppija.url}/logout?service=$1
+
+function createLoginUrl(lang, valtuudet) {
   const domain = createDomain(lang);
-  return domain + '/shibboleth/Login' + lang +'?target=' + domain + '/oma-opintopolku';
+  return domain + '/cas-oppija/Login?locale=' + lang +'&valtuudet=' + valtuudet + '&service=' +  + encodeURI(domain + '/oma-opintopolku');
 }
 
 function createLogoutUrl(lang) {
   const domain = createDomain(lang);
-  return domain + '/shibboleth/Logout?return=' + domain + '/oma-opintopolku';
+  return domain + '/cas-oppija/logout?service=' + encodeURI(domain + '/oma-opintopolku');
 }
 
 function createDomain(lang) {

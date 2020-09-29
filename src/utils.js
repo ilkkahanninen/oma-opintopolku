@@ -49,9 +49,6 @@ export function getLang() {
   return getLanguageFromHost();
 }
 
-cas.oppija.login=${cas.oppija.url}/login?locale=$1&valtuudet=$2&service=$3
-cas.oppija.logout=${cas.oppija.url}/logout?service=$1
-
 function createLoginUrl(lang, valtuudet) {
   const domain = createDomain(lang);
   return domain + '/cas-oppija/Login?locale=' + lang +'&valtuudet=' + valtuudet + '&service=' +  + encodeURI(domain + '/oma-opintopolku');

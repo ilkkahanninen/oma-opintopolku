@@ -2,17 +2,14 @@ package fi.oph.opintopolku;
 
 import lombok.val;
 import org.joda.time.LocalDate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/initsession")
 public class SessionController {
 
     @GetMapping
-    public User getSession(@RequestHeader(value = "ticket", required = true) String ticket) {
+    public User getSession(@RequestParam(value = "ticket", required = true) String ticket) {
 
         val user = new User();
         user.setBirthDay(new LocalDate(LocalDate.now()));

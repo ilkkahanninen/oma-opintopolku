@@ -41,9 +41,8 @@ export function login() {
     })
       .then((response) => {
         if (response.status === 200) {
-          response.json().then((user) => {
-            window.home.setUser(user);
-            resolve(user);
+          response.json().then(() => {
+            resolve(getUser);
           })
         } else {
           window.home.setLoggedIn(false);

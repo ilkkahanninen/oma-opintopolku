@@ -33,30 +33,6 @@ export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();
   window.location.replace(createLoginUrl(lang, valtuudet));
-
-  /*
-  return new Promise((resolve, reject) => {
-    fetch(createLoginUrl(lang, valtuudet), {
-      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-      redirect:  'follow',
-      credentials: 'same-origin'
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          response.json().then(() => {
-            resolve(getUser);
-          })
-        } else {
-          window.home.setLoggedIn(false);
-          reject(new Error('Could not login to cas-oppija!!'));
-        }
-      }).catch(err => {
-      console.error(err);
-      reject(new Error('Error when tried to fetch login from cas-oppija!'));
-    });
-  });
-
-   */
 }
 
 export function logout() {
@@ -75,7 +51,7 @@ export function getLang() {
 
 function createLoginUrl(lang, valtuudet) {
   const domain = createDomain(lang);
-  return domain + '/cas-oppija/login?locale=' + lang +'&valtuudet=' + valtuudet + '&service=' + domain + '/oma-opintopolku/initsession';
+  return domain + '/cas-oppija/login?locale=' + lang + '&valtuudet=' + valtuudet + '&service=' + domain + '/oma-opintopolku/initsession';
 }
 
 function createLogoutUrl(lang) {
@@ -95,7 +71,9 @@ function createDomain(lang) {
 }
 
 function getLanguageFromHost(host) {
-  if (!host) { host = document.location.host; }
+  if (!host) {
+    host = document.location.host;
+  }
 
   let parts = host.split('.');
   if (parts.length < 2) {

@@ -5,7 +5,7 @@ const domains = {
   SV: 'studieinfo.fi',
   EN: 'studyinfo.fi'
 };
-
+/*
 export function getUser() {
   return new Promise((resolve, reject) => {
     fetch('/oma-opintopolku/session', {
@@ -28,6 +28,8 @@ export function getUser() {
     });
   });
 }
+
+ */
 
 export function getUser() {
   const service = `${window.location.protocol}//${window.location.hostname}/oppija-raamit`;

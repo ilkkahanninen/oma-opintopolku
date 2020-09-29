@@ -51,12 +51,12 @@ export function getLang() {
 
 function createLoginUrl(lang, valtuudet) {
   const domain = createDomain(lang);
-  return domain + '/cas-oppija/Login?locale=' + lang +'&valtuudet=' + valtuudet + '&service=' +  + encodeURI(domain + '/oma-opintopolku');
+  return domain + '/cas-oppija/Login?locale=' + lang +'&valtuudet=' + valtuudet + '&service=' + domain + '/oma-opintopolku';
 }
 
 function createLogoutUrl(lang) {
   const domain = createDomain(lang);
-  return domain + '/cas-oppija/logout?service=' + encodeURI(domain + '/oma-opintopolku');
+  return domain + '/cas-oppija/logout?service=' + domain + '/oma-opintopolku';
 }
 
 function createDomain(lang) {

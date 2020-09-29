@@ -32,7 +32,28 @@ export function getUser() {
 export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();
-  window.location.replace(createLoginUrl(lang, valtuudet));
+  //window.location.replace(createLoginUrl(lang, valtuudet));
+
+  return new Promise((resolve, reject) => {
+    fetch(createLoginUrl(lang, valtuudet), {
+      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+      credentials: 'same-origin'
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          response.json().then((user) => {
+            window.home.setUser(user);
+            resolve(user);
+          })
+        } else {
+          window.home.setLoggedIn(false);
+          reject(new Error('Could not login to cas-oppija!!'));
+        }
+      }).catch(err => {
+      console.error(err);
+      reject(new Error('Error when tried to fetch login from cas-oppija!'));
+    });
+  });
 }
 
 export function logout() {

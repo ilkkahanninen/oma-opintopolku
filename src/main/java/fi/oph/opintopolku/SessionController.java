@@ -4,6 +4,7 @@ import lombok.val;
 import org.joda.time.LocalDate;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping(value = "/initsession")
 public class SessionController {
@@ -11,8 +12,9 @@ public class SessionController {
     @GetMapping
     public User getSession(@RequestParam(value = "ticket", required = true) String ticket) {
 
+        //TODO - miten tiketti validoidaan? hoituuko automaattisesti?
+
         val user = new User();
-        user.setBirthDay(LocalDate.parse("2020-01-01"));
         user.setName("Nakki Nakuttaja");
         //String displayName = ShibbolethUtils.parseDisplayName(etunimet, sukunimi);
         //user.setName(displayName);

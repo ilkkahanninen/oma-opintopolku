@@ -69,7 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public TicketValidator ticketValidator() {
-        Cas20ProxyTicketValidator ticketValidator = new Cas20ProxyTicketValidator(ophProperties.url("cas.url"));
+        Cas20ProxyTicketValidator ticketValidator = new Cas20ProxyTicketValidator(ophProperties.url("cas-oppija.login"));
         ticketValidator.setAcceptAnyProxy(true);
         return ticketValidator;
     }
@@ -105,7 +105,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
         CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
-        casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas.login"));
+        casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
         casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
         return casAuthenticationEntryPoint;
     }

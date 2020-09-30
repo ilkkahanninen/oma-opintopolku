@@ -12,7 +12,7 @@ public class SessionController {
     public User getSession(@RequestParam(value = "ticket", required = true) String ticket) {
 
         val user = new User();
-        user.setBirthDay(new LocalDate(LocalDate.now()));
+        user.setBirthDay(LocalDate.parse("2020-01-01"));
         user.setName("Nakki Nakuttaja");
         //String displayName = ShibbolethUtils.parseDisplayName(etunimet, sukunimi);
         //user.setName(displayName);

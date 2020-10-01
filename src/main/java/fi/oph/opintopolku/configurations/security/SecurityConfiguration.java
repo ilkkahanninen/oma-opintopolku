@@ -59,7 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
-        String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-virkailija"));
+        String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-oppija"));
         casAuthenticationProvider.setUserDetailsService(new OphUserDetailsServiceImpl(host, ConfigEnums.CALLER_ID.value()));
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         casAuthenticationProvider.setTicketValidator(ticketValidator());
@@ -105,7 +105,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
         CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
-        casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
+        //casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession"));
+        casAuthenticationEntryPoint.setLoginUrl("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession");
         casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
         return casAuthenticationEntryPoint;
     }

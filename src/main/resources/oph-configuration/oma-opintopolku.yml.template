@@ -8,9 +8,9 @@
 # Aseta vähintään nämä ympäristökohtaiset arvot
 
 spring:
-  jpa:
-    properties:
-      hibernate.integration.envers.enabled: {{oppijanumerorekisteri_versiointi_kaytossa | default('true')}}
+  # jpa:
+  #  properties:
+  #    hibernate.integration.envers.enabled: {{omaopintopolku_versiointi_kaytossa | default('true')}}
   datasource:
     url: jdbc:postgresql://{{host_postgresql_omaopintopolku_host}}:{{host_postgresql_omaopintopolku_port}}/{{host_postgresql_omaopintopolku_db | default('authentication')}}?ApplicationName=omaopintopolku
     username: {{postgres_app_user}}

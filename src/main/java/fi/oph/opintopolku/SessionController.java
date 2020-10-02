@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "/session")
+@RequestMapping(value = "/initsession")
 public class SessionController {
     @PreAuthorize("#username == authentication.principal.username")
     @GetMapping

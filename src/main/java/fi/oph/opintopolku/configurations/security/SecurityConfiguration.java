@@ -106,7 +106,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
         CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
         //casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession"));
-        casAuthenticationEntryPoint.setLoginUrl("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession");
+        //casAuthenticationEntryPoint.setLoginUrl("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession");
+        casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
         casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
         return casAuthenticationEntryPoint;
     }

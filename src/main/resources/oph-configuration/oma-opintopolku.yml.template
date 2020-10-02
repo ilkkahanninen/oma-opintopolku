@@ -14,7 +14,7 @@ spring:
   datasource:
     url: jdbc:postgresql://{{host_postgresql_omaopintopolku_host}}:{{host_postgresql_omaopintopolku_port}}/{{host_postgresql_omaopintopolku_db | default('authentication')}}?ApplicationName=omaopintopolku
     username: {{postgres_app_user}}
-    password: {{host_postgresql_omaopintopolku_password}}
+    password: {{omaopintopolku_db_app_password}}
     hikari:
       maximum-pool-size: {{host_postgresql_omaopintopolku_maximum_pool_size | default('20')}}
       connection-timeout: {{host_postgresql_omaopintopolku_connection_timeout | default('10000')}}

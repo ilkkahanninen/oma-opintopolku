@@ -11,7 +11,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/oma-opintopolku?ApplicationName=oma-opintopolku
+    url: jdbc:postgresql://localhost:5432/omaopintopolku?ApplicationName=omaopintopolku
     username: app
     password: ophoph
     hikari:
@@ -22,10 +22,9 @@ spring:
     enabled: true
     table: schema_table_omaopintopolku
     # Only for initial production release, set false afterwards
-    # baseline-on-migrate: false
     baseline-on-migrate: false
     # If DB is not empty will not run migrations until this version
-    baseline-version: 20180423104403142
+    #baseline-version: 20180423104403142
     out-of-order: true
 cas:
   service: http://localhost:${server.port}/oma-opintopolku

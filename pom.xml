@@ -157,7 +157,7 @@
                         </executions>
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
-                            <url>jdbc:postgresql://localhost:5432/oma-opintopolku</url>
+                            <url>jdbc:postgresql://localhost:5432/omaopintopolku</url>
                             <user>app</user>
                             <password>ophoph</password>
                             <table>schema_table_omaopintopolku</table>

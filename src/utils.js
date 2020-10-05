@@ -39,18 +39,18 @@ export function login() {
       headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
       redirect: 'follow',
       credentials: 'same-origin'
-
     })
       .then((response) => {
-        if (response.status === 200) {
-          response.json().then((user) => {
-            getUser()
-            resolve(user);
-          })
-        } else {
-          window.home.setLoggedIn(false);
-         // reject(new Error('No session found!'));
-        }
+        window.location.replace(response.url);
+        // if (response.status === 200) {
+        //   response.json().then((user) => {
+        //     getUser()
+        //     resolve(user);
+        //   })
+        // } else {
+        //   window.home.setLoggedIn(false);
+        //  // reject(new Error('No session found!'));
+        // }
       }).catch(err => {
       console.error(err);
       //reject(new Error('Failed to fetch session!'));

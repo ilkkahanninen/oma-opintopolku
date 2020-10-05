@@ -41,7 +41,16 @@ export function login() {
       credentials: 'same-origin'
     })
       .then((response) => {
-        window.location.href = response.url;
+        fetch(response.url, {
+          headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+          redirect: 'follow',
+          credentials: 'same-origin'
+        }).then((response) => {
+          console.log('response url fetched!')
+          console.log('calling getUser!')
+          getUser()
+        })
+        //window.location.href = response.url;
         // if (response.status === 200) {
         //   response.json().then((user) => {
         //     getUser()

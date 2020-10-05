@@ -36,7 +36,10 @@ export function login() {
 
   return new Promise((resolve, reject) => {
     fetch(createLoginUrl(lang, valtuudet), {
-      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+      headers: new Headers({
+        'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend',
+        'Access-Control-Allow-Origin': '*'
+      }),
       credentials: 'same-origin'
     })
       .then((response) => {

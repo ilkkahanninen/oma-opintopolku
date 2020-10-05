@@ -34,26 +34,28 @@ export function login() {
   const lang = getLang().toUpperCase();
   //window.location.replace(createLoginUrl(lang, valtuudet));
 
-  return new Promise((resolve, reject) => {
+  // return new Promise((resolve, reject) => {
     fetch(createLoginUrl(lang, valtuudet), {
       headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+      redirect: 'follow',
       credentials: 'same-origin'
+
     })
       .then((response) => {
         if (response.status === 200) {
           response.json().then((user) => {
-            window.home.setUser(user);
+            getUser()
             resolve(user);
           })
         } else {
           window.home.setLoggedIn(false);
-          reject(new Error('No session found!'));
+         // reject(new Error('No session found!'));
         }
       }).catch(err => {
       console.error(err);
-      reject(new Error('Failed to fetch session!'));
+      //reject(new Error('Failed to fetch session!'));
     });
-  });
+  // });
 }
 
 export function logout() {

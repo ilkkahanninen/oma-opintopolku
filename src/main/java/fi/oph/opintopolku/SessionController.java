@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class SessionController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping
-    public User getSession(@RequestParam(value = "ticket", required = false) String ticket) {
-//    public User getSession() {
+//    public User getSession(@RequestParam(value = "ticket", required = false) String ticket) {
+    public User getSession() {
 
         //private static Optional<Authentication> getAuthentication() {
         //    return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());

@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class SessionController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping
-    public User getSession(@RequestParam(value = "ticket", required = false) String ticket) {
+//    public User getSession(@RequestParam(value = "ticket", required = false) String ticket) {
+    public User getSession() {
 
         //private static Optional<Authentication> getAuthentication() {
         //    return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
@@ -23,7 +24,7 @@ public class SessionController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         val user = new User();
         //val userName = getAuthentication().flatMap(authentication -> Optional.ofNullable(authentication.getName()));
-        user.setName(authentication.getName());
+        user.setName("testi testiajaja");
         //String displayName = ShibbolethUtils.parseDisplayName(etunimet, sukunimi);
         //user.setName(displayName);
 

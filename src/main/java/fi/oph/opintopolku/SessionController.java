@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/session")
 public class SessionController {
-    @PreAuthorize("#username == authentication.principal.username")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping
     public User getSession(@RequestParam(value = "ticket", required = true) String ticket) {
 

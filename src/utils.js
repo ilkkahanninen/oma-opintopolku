@@ -41,7 +41,10 @@ export function login() {
       credentials: 'same-origin'
     })
       .then((response) => {
-        window.location.href = response.url;
+        fetch(response.url, {
+          headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+        });
+        //window.location.href = response.url;
         // if (response.status === 200) {
         //   response.json().then((user) => {
         //     getUser()

@@ -25,3 +25,4 @@ host:
   host-oppija: {{host_oppija}}
   host-cas: {{host_cas}}
   host-alb: {{host_alb}}
+  host-virkailija: {{host_virkailija}}

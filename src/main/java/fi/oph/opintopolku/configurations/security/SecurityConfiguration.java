@@ -58,8 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
-        //String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-oppija"));
-        String host = this.ophProperties.url("url-virkailija");
+        String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-virkailija"));
         casAuthenticationProvider.setUserDetailsService(new OphOppijaUserInfoServiceImpl(host, ConfigEnums.CALLER_ID.value()));
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         casAuthenticationProvider.setTicketValidator(ticketValidator());

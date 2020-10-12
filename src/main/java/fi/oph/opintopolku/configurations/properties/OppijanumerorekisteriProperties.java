@@ -8,12 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "cas")
-public class CasOppijaProperties {
-    private String service;
-    private Boolean sendRenew;
-    private String key;
-    private String fallbackUserDetailsProviderUrl;
-    private String url;
-}
+@ConfigurationProperties(prefix = "clients.oppijanumerorekisteri")
+public class OppijanumerorekisteriProperties {
+    private String username;
+    private String password;
 
+    private Boolean noUpdateMode = false;
+}

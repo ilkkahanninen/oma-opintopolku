@@ -2,7 +2,10 @@ package fi.oph.opintopolku.configurations.security;
 
 import fi.oph.opintopolku.configurations.ConfigEnums;
 import fi.oph.opintopolku.configurations.properties.CasOppijaProperties;
+import fi.oph.opintopolku.configurations.properties.OppijanumerorekisteriProperties;
 import fi.vm.sade.java_utils.security.OpintopolkuCasAuthenticationFilter;
+import fi.vm.sade.javautils.http.OphHttpClient;
+import fi.vm.sade.javautils.http.auth.CasAuthenticator;
 import fi.vm.sade.javautils.oppijanumerorekistericlient.OphOppijaUserInfoServiceImpl;
 import fi.vm.sade.properties.OphProperties;
 import org.jasig.cas.client.session.SessionMappingStorage;
@@ -30,16 +33,30 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private CasOppijaProperties casOppijaProperties;
     private OphProperties ophProperties;
+    private OppijanumerorekisteriProperties oppijanumerorekisteriProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
+    private OphHttpClient ophHttpClient;
 
     @Autowired
-    public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, Environment environment,
+    public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, OppijanumerorekisteriProperties oppijanumerorekisteriProperties, Environment environment,
                                  SessionMappingStorage sessionMappingStorage) {
         this.casOppijaProperties = casOppijaProperties;
         this.ophProperties = ophProperties;
+        this.oppijanumerorekisteriProperties = oppijanumerorekisteriProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
+
+        CasAuthenticator casAuthenticator = new CasAuthenticator.Builder()
+            .username(this.oppijanumerorekisteriProperties.getUsername())
+            .password(this.oppijanumerorekisteriProperties.getPassword())
+            .webCasUrl(this.casOppijaProperties.getUrl())
+            .casServiceUrl(ophProperties.url("oppijanumerorekisteri-service.security-check"))
+            .build();
+
+        this.ophHttpClient = new OphHttpClient.Builder(ConfigEnums.CALLER_ID.value())
+            .authenticator(casAuthenticator)
+            .build();
     }
 
     @Bean
@@ -60,7 +77,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
         //String host = "https://" + environment.getRequiredProperty("host.host-virkailija");
         String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-virkailija"));
-        casAuthenticationProvider.setUserDetailsService(new OphOppijaUserInfoServiceImpl(host, ConfigEnums.CALLER_ID.value()));
+        casAuthenticationProvider.setUserDetailsService(new OphOppijaUserInfoServiceImpl(host, ophHttpClient));
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         casAuthenticationProvider.setTicketValidator(ticketValidator());
         casAuthenticationProvider.setKey(casOppijaProperties.getKey());

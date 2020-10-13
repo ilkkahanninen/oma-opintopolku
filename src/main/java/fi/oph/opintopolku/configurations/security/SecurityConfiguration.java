@@ -48,8 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.sessionMappingStorage = sessionMappingStorage;
 
         CasAuthenticator casAuthenticator = new CasAuthenticator.Builder()
-            .username(environment.getRequiredProperty("authentication.oppijanumerorekisteri.username"))
-            .password(environment.getRequiredProperty("authentication.oppijanumerorekisteri.username"))
+            .username(this.oppijanumerorekisteriProperties.getUsername())
+            .password(this.oppijanumerorekisteriProperties.getPassword())
             .webCasUrl(ophProperties.url("cas-oppija.url"))
             .casServiceUrl(ophProperties.url("oppijanumerorekisteri-service.security-check"))
             .build();

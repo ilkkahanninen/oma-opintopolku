@@ -1,30 +1,28 @@
 package fi.oph.opintopolku.configurations;
 
-import fi.oph.opintopolku.configurations.properties.OppijanumerorekisteriProperties;
 import fi.vm.sade.javautils.http.OphHttpClient;
 import fi.vm.sade.javautils.http.auth.CasAuthenticator;
 import fi.vm.sade.properties.OphProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.env.Environment;
 
 @Configuration
 public class OnrClientConfiguration {
 
-    private static final String CALLER_ID = "1.2.246.562.10.00000000001.henkilo-ui";
-
     @Bean
     @Primary
     public OphHttpClient ophHttpClient() {
-        return new OphHttpClient.Builder(CALLER_ID)
+        return new OphHttpClient.Builder(ConfigEnums.CALLER_ID.value())
             .build();
     }
 
     @Bean
-    public OphHttpClient ophHttpClientOppijanumerorekisteri(OphProperties ophProperties, OppijanumerorekisteriProperties oppijanumerorekisteriProperties) {
+    public OphHttpClient ophHttpClientOppijanumerorekisteri(OphProperties ophProperties, Environment environment) {
         CasAuthenticator casAuthenticator = new CasAuthenticator.Builder()
-            .username(oppijanumerorekisteriProperties.getUsername())
-            .password(oppijanumerorekisteriProperties.getPassword())
+            .username(environment.getRequiredProperty("authentication.oppijanumerorekisteri.username"))
+            .password(environment.getRequiredProperty("authentication.oppijanumerorekisteri.password"))
             .webCasUrl(ophProperties.url("cas-oppija.url"))
             .casServiceUrl(ophProperties.url("oppijanumerorekisteri-service.security-check"))
             .build();

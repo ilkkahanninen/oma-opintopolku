@@ -25,7 +25,7 @@ public class OnrClientConfiguration {
         CasAuthenticator casAuthenticator = new CasAuthenticator.Builder()
             .username(environment.getRequiredProperty("authentication.oppijanumerorekisteri.username"))
             .password(environment.getRequiredProperty("authentication.oppijanumerorekisteri.password"))
-            .webCasUrl(ophProperties.url("cas-oppija.url"))
+            .webCasUrl(ophProperties.url("cas.url"))
             .casServiceUrl(ophProperties.url("oppijanumerorekisteri-service.security-check"))
             .build();
         return new OphHttpClient.Builder(ConfigEnums.CALLER_ID.value())

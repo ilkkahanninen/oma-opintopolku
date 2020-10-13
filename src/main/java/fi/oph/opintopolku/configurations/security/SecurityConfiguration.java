@@ -1,6 +1,7 @@
 package fi.oph.opintopolku.configurations.security;
 
 import fi.oph.opintopolku.configurations.ConfigEnums;
+import fi.oph.opintopolku.configurations.OnrClientConfiguration;
 import fi.oph.opintopolku.configurations.properties.CasOppijaProperties;
 import fi.oph.opintopolku.configurations.properties.OppijanumerorekisteriProperties;
 import fi.vm.sade.java_utils.security.OpintopolkuCasAuthenticationFilter;
@@ -40,23 +41,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, OppijanumerorekisteriProperties oppijanumerorekisteriProperties, Environment environment,
-                                 SessionMappingStorage sessionMappingStorage) {
+                                 SessionMappingStorage sessionMappingStorage, OnrClientConfiguration onrClientConfiguration) {
         this.casOppijaProperties = casOppijaProperties;
         this.ophProperties = ophProperties;
         this.oppijanumerorekisteriProperties = oppijanumerorekisteriProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
-
-        CasAuthenticator casAuthenticator = new CasAuthenticator.Builder()
-            .username(this.oppijanumerorekisteriProperties.getUsername())
-            .password(this.oppijanumerorekisteriProperties.getPassword())
-            .webCasUrl(ophProperties.url("cas-oppija.url"))
-            .casServiceUrl(ophProperties.url("oppijanumerorekisteri-service.security-check"))
-            .build();
-
-        this.ophHttpClient = new OphHttpClient.Builder(ConfigEnums.CALLER_ID.value())
-            .authenticator(casAuthenticator)
-            .build();
+        this.ophHttpClient = onrClientConfiguration.ophHttpClientOppijanumerorekisteri(ophProperties, oppijanumerorekisteriProperties);
     }
 
     @Bean

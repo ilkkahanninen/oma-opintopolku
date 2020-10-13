@@ -3,6 +3,7 @@ package fi.oph.opintopolku.configurations;
 import fi.vm.sade.javautils.http.OphHttpClient;
 import fi.vm.sade.javautils.http.auth.CasAuthenticator;
 import fi.vm.sade.properties.OphProperties;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -19,6 +20,7 @@ public class OnrClientConfiguration {
     }
 
     @Bean
+    @Qualifier("authentication")
     public OphHttpClient ophHttpClientOppijanumerorekisteri(OphProperties ophProperties, Environment environment) {
         CasAuthenticator casAuthenticator = new CasAuthenticator.Builder()
             .username(environment.getRequiredProperty("authentication.oppijanumerorekisteri.username"))

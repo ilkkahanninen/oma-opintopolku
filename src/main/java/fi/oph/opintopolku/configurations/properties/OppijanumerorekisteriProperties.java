@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "clients.oppijanumerorekisteri")
+@ConfigurationProperties(prefix = "authentication.oppijanumerorekisteri")
 public class OppijanumerorekisteriProperties {
     private String username;
     private String password;

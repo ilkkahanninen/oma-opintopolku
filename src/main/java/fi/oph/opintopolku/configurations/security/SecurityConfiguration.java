@@ -1,12 +1,9 @@
 package fi.oph.opintopolku.configurations.security;
 
-import fi.oph.opintopolku.configurations.ConfigEnums;
 import fi.oph.opintopolku.configurations.OnrClientConfiguration;
 import fi.oph.opintopolku.configurations.properties.CasOppijaProperties;
-import fi.oph.opintopolku.configurations.properties.OppijanumerorekisteriProperties;
 import fi.vm.sade.java_utils.security.OpintopolkuCasAuthenticationFilter;
 import fi.vm.sade.javautils.http.OphHttpClient;
-import fi.vm.sade.javautils.http.auth.CasAuthenticator;
 import fi.vm.sade.javautils.oppijanumerorekistericlient.OphOppijaUserInfoServiceImpl;
 import fi.vm.sade.properties.OphProperties;
 import org.jasig.cas.client.session.SessionMappingStorage;
@@ -34,20 +31,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private CasOppijaProperties casOppijaProperties;
     private OphProperties ophProperties;
-    private OppijanumerorekisteriProperties oppijanumerorekisteriProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
     private OphHttpClient ophHttpClient;
 
     @Autowired
-    public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, OppijanumerorekisteriProperties oppijanumerorekisteriProperties, Environment environment,
+    public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, Environment environment,
                                  SessionMappingStorage sessionMappingStorage, OnrClientConfiguration onrClientConfiguration) {
         this.casOppijaProperties = casOppijaProperties;
         this.ophProperties = ophProperties;
-        this.oppijanumerorekisteriProperties = oppijanumerorekisteriProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
-        this.ophHttpClient = onrClientConfiguration.ophHttpClientOppijanumerorekisteri(ophProperties, oppijanumerorekisteriProperties);
+        this.ophHttpClient = onrClientConfiguration.ophHttpClientOppijanumerorekisteri(ophProperties, environment);
     }
 
     @Bean

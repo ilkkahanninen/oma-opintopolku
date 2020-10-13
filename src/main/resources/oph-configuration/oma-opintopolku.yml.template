@@ -23,8 +23,8 @@ cas:
   service: https://{{host_oppija}}/oma-opintopolku
 authentication:
     oppijanumerorekisteri:
-        username: {{authentication_app_username_to_oppijanumerorekisteri}}
-        password: {{authentication_app_password_to_oppijanumerorekisteri}}
+        username: {{authentication_app_username_to_oppijanumerorekisteri | default('omaopintopolku2oppijanumerorekisteri')}}
+        password: {{authentication_app_password_to_oppijanumerorekisteri | default('omaopintopolku2oppijanumerorekisteri')}}
 host:
   host-oppija: {{host_oppija}}
   host-cas: {{host_cas}}

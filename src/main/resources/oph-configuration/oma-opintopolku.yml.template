@@ -25,7 +25,6 @@ authentication:
     oppijanumerorekisteri:
         username: {{authentication_app_username_to_oppijanumerorekisteri}}
         password: {{authentication_app_password_to_oppijanumerorekisteri}}
-      no-update-mode: false
 host:
   host-oppija: {{host_oppija}}
   host-cas: {{host_cas}}

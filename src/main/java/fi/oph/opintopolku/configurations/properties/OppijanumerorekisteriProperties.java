@@ -12,6 +12,4 @@ import org.springframework.context.annotation.Configuration;
 public class OppijanumerorekisteriProperties {
     private String username;
     private String password;
-
-    private Boolean noUpdateMode = false;
 }

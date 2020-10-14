@@ -5,6 +5,7 @@ import org.jasig.cas.client.authentication.AttributePrincipal;
 import org.joda.time.LocalDate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.cas.authentication.CasAssertionAuthenticationToken;
+import org.springframework.security.cas.authentication.CasAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +26,8 @@ public class SessionController {
         //}
         // TODO test start
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        CasAssertionAuthenticationToken casAssertionAuthenticationToken = (CasAssertionAuthenticationToken) authentication;
-        AttributePrincipal principal = casAssertionAuthenticationToken.getAssertion().getPrincipal();
+        CasAuthenticationToken casAuthenticationToken = (CasAuthenticationToken) authentication;
+        AttributePrincipal principal = casAuthenticationToken.getAssertion().getPrincipal();
         Map attributes = principal.getAttributes();
         String personOid = (String) attributes.getOrDefault("personOid", "NOT_FOUND");
         //TODO test end

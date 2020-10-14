@@ -30,7 +30,9 @@ export function getUser() {
 }
 
 export function login() {
-  const valtuudet = false;
+  getUser();
+  /*
+  //const valtuudet = false;
   const lang = getLang().toUpperCase();
   //window.location.replace(createLoginUrl(lang, valtuudet));
 
@@ -42,6 +44,7 @@ export function login() {
     })
       .then((response) => {
         window.location.href = response.url;
+        getUser();
         // if (response.status === 200) {
         //   response.json().then((user) => {
         //     getUser()
@@ -56,6 +59,8 @@ export function login() {
       //reject(new Error('Failed to fetch session!'));
     });
   // });
+
+  */
 }
 
 export function logout() {

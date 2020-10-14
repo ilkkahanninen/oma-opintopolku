@@ -1,11 +1,15 @@
 package fi.oph.opintopolku;
 
 import lombok.val;
+import org.jasig.cas.client.authentication.AttributePrincipal;
 import org.joda.time.LocalDate;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.cas.authentication.CasAssertionAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 @RestController
@@ -19,9 +23,15 @@ public class SessionController {
         //private static Optional<Authentication> getAuthentication() {
         //    return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
         //}
-        //TODO - miten tiketti validoidaan? mistä haetaan nimi ja hetu? authentication?
-
+        // TODO test start
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CasAssertionAuthenticationToken casAssertionAuthenticationToken = (CasAssertionAuthenticationToken) authentication;
+        AttributePrincipal principal = casAssertionAuthenticationToken.getAssertion().getPrincipal();
+        Map attributes = principal.getAttributes();
+        String personOid = (String) attributes.getOrDefault("personOid", "NOT_FOUND");
+        //TODO test end
+
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         val user = new User();
         //val userName = getAuthentication().flatMap(authentication -> Optional.ofNullable(authentication.getName()));
         user.setName("testi testiajaja");

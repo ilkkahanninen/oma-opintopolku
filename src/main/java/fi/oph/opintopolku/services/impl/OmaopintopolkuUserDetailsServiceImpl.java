@@ -34,6 +34,15 @@ public class OmaopintopolkuUserDetailsServiceImpl implements UserDetailsService 
             .addOverride("url-virkailija", urlVirkailija);
     }
 
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = new User(username, "", emptyList());
+        user.eraseCredentials();
+        return user;
+    }
+/*
+
     @Override
     public UserDetails loadUserByUsername(String suomiFiHetu) throws UsernameNotFoundException {
         String hetu = getHetu(suomiFiHetu);
@@ -53,7 +62,6 @@ public class OmaopintopolkuUserDetailsServiceImpl implements UserDetailsService 
         user.eraseCredentials();
         return user;
     }
-
     private String getHetu(String suomiFiHetu) {
         if (suomiFiHetu.length() > 11 && suomiFiHetu.contains("#")) {
             String parts[] = suomiFiHetu.split("#");
@@ -92,5 +100,7 @@ public class OmaopintopolkuUserDetailsServiceImpl implements UserDetailsService 
         public String name;
         public LocalDate birthDay;
     }
+
+ */
 }
 

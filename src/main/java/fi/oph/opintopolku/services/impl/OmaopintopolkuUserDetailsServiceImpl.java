@@ -30,7 +30,7 @@ public class OmaopintopolkuUserDetailsServiceImpl implements UserDetailsService 
 
     public OmaopintopolkuUserDetailsServiceImpl(String urlVirkailija, OphHttpClient httpClient) {
         this.httpClient = httpClient;
-        this.ophProperties = new OphProperties("/oppijanumerorekistericlient-oph.properties")
+        this.ophProperties = new OphProperties("/onrclient-oph.properties")
             .addOverride("url-virkailija", urlVirkailija);
     }
 

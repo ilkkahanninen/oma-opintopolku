@@ -1,8 +1,10 @@
 package fi.oph.opintopolku.configurations.security;
 
+import fi.oph.opintopolku.configurations.OnrClientConfiguration;
 import fi.oph.opintopolku.configurations.properties.CasOppijaProperties;
 import fi.oph.opintopolku.services.impl.OmaopintopolkuUserDetailsServiceImpl;
 import fi.vm.sade.java_utils.security.OpintopolkuCasAuthenticationFilter;
+import fi.vm.sade.javautils.http.OphHttpClient;
 import fi.vm.sade.properties.OphProperties;
 import org.jasig.cas.client.session.SessionMappingStorage;
 import org.jasig.cas.client.session.SingleSignOutFilter;
@@ -31,14 +33,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private OphProperties ophProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
+    private OphHttpClient ophHttpClient;
 
     @Autowired
     public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, Environment environment,
-                                 SessionMappingStorage sessionMappingStorage) {
+                                 SessionMappingStorage sessionMappingStorage, OnrClientConfiguration onrClientConfiguration) {
         this.casOppijaProperties = casOppijaProperties;
         this.ophProperties = ophProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
+        this.ophHttpClient = onrClientConfiguration.ophHttpClientOppijanumerorekisteri(ophProperties, environment);
     }
 
     @Bean
@@ -58,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
         //String host = "https://" + environment.getRequiredProperty("host.host-virkailija");
         String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-virkailija"));
-        casAuthenticationProvider.setUserDetailsService(new OmaopintopolkuUserDetailsServiceImpl());
+        casAuthenticationProvider.setUserDetailsService(new OmaopintopolkuUserDetailsServiceImpl(host, ophHttpClient));
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         casAuthenticationProvider.setTicketValidator(ticketValidator());
         casAuthenticationProvider.setKey(casOppijaProperties.getKey());

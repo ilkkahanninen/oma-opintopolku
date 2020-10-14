@@ -1,29 +1,58 @@
 package fi.oph.opintopolku.services.impl;
 
+import com.google.gson.Gson;
+import fi.vm.sade.javautils.http.OphHttpClient;
+import fi.vm.sade.javautils.http.OphHttpRequest;
+import fi.vm.sade.properties.OphProperties;
+import lombok.Getter;
+import lombok.Setter;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collection;
 
 import static java.util.Collections.emptyList;
 
 public class OmaopintopolkuUserDetailsServiceImpl implements UserDetailsService {
+    private final OphHttpClient httpClient;
+    private final OphProperties ophProperties;
 
-    //public OphOppijaUserInfoServiceImpl() {
-    //}
+    final static DateTimeFormatter formatter = DateTimeFormat.forPattern("ddMMYY");
 
-        @Override
-        public UserDetails loadUserByUsername(String hetu) throws UsernameNotFoundException {
-            User user = new User(getHetu(hetu), "", emptyList());
-            user.eraseCredentials();
-            return user;
-        }
+    public OmaopintopolkuUserDetailsServiceImpl(String urlVirkailija, OphHttpClient httpClient) {
+        this.httpClient = httpClient;
+        this.ophProperties = new OphProperties("/oppijanumerorekistericlient-oph.properties")
+            .addOverride("url-virkailija", urlVirkailija);
+    }
 
+    @Override
+    public UserDetails loadUserByUsername(String suomiFiHetu) throws UsernameNotFoundException {
+        String hetu = getHetu(suomiFiHetu);
 
+        OphHttpRequest request = OphHttpRequest.Builder
+            .get(ophProperties.url("oppijanumerorekisteri-service.userInfo.byHetu", hetu))
+            .build();
 
+        OnrResponse onrResponse = httpClient.<OnrResponse>execute(request)
+            .expectedStatus(200).mapWith(response -> {
+                InputStream responseStream = new ByteArrayInputStream(response.getBytes());
+                return new Gson().fromJson(new InputStreamReader(responseStream), OnrResponse.class);
+            }).orElseThrow(() -> new UsernameNotFoundException(String.format("Käyttäjää ei löytynyt henkilötunnuksella '%s'", hetu)));
+
+        OmaOpintopolkuUser user = new OmaOpintopolkuUser(onrResponse.getOidHenkilo(), "", true, true,
+            true, true, emptyList(), onrResponse.getKutsumaNimi() + onrResponse.getSukunimi(), getBirthDay(hetu));
+        user.eraseCredentials();
+        return user;
+    }
 
     private String getHetu(String suomiFiHetu) {
         if (suomiFiHetu.length() > 11 && suomiFiHetu.contains("#")) {
@@ -33,92 +62,35 @@ public class OmaopintopolkuUserDetailsServiceImpl implements UserDetailsService 
         return suomiFiHetu;
     }
 
-    private static final class UserDetailsImpl implements UserDetails {
 
-//        private Collection<fi.vm.sade.javautils .oppijanumerorekistericlient.OphOppijaUserInfoServiceImpl.GrantedAuthorityImpl> authorities;
-        private String password;
-        private String username;
-        private String hetu;
-        private boolean accountNonExpired;
-        private boolean accountNonLocked;
-        private boolean credentialsNonExpired;
-        private boolean enabled;
-
-        private UserDetailsImpl(String hetu) {
-            this.hetu = hetu;
+    private LocalDate getBirthDay(String hetu) {
+        if (hetu != null) {
+            return formatter.parseLocalDate(hetu.substring(0, 6));
         }
-
-        @Override
-        public Collection<GrantedAuthority> getAuthorities() {
-            return null;
-        }
-
-        @Override
-        public String getPassword() {
-            return null;
-        }
-
-        @Override
-        public String getUsername() {
-            return null;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        @Override
-        public boolean isAccountNonExpired() {
-            return accountNonExpired;
-        }
-
-        public void setAccountNonExpired(boolean accountNonExpired) {
-            this.accountNonExpired = accountNonExpired;
-        }
-
-        @Override
-        public boolean isAccountNonLocked() {
-            return accountNonLocked;
-        }
-
-        public void setAccountNonLocked(boolean accountNonLocked) {
-            this.accountNonLocked = accountNonLocked;
-        }
-
-        @Override
-        public boolean isCredentialsNonExpired() {
-            return credentialsNonExpired;
-        }
-
-        public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-            this.credentialsNonExpired = credentialsNonExpired;
-        }
-
-        @Override
-        public boolean isEnabled() {
-            return enabled;
-        }
-
-        public void setEnabled(boolean enabled) {
-            this.enabled = enabled;
-        }
-
+        return null;
     }
 
-    private static final class GrantedAuthorityImpl implements GrantedAuthority {
-
-        private String authority;
-
-        @Override
-        public String getAuthority() {
-            return authority;
-        }
-
-        public void setAuthority(String authority) {
-            this.authority = authority;
-        }
-
+    @Getter
+    @Setter
+    private class OnrResponse {
+        String etunimet;
+        String hetu;
+        String kutsumaNimi;
+        String oidHenkilo;
+        String sukunimi;
     }
 
+    private static final class OmaOpintopolkuUser extends User {
+        public OmaOpintopolkuUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired,
+                                  boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, String name, LocalDate birthDay) {
+            super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+            this.name = name;
+            this.birthDay = birthDay;
+        }
+        @Setter
+        @Getter
+        public String name;
+        public LocalDate birthDay;
+    }
 }
 

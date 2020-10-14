@@ -8,14 +8,18 @@ const domains = {
 
 export function getUser() {
   return new Promise((resolve, reject) => {
-    fetch('/oma-opintopolku/session', {
+    const lang = getLang().toUpperCase();
+    const domain = createDomain(lang);
+    const sessionUrl = domain + '/oma-opintopolku/session'
+      fetch(sessionUrl, {
       headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-      credentials: 'same-origin'
+      credentials: 'include'
     })
       .then((response) => {
         if (response.status === 200) {
-          response.json().then((user) => {
+            response.json().then((user) => {
             window.home.setUser(user);
+            console.log(user);
             resolve(user);
           })
         } else {
@@ -30,32 +34,8 @@ export function getUser() {
 }
 
 export function login() {
-  const valtuudet = false;
   const lang = getLang().toUpperCase();
-  //window.location.replace(createLoginUrl(lang, valtuudet));
-
-  // return new Promise((resolve, reject) => {
-    fetch(createLoginUrl(lang, valtuudet), {
-      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-      redirect: 'follow',
-      credentials: 'same-origin'
-    })
-      .then((response) => {
-        window.location.href = response.url;
-        // if (response.status === 200) {
-        //   response.json().then((user) => {
-        //     getUser()
-        //     resolve(user);
-        //   })
-        // } else {
-        //   window.home.setLoggedIn(false);
-        //  // reject(new Error('No session found!'));
-        // }
-      }).catch(err => {
-      console.error(err);
-      //reject(new Error('Failed to fetch session!'));
-    });
-  // });
+  window.location.replace(createLoginUrl(lang));
 }
 
 export function logout() {
@@ -72,15 +52,16 @@ export function getLang() {
   return getLanguageFromHost();
 }
 
-function createLoginUrl(lang, valtuudet) {
+function createLoginUrl(lang) {
   const domain = createDomain(lang);
-  return domain + '/oma-opintopolku/session';
-  //return domain + '/cas-oppija/login?locale=' + lang + '&valtuudet=' + valtuudet + '&service=' + domain + '/oma-opintopolku/initsession';
+  return domain + '/oma-opintopolku/authenticate';
 }
 
 function createLogoutUrl(lang) {
-  const domain = createDomain(lang);
-  return domain + '/cas-oppija/logout?service=' + domain + '/oma-opintopolku';
+  //create opintopolku logout-domain because CAS logins to opintopolku.
+  const domain = createDomain('FI');
+  const logoutdomain = createDomain(lang);
+  return domain + '/cas-oppija/logout?service=' + encodeURI(logoutdomain + '/oma-opintopolku');
 }
 
 function createDomain(lang) {

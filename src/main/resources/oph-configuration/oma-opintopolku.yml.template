@@ -21,12 +21,7 @@ spring:
       max-lifetime: {{host_postgresql_omaopintopolku_max_lifetime | default('900000')}}
 cas:
   service: https://{{host_oppija}}/oma-opintopolku
-authentication:
-    oppijanumerorekisteri:
-        username: {{authentication_app_username_to_onr | default('omaopintopolku2oppijanumerorekisteri')}}
-        password: {{authentication_app_password_to_onr | default('omaopintopolku2oppijanumerorekisteri')}}
 host:
   host-oppija: {{host_oppija}}
   host-cas: {{host_cas}}
   host-alb: {{host_alb}}
-  host-virkailija: {{host_virkailija}}

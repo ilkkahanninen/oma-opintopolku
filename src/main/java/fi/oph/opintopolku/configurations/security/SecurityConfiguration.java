@@ -1,10 +1,8 @@
 package fi.oph.opintopolku.configurations.security;
 
-import fi.oph.opintopolku.configurations.OnrClientConfiguration;
 import fi.oph.opintopolku.configurations.properties.CasOppijaProperties;
 import fi.oph.opintopolku.services.impl.OmaopintopolkuUserDetailsServiceImpl;
 import fi.vm.sade.java_utils.security.OpintopolkuCasAuthenticationFilter;
-import fi.vm.sade.javautils.http.OphHttpClient;
 import fi.vm.sade.properties.OphProperties;
 import org.jasig.cas.client.session.SessionMappingStorage;
 import org.jasig.cas.client.session.SingleSignOutFilter;
@@ -16,13 +14,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
-import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.security.cas.web.CasAuthenticationFilter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //@Profile("!dev")
 @Configuration
@@ -33,22 +31,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private OphProperties ophProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
-    private OphHttpClient ophHttpClient;
 
     @Autowired
     public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, Environment environment,
-                                 SessionMappingStorage sessionMappingStorage, OnrClientConfiguration onrClientConfiguration) {
+                                 SessionMappingStorage sessionMappingStorage) {
         this.casOppijaProperties = casOppijaProperties;
         this.ophProperties = ophProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
-        this.ophHttpClient = onrClientConfiguration.ophHttpClientOppijanumerorekisteri(ophProperties, environment);
     }
 
     @Bean
     public ServiceProperties serviceProperties() {
         ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService(casOppijaProperties.getService() + "/session");
+        serviceProperties.setService(casOppijaProperties.getService() + "/j_spring_cas_security_check");
         serviceProperties.setSendRenew(casOppijaProperties.getSendRenew());
         serviceProperties.setAuthenticateAllArtifacts(true);
         return serviceProperties;
@@ -60,9 +56,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
-        //String host = "https://" + environment.getRequiredProperty("host.host-virkailija");
-        String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-virkailija"));
-        casAuthenticationProvider.setUserDetailsService(new OmaopintopolkuUserDetailsServiceImpl(host, ophHttpClient));
+        String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-oppija"));
+        casAuthenticationProvider.setUserDetailsService(new OmaopintopolkuUserDetailsServiceImpl());
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         casAuthenticationProvider.setTicketValidator(ticketValidator());
         casAuthenticationProvider.setKey(casOppijaProperties.getKey());
@@ -89,13 +84,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     //
     // CAS single logout filter
-    // requestSingleLogoutFilter is not configured because our users always sign out through CAS logout (using virkailija-raamit
+    // requestSingleLogoutFilter is not configured because our users always sign out through CAS logout (using oppija-raamit
     // logout button) when CAS calls this filter if user has ticket to this service.
     //
     @Bean
     public SingleSignOutFilter singleSignOutFilter() {
         SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
-        singleSignOutFilter.setCasServerUrlPrefix(this.ophProperties.url("url-oppija"));
+        singleSignOutFilter.setCasServerUrlPrefix(this.ophProperties.url("cas-oppija.url"));
         singleSignOutFilter.setIgnoreInitConfiguration(true);
         singleSignOutFilter.setSessionMappingStorage(sessionMappingStorage);
         return singleSignOutFilter;
@@ -105,13 +100,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // CAS entry point
     //
     @Bean
-    public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
-        CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
-        //casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession"));
-        //casAuthenticationEntryPoint.setLoginUrl("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession");
-        casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
-        casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
-        return casAuthenticationEntryPoint;
+    public OmaopintopolkuCasAuthenticationEntryPoint omaOpintopolkuCasAuthenticationEntryPoint() {
+        OmaopintopolkuCasAuthenticationEntryPoint omaOpintopolkuCasAuthenticationEntryPoint = new OmaopintopolkuCasAuthenticationEntryPoint();
+        omaOpintopolkuCasAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
+        omaOpintopolkuCasAuthenticationEntryPoint.setServiceProperties(serviceProperties());
+        return omaOpintopolkuCasAuthenticationEntryPoint;
     }
 
     @Override
@@ -120,20 +113,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .headers().disable()
             .csrf().disable()
             .authorizeRequests()
-//            .antMatchers("/buildversion.txt").permitAll()
-//            .antMatchers("/actuator/**").permitAll()
-//            .antMatchers("/swagger-ui.html").permitAll()
-//            .antMatchers("/swagger-resources/**").permitAll()
-//            .antMatchers("/webjars/springfox-swagger-ui/**").permitAll()
-//            .antMatchers("/v2/api-docs").permitAll()
+            .antMatchers("/authenticate").authenticated()
             .antMatchers("/session").authenticated()
             .anyRequest().permitAll()
             .and()
             .addFilter(casAuthenticationFilter())
-            .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint())
+            .exceptionHandling().authenticationEntryPoint(omaOpintopolkuCasAuthenticationEntryPoint())
             .and()
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
     }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

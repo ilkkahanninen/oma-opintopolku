@@ -10,7 +10,9 @@ class Home extends React.Component {
     this.state = {
       user: {
         name: "",
-        birthDay: new Date()
+        birthDay: new Date(),
+        personOid: "",
+        hetu: ""
       },
       isLoggedIn: false
     }

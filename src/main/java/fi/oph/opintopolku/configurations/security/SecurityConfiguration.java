@@ -91,7 +91,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public SingleSignOutFilter singleSignOutFilter() {
         SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
-        singleSignOutFilter.setCasServerUrlPrefix(this.ophProperties.url("url-oppija"));
+        singleSignOutFilter.setCasServerUrlPrefix(this.ophProperties.url("url-cas"));
         singleSignOutFilter.setIgnoreInitConfiguration(true);
         singleSignOutFilter.setSessionMappingStorage(sessionMappingStorage);
         return singleSignOutFilter;

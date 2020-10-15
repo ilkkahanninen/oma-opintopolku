@@ -39,6 +39,16 @@ export function login() {
     redirect: 'follow'
   }).then((response) => {
     console.log(response)
+    if (response.redirected = true) {
+      console.log('REDIRECTED TO CAS, fetching...');
+      fetch(response.url, {
+        headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+        credentials: 'same-origin',
+        redirect: 'follow'
+      }).then((response) => {
+        console.log(response)
+      })
+    }
   })
 }
 

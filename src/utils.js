@@ -32,33 +32,7 @@ export function getUser() {
 export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();
-  //window.location.replace(createLoginUrl(lang, valtuudet));
-
-  // return new Promise((resolve, reject) => {
-    fetch(createLoginUrl(lang, valtuudet), {
-      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-      redirect: 'manual',
-      credentials: 'same-origin'
-    })
-      .then((response) => {
-        //window.location.href = response.url;
-        var req = new XMLHttpRequest();
-        req.open('GET', response.url, true);
-        req.send();
-        if (req.status != "200") {
-          //  Error
-        }
-        response.json().then((user) => {
-          window.home.setUser(user);
-          resolve(user);
-        })
-
-      }).catch(err => {
-      console.error(err);
-    });
-  // });
-
-
+  window.location.replace(createLoginUrl(lang, valtuudet));
 }
 
 export function logout() {

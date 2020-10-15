@@ -19,7 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/session")
 public class SessionController {
-    final static DateTimeFormatter formatter = DateTimeFormat.forPattern("ddMMYY");
+    final static DateTimeFormatter formatter = DateTimeFormat.forPattern("dd.MM.YY");
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping
@@ -32,16 +32,16 @@ public class SessionController {
         val user = new User();
 
         user.setName((String) attributes.getOrDefault("displayName", "NOT_FOUND"));
-        LocalDate bd = parseDateFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", ""));
-        user.setBirthDay(bd);
+       // LocalDate bd = parseDateFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", ""));
+        user.setBirthDay(parseDateFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "")));
         user.setPersonOid((String) attributes.getOrDefault("personOid", "NOT_FOUND"));
         user.setHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND"));
         return user;
     }
 
-    private static LocalDate parseDateFromHetu(String hetu) {
+    private static String parseDateFromHetu(String hetu) {
         if (hetu != null) {
-            return formatter.parseLocalDate(hetu.substring(0, 6));
+            return formatter.parseLocalDate(hetu.substring(0, 6)).toString();
         }
         return null;
     }

@@ -32,7 +32,14 @@ export function getUser() {
 export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();
-  window.location.replace(createLoginUrl(lang, valtuudet));
+  //window.location.replace(createLoginUrl(lang, valtuudet));
+  fetch('/oma-opintopolku/session', {
+    headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+    credentials: 'same-origin',
+    redirect: 'follow'
+  }).then((response) => {
+    console.log(response)
+  })
 }
 
 export function logout() {

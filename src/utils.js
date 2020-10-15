@@ -30,8 +30,8 @@ export function getUser() {
 }
 
 export function login() {
-  getUser();
-  /*
+
+
   //const valtuudet = false;
   const lang = getLang().toUpperCase();
   //window.location.replace(createLoginUrl(lang, valtuudet));
@@ -43,24 +43,24 @@ export function login() {
       credentials: 'same-origin'
     })
       .then((response) => {
-        window.location.href = response.url;
-        getUser();
-        // if (response.status === 200) {
-        //   response.json().then((user) => {
-        //     getUser()
-        //     resolve(user);
-        //   })
-        // } else {
-        //   window.home.setLoggedIn(false);
-        //  // reject(new Error('No session found!'));
-        // }
+        //window.location.href = response.url;
+        var req = new XMLHttpRequest();
+        req.open('GET', response.url, true);
+        req.send();
+        if (req.status != "200") {
+          //  Error
+        }
+        response.json().then((user) => {
+          window.home.setUser(user);
+          resolve(user);
+        })
+
       }).catch(err => {
       console.error(err);
-      //reject(new Error('Failed to fetch session!'));
     });
   // });
 
-  */
+
 }
 
 export function logout() {

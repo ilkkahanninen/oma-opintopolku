@@ -40,7 +40,7 @@ var doRecursiveRequest = (url, limit = Number.MAX_VALUE) =>
       return res.json();
     } else {
       console.log("REDIRECTING!!!")
-      return doRecursiveRequest(res.url, limit);
+      return doRecursiveRequest(res.location, limit);
     }
 
   });

@@ -32,7 +32,7 @@ export function getUser() {
 export function login() {
 
 
-  //const valtuudet = false;
+  const valtuudet = false;
   const lang = getLang().toUpperCase();
   //window.location.replace(createLoginUrl(lang, valtuudet));
 

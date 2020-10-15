@@ -16,7 +16,7 @@ const UserGreeting = ({ user }) => (
         <p className={styles.subtitle}>{t('description')}</p>
         <p className={styles.identity}>
           <span className={styles.name}>{ user.name }</span>
-          <span className={styles.birthday}>{displayDate(user.birthDay)}</span>
+          {/*<span className={styles.birthday}>{displayDate(user.birthDay)}</span>*/}
         </p>
       </div>
     )}

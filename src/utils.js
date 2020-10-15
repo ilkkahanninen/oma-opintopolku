@@ -16,6 +16,7 @@ export function getUser() {
         if (response.status === 200) {
           response.json().then((user) => {
             window.home.setUser(user);
+            console.log(user);
             resolve(user);
           })
         } else {

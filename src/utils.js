@@ -49,10 +49,10 @@ const doRecursiveRequest = (url, limit = Number.MAX_VALUE) =>
 export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();
-  //window.location.replace(createLoginUrl(lang, valtuudet));
-  doRecursiveRequest(createLoginUrl(lang, valtuudet), 50)
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
+  window.location.replace(createLoginUrl(lang, valtuudet));
+  // doRecursiveRequest(createLoginUrl(lang, valtuudet), 50)
+  //   .then(data => console.log(data))
+  //   .catch(error => console.log(error));
 }
 
 export function logout() {

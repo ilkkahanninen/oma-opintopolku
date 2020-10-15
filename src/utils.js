@@ -30,8 +30,6 @@ export function getUser() {
 }
 
 export function login() {
-
-
   const valtuudet = false;
   const lang = getLang().toUpperCase();
   //window.location.replace(createLoginUrl(lang, valtuudet));
@@ -39,7 +37,7 @@ export function login() {
   // return new Promise((resolve, reject) => {
     fetch(createLoginUrl(lang, valtuudet), {
       headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-      redirect: 'follow',
+      redirect: 'manual',
       credentials: 'same-origin'
     })
       .then((response) => {

@@ -39,14 +39,11 @@ var doRecursiveRequest = (url, limit = Number.MAX_VALUE) =>
       console.log(res);
       return res.json();
     } else {
-      return response.text().then(text => {
       console.log("REDIRECTING!!!")
-        return doRecursiveRequest(url, limit);
-      });
+      return doRecursiveRequest(res.url, limit);
     }
 
   });
-
 
 
 export function login() {

@@ -32,24 +32,7 @@ export function getUser() {
 export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();
-  //window.location.replace(createLoginUrl(lang, valtuudet));
-  fetch('/oma-opintopolku/session', {
-    headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-    credentials: 'same-origin',
-    redirect: 'follow'
-  }).then((response) => {
-    console.log(response)
-    if (response.redirected) {
-      console.log('REDIRECTED TO CAS, fetching...');
-      fetch(response.url, {
-        headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-        credentials: 'same-origin',
-        redirect: 'follow'
-      }).then((response) => {
-        console.log(response)
-      })
-    }
-  })
+  window.location.replace(createLoginUrl(lang, valtuudet));
 }
 
 export function logout() {

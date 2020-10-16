@@ -21,6 +21,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 //@Profile("!dev")
 @Configuration
@@ -113,12 +115,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .headers().disable()
             .csrf().disable()
             .authorizeRequests()
-//            .antMatchers("/buildversion.txt").permitAll()
-//            .antMatchers("/actuator/**").permitAll()
-//            .antMatchers("/swagger-ui.html").permitAll()
-//            .antMatchers("/swagger-resources/**").permitAll()
-//            .antMatchers("/webjars/springfox-swagger-ui/**").permitAll()
-//            .antMatchers("/v2/api-docs").permitAll()
             .antMatchers("/authenticate").authenticated()
             .antMatchers("/session").authenticated()
             .anyRequest().permitAll()
@@ -127,7 +123,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint())
             .and()
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
-//        .formLogin().successForwardUrl("https://" + environment.getRequiredProperty("host.host-oppija") + "/oma-opintopolku");
     }
 
 

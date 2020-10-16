@@ -56,6 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
+        //String host = "https://" + environment.getRequiredProperty("host.host-virkailija");
         String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-virkailija"));
         casAuthenticationProvider.setUserDetailsService(new OmaopintopolkuUserDetailsServiceImpl());
         casAuthenticationProvider.setServiceProperties(serviceProperties());
@@ -102,6 +103,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
         CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
+        //casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession"));
+        //casAuthenticationEntryPoint.setLoginUrl("/cas-oppija/login?locale=FI&valtuudet=false&service=https://untuvaopintopolku.fi/oma-opintopolku/initsession");
         casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
         casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
         return casAuthenticationEntryPoint;
@@ -119,15 +122,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //            .antMatchers("/swagger-resources/**").permitAll()
 //            .antMatchers("/webjars/springfox-swagger-ui/**").permitAll()
 //            .antMatchers("/v2/api-docs").permitAll()
-            .antMatchers("/authenticate").authenticated()
             .antMatchers("/session").authenticated()
             .anyRequest().permitAll()
             .and()
             .addFilter(casAuthenticationFilter())
             .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint())
             .and()
-            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
-//        .formLogin().successForwardUrl("https://" + environment.getRequiredProperty("host.host-oppija") + "/oma-opintopolku");
+            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+            .formLogin().successForwardUrl("/oma-opintopolku");
     }
 
 

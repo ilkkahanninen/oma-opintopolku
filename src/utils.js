@@ -72,7 +72,7 @@ export function getLang() {
 
 function createLoginUrl(lang, valtuudet) {
   const domain = createDomain(lang);
-  return domain + '/oma-opintopolku/session';
+  return domain + '/oma-opintopolku/login';
   //return domain + '/cas-oppija/login?locale=' + lang + '&valtuudet=' + valtuudet + '&service=' + domain + '/oma-opintopolku/initsession';
 }
 

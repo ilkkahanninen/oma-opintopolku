@@ -46,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public ServiceProperties serviceProperties() {
         ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService(casOppijaProperties.getService() + "/j_spring_cas_security_check");
+        serviceProperties.setService(environment.getRequiredProperty("host.host-oppija") + "/j_spring_cas_security_check");
         serviceProperties.setSendRenew(casOppijaProperties.getSendRenew());
         serviceProperties.setAuthenticateAllArtifacts(true);
         return serviceProperties;

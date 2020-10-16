@@ -53,10 +53,7 @@ public class SessionController {
     @RequestMapping(value = "/authenticate")
     @PreAuthorize("isAuthenticated()")
     @GetMapping
-    public RedirectView redirectWithUsingRedirectView(
-        RedirectAttributes attributes) {
-        attributes.addFlashAttribute("flashAttribute", "redirectWithRedirectView");
-        attributes.addAttribute("attribute", "redirectWithRedirectView");
+    public RedirectView authenticate() {
         return new RedirectView("/oma-opintopolku");
     }
 

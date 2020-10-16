@@ -128,7 +128,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .addFilter(casAuthenticationFilter())
             .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint())
             .and()
-            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
 //        .formLogin().successForwardUrl("https://" + environment.getRequiredProperty("host.host-oppija") + "/oma-opintopolku");
     }
 

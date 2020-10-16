@@ -44,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public ServiceProperties serviceProperties() {
         ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService(casOppijaProperties.getService() + "/j_spring_cas_security_check");
+        serviceProperties.setService(casOppijaProperties.getService());
         serviceProperties.setSendRenew(casOppijaProperties.getSendRenew());
         serviceProperties.setAuthenticateAllArtifacts(true);
         return serviceProperties;
@@ -122,7 +122,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //            .antMatchers("/swagger-resources/**").permitAll()
 //            .antMatchers("/webjars/springfox-swagger-ui/**").permitAll()
 //            .antMatchers("/v2/api-docs").permitAll()
-            .antMatchers("/?ticket=**").permitAll()
             .antMatchers("/session").authenticated()
             .anyRequest().permitAll()
             .and()

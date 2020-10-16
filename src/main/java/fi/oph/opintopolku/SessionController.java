@@ -14,6 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -22,7 +24,6 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping(value = "/session")
 public class SessionController {
     final static DateTimeFormatter formatter = DateTimeFormat.forPattern("ddMMYY");
 
@@ -31,7 +32,7 @@ public class SessionController {
 
         System.out.println(parseDateStringFromHetu(hetu));
     }
-
+    @RequestMapping(value = "/session")
     @PreAuthorize("isAuthenticated()")
     @GetMapping
     public User getSession() {
@@ -48,6 +49,15 @@ public class SessionController {
         user.setPersonOid((String) attributes.getOrDefault("personOid", "NOT_FOUND"));
         user.setHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND"));
         return user;
+    }
+    @RequestMapping(value = "/authenticate")
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping
+    public RedirectView redirectWithUsingRedirectView(
+        RedirectAttributes attributes) {
+        attributes.addFlashAttribute("flashAttribute", "redirectWithRedirectView");
+        attributes.addAttribute("attribute", "redirectWithRedirectView");
+        return new RedirectView("/oma-opintopolku");
     }
 
     private static String parseDateStringFromHetu(String hetu) {

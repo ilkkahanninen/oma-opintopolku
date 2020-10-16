@@ -30,30 +30,10 @@ export function getUser() {
   });
 }
 
-const doRecursiveRequest = (url, limit = Number.MAX_VALUE) =>
-  fetch(url, {
-    headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-    credentials: 'same-origin'
-  }).then(res => {
-    const contentType = res.headers.get("content-type");
-    if (contentType && contentType.indexOf("application/json") !== -1 && --limit) {
-      console.log(res);
-      return res.json();
-    } else {
-      console.log("REDIRECTING!!!")
-      return doRecursiveRequest(res.location, limit);
-    }
-
-  });
-
-
 export function login() {
   const valtuudet = false;
   const lang = getLang().toUpperCase();
   window.location.replace(createLoginUrl(lang, valtuudet));
-  // doRecursiveRequest(createLoginUrl(lang, valtuudet), 50)
-  //   .then(data => console.log(data))
-  //   .catch(error => console.log(error));
 }
 
 export function logout() {
@@ -72,7 +52,7 @@ export function getLang() {
 
 function createLoginUrl(lang, valtuudet) {
   const domain = createDomain(lang);
-  return domain + '/oma-opintopolku/authenticate';
+  return domain + '/oma-opintopolku/';
 }
 
 function createLogoutUrl(lang) {

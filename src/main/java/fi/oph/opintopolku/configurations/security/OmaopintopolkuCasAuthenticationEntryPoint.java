@@ -1,5 +1,6 @@
 package fi.oph.opintopolku.configurations.security;
 
+import fi.oph.opintopolku.configurations.ConfigEnums;
 import org.jasig.cas.client.util.CommonUtils;
 import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -10,13 +11,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthenticationEntryPoint {
-    /**
-     * Constructs a new Service Url. The default implementation relies on the CAS client
-     * to do the bulk of the work.
-     * @param request the HttpServletRequest
-     * @param response the HttpServlet Response
-     * @return the constructed service url. CANNOT be NULL.
-     */
+    private final static String valtuudet_enabled = ConfigEnums.VALTUUDET_ENABLED.value();
+
     @Override
     protected String createServiceUrl(final HttpServletRequest request,
                                       final HttpServletResponse response) {
@@ -29,6 +25,7 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
             e.printStackTrace();
         }
         super.getServiceProperties().setService(serviceUrl);
+        super.setLoginUrl(getLocalizedLoginUrl(serviceUrl));
         return CommonUtils.constructServiceUrl(null, response,
             serviceUrl, null,
             super.getServiceProperties().getArtifactParameter(),
@@ -42,6 +39,16 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
         String initialUrl = super.getServiceProperties().getService();
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(initialUrl);
         return builder.host(host).toUriString();
+    }
+
+    private String getLocalizedLoginUrl(String url) {
+        String locale = "fi";
+        if (url.contains("study")) {
+            locale = "en";
+        } else if (url.contains("studie")) {
+            locale = "sv";
+        }
+        return super.getLoginUrl() + "?valtuudet" + valtuudet_enabled + "&locale=" + locale;
     }
 
 

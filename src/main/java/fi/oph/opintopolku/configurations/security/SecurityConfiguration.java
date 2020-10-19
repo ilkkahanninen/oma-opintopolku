@@ -102,11 +102,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // CAS entry point
     //
     @Bean
-    public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
-        CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
-        casAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
-        casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
-        return casAuthenticationEntryPoint;
+    public OmaopintopolkuCasAuthenticationEntryPoint omaOpintopolkuCasAuthenticationEntryPoint() {
+        OmaopintopolkuCasAuthenticationEntryPoint omaOpintopolkuCasAuthenticationEntryPoint = new OmaopintopolkuCasAuthenticationEntryPoint();
+        omaOpintopolkuCasAuthenticationEntryPoint.setLoginUrl(ophProperties.url("cas-oppija.login"));
+        omaOpintopolkuCasAuthenticationEntryPoint.setServiceProperties(serviceProperties());
+        return omaOpintopolkuCasAuthenticationEntryPoint;
     }
 
     @Override
@@ -120,7 +120,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .anyRequest().permitAll()
             .and()
             .addFilter(casAuthenticationFilter())
-            .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint())
+            .exceptionHandling().authenticationEntryPoint(omaOpintopolkuCasAuthenticationEntryPoint())
             .and()
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
     }

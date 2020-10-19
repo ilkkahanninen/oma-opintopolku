@@ -23,7 +23,7 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
         String serviceUrl = super.getServiceProperties().getService();
 
         try {
-            serviceUrl = getLocalizedServiceUrl(request.getRequestURI());
+            serviceUrl = getLocalizedServiceUrl(request.getRequestURL().toString());
         } catch (URISyntaxException e) {
             //TODO: should we continue with default serviceUrl?
             e.printStackTrace();
@@ -39,8 +39,8 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
         URI uri = new URI(url);
         String host = uri.getHost();
 
-        String initialUri = super.getServiceProperties().getService();
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(initialUri);
+        String initialUrl = super.getServiceProperties().getService();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(initialUrl);
         return builder.host(host).toUriString();
     }
 

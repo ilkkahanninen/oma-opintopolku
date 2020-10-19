@@ -57,7 +57,7 @@ function createLoginUrl(lang) {
 
 function createLogoutUrl(lang) {
   const domain = createDomain(lang);
-  return domain + '/cas-oppija/logout?service=' + domain + '/oma-opintopolku';
+  return '/cas-oppija/logout?service=' + domain + '/oma-opintopolku';
 }
 
 function createDomain(lang) {

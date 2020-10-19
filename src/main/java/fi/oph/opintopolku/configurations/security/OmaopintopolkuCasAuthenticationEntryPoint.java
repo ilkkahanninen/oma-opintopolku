@@ -48,7 +48,13 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
         } else if (url.contains("studie")) {
             locale = "sv";
         }
-        return super.getLoginUrl() + "?valtuudet" + valtuudet_enabled + "&locale=" + locale;
+
+        UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromUriString(super.getLoginUrl());
+
+        urlBuilder.replaceQueryParam("locale", locale);
+        urlBuilder.replaceQueryParam("valtuudet", valtuudet_enabled);
+
+        return urlBuilder.build().toUriString();
     }
 
 

@@ -2,7 +2,8 @@ package fi.oph.opintopolku.configurations;
 
 public enum  ConfigEnums {
     CALLER_ID("1.2.246.562.10.00000000001.oma-opintopolku-backend"),
-    SERVICENAME("oma-opintopolku");
+    SERVICENAME("oma-opintopolku"),
+    VALTUUDET_ENABLED("false");
 
     private final String value;
 

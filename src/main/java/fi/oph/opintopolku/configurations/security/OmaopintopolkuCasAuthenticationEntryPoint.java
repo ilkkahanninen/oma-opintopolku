@@ -28,7 +28,7 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
             //TODO: should we continue with default serviceUrl?
             e.printStackTrace();
         }
-
+        super.getServiceProperties().setService(serviceUrl);
         return CommonUtils.constructServiceUrl(null, response,
             serviceUrl, null,
             super.getServiceProperties().getArtifactParameter(),

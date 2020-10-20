@@ -50,13 +50,6 @@ public class SessionController {
         return new RedirectView("/oma-opintopolku");
     }
 
-    @RequestMapping(value = "/logout?service={service}")
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping
-    public RedirectView logout(@PathVariable String service) {
-        return new RedirectView("/cas-oppija/logout?service=" + service);
-    }
-
     private static String parseDateStringFromHetu(String hetu) {
         if (hetu != null) {
             Locale locale = new Locale("fi","fi");

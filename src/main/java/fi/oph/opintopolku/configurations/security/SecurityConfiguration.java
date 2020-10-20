@@ -117,6 +117,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/authenticate").authenticated()
             .antMatchers("/session").authenticated()
+            .antMatchers("/logout").authenticated()
             .anyRequest().permitAll()
             .and()
             .addFilter(casAuthenticationFilter())

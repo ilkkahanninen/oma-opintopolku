@@ -14,15 +14,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
-import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.security.cas.web.CasAuthenticationFilter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 //@Profile("!dev")
 @Configuration
@@ -86,7 +83,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     //
     // CAS single logout filter
-    // requestSingleLogoutFilter is not configured because our users always sign out through CAS logout (using virkailija-raamit
+    // requestSingleLogoutFilter is not configured because our users always sign out through CAS logout (using oppija-raamit
     // logout button) when CAS calls this filter if user has ticket to this service.
     //
     @Bean
@@ -117,7 +114,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/authenticate").authenticated()
             .antMatchers("/session").authenticated()
-            .antMatchers("/logout").authenticated()
             .anyRequest().permitAll()
             .and()
             .addFilter(casAuthenticationFilter())

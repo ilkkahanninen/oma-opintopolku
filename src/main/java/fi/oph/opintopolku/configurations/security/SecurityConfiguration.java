@@ -122,7 +122,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
             .logout()
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutUrl("/terminate")
+            .invalidateHttpSession(true)
+            .deleteCookies("JSESSIONID")
             .logoutSuccessHandler(new OmaopintopolkuLogoutSuccessHandler());
     }
 

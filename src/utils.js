@@ -31,9 +31,8 @@ export function getUser() {
 }
 
 export function login() {
-  const valtuudet = false;
   const lang = getLang().toUpperCase();
-  window.location.replace(createLoginUrl(lang, valtuudet));
+  window.location.replace(createLoginUrl(lang));
 }
 
 export function logout() {
@@ -57,7 +56,8 @@ function createLoginUrl(lang) {
 
 function createLogoutUrl(lang) {
   const domain = createDomain(lang);
-  return '/cas-oppija/logout?service=' + domain + '/oma-opintopolku';
+  //return '/cas-oppija/logout?service=' + domain + '/oma-opintopolku';
+  return domain + '/oma-opintopolku/logout';
 }
 
 function createDomain(lang) {

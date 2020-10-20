@@ -120,12 +120,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .addFilter(casAuthenticationFilter())
             .exceptionHandling().authenticationEntryPoint(omaOpintopolkuCasAuthenticationEntryPoint())
             .and()
-            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-            .logout()
-            .logoutUrl("/terminate")
-            .logoutSuccessHandler(new OmaopintopolkuLogoutSuccessHandler())
-            .invalidateHttpSession(true)
-            .deleteCookies("JSESSIONID");
+            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
     }
 
 

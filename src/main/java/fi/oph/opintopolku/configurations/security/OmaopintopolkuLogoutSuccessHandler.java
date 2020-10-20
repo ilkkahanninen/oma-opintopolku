@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class OmaopintopolkuLogoutSuccessHandler implements LogoutSuccessHandler {
-
+//TODO poista koko hoito!
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
                                 Authentication authentication) throws IOException, ServletException {

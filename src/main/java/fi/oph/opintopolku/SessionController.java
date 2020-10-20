@@ -41,11 +41,19 @@ public class SessionController {
         user.setHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND"));
         return user;
     }
+
     @RequestMapping(value = "/authenticate")
     @PreAuthorize("isAuthenticated()")
     @GetMapping
     public RedirectView authenticate() {
         return new RedirectView("/oma-opintopolku");
+    }
+
+    @RequestMapping(value = "/logout")
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping
+    public RedirectView logout() {
+        return new RedirectView("/oma-opintopolku/logout");
     }
 
     private static String parseDateStringFromHetu(String hetu) {

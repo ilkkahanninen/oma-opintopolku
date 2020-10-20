@@ -56,7 +56,7 @@ function createLoginUrl(lang) {
 
 function createLogoutUrl(lang) {
   //create opintopolku logout-domain because CAS logins to opintopolku.
-  const domain = createDomain('fi');
+  const domain = createDomain('FI');
   const logoutdomain = createDomain(lang);
   return domain + '/oma-opintopolku/logout?service=' + logoutdomain + '/oma-opintopolku';
 }

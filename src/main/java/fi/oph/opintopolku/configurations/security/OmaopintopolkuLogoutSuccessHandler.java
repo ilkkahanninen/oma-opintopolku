@@ -9,13 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class OmaopintopolkuLogoutSuccessHandler extends
-    SimpleUrlLogoutSuccessHandler implements LogoutSuccessHandler {
+public class OmaopintopolkuLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
                                 Authentication authentication) throws IOException, ServletException {
-        super.onLogoutSuccess(request, response, authentication);
         response.sendRedirect(request.getParameter("service"));
     }
 }

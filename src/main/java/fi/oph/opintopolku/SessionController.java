@@ -10,6 +10,7 @@ import org.springframework.security.cas.authentication.CasAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
@@ -49,11 +50,11 @@ public class SessionController {
         return new RedirectView("/oma-opintopolku");
     }
 
-    @RequestMapping(value = "/logout")
+    @RequestMapping(value = "/logout?service={service}")
     @PreAuthorize("isAuthenticated()")
     @GetMapping
-    public RedirectView logout() {
-        return new RedirectView("/oma-opintopolku/logout");
+    public RedirectView logout(@PathVariable String service) {
+        return new RedirectView("/cas-oppija/logout?service=" + service);
     }
 
     private static String parseDateStringFromHetu(String hetu) {

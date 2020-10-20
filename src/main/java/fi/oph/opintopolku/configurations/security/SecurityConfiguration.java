@@ -20,6 +20,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //@Profile("!dev")
 @Configuration
@@ -120,7 +121,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .exceptionHandling().authenticationEntryPoint(omaOpintopolkuCasAuthenticationEntryPoint())
             .and()
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-            .logout().logoutSuccessHandler(new OmaopintopolkuLogoutSuccessHandler());
+            .logout()
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessHandler(new OmaopintopolkuLogoutSuccessHandler());
     }
 
 

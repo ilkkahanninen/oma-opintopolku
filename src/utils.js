@@ -10,10 +10,10 @@ export function getUser() {
   return new Promise((resolve, reject) => {
     const lang = getLang().toUpperCase();
     const domain = createDomain(lang);
-    const sessionUrl = domain + '/oma-opintopolku/session';
+    const sessionUrl = domain + '/oma-opintopolku/session'
       fetch(sessionUrl, {
       headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-      credentials: 'same-origin'
+      credentials: 'include'
     })
       .then((response) => {
         if (response.status === 200) {
@@ -22,8 +22,6 @@ export function getUser() {
             console.log(user);
             resolve(user);
           })
-        } else if (response.status === 302) {
-          login()
         } else {
           window.home.setLoggedIn(false);
           reject(new Error('No session found!'));

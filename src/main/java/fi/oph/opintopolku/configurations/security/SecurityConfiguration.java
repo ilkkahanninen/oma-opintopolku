@@ -115,6 +115,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+            .cors()
+            .and()
             .headers().disable()
             .csrf().disable()
             .authorizeRequests()
@@ -127,6 +129,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
     }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
+        configuration.setAllowedMethods(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setExposedHeaders(Arrays.asList("TGC"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

@@ -1,5 +1,6 @@
 package fi.oph.opintopolku.configurations.security;
 
+import fi.oph.opintopolku.configurations.processor.OmaopintopolkuCorsProcessor;
 import fi.oph.opintopolku.configurations.properties.CasOppijaProperties;
 import fi.oph.opintopolku.services.impl.OmaopintopolkuUserDetailsServiceImpl;
 import fi.vm.sade.java_utils.security.OpintopolkuCasAuthenticationFilter;
@@ -11,6 +12,7 @@ import org.jasig.cas.client.validation.TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
@@ -21,6 +23,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsProcessor;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+import java.util.Arrays;
 
 //@Profile("!dev")
 @Configuration
@@ -31,6 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private OphProperties ophProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
+//    private final CorsFilter corsFilter;
+
 
     @Autowired
     public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, Environment environment,
@@ -39,6 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.ophProperties = ophProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
+        //this.corsFilter = corsFilter;
     }
 
     @Bean
@@ -110,7 +122,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .headers().disable()
+            .addFilter(corsFilter())
+            .cors().disable()
+            //.headers().disable()
             .csrf().disable()
             .authorizeRequests()
             .antMatchers("/authenticate").authenticated()
@@ -123,12 +137,38 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
     }
 
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
+        configuration.setAllowedMethods(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList("caller-id"));
+        configuration.setExposedHeaders(Arrays.asList("TGC"));
+        source.registerCorsConfiguration("/**", configuration);
+        CorsFilter corsFilter = new CorsFilter(source);
+        OmaopintopolkuCorsProcessor omaOpintopolkuCorsProcessor = new OmaopintopolkuCorsProcessor();
+        corsFilter.setCorsProcessor(omaOpintopolkuCorsProcessor);
+        return corsFilter;
+    }
+
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowCredentials(true);
+//        configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
+//        configuration.setAllowedMethods(Arrays.asList("*"));
+//        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Request-Headers", "*"));
+//        configuration.setExposedHeaders(Arrays.asList("TGC"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .authenticationProvider(casAuthenticationProvider());
     }
-
-
 }

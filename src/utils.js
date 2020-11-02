@@ -17,11 +17,16 @@ export function getUser() {
     })
       .then((response) => {
         if (response.status === 200) {
+          if (response.type === 'cors') {
+            getUser()
+          } else {
+
+
           response.json().then((user) => {
             window.home.setUser(user);
             console.log(user);
             resolve(user);
-          })
+          })}
         } else {
           window.home.setLoggedIn(false);
           reject(new Error('No session found!'));

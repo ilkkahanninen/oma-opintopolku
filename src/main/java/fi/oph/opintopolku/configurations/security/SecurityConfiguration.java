@@ -117,7 +117,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .cors()
             .and()
-            .headers().disable()
             .csrf().disable()
             .authorizeRequests()
             .antMatchers("/authenticate").authenticated()
@@ -136,19 +135,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Request-Headers", "*"));
         configuration.setExposedHeaders(Arrays.asList("TGC"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .authenticationProvider(casAuthenticationProvider());
     }
-
-
 }

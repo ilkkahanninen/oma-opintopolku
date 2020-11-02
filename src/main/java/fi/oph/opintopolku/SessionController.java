@@ -47,7 +47,7 @@ public class SessionController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping
     public RedirectView authenticate() {
-        return new RedirectView("/oma-opintopolku");
+        return new RedirectView("/oma-opintopolku/");
     }
 
     private static String parseDateStringFromHetu(String hetu) {

@@ -22,8 +22,6 @@ export function getUser() {
             console.log(user);
             resolve(user);
           })
-        } else if (response.status === 302) {
-          login();
         } else {
           window.home.setLoggedIn(false);
           reject(new Error('No session found!'));

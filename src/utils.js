@@ -40,8 +40,7 @@ export function login() {
 
 export function logout() {
   const lang = getLang().toUpperCase();
-  const domain = createDomain(lang)
-  window.location.replace(createLogoutUrl(lang)).then(window.location.replace(domain + '/omaopintopolku'));
+  window.location.replace(createLogoutUrl(lang));
 }
 
 export function getLang() {

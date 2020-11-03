@@ -1,5 +1,6 @@
 package fi.oph.opintopolku.configurations.security;
 
+import fi.oph.opintopolku.configurations.processor.OmaopintopolkuCorsProcessor;
 import fi.oph.opintopolku.configurations.properties.CasOppijaProperties;
 import fi.oph.opintopolku.services.impl.OmaopintopolkuUserDetailsServiceImpl;
 import fi.vm.sade.java_utils.security.OpintopolkuCasAuthenticationFilter;
@@ -24,6 +25,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsProcessor;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
@@ -38,17 +40,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private OphProperties ophProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
-    private final CorsFilter corsFilter;
+//    private final CorsFilter corsFilter;
 
 
     @Autowired
     public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, Environment environment,
-                                 SessionMappingStorage sessionMappingStorage, @Lazy CorsFilter corsFilter) {
+                                 SessionMappingStorage sessionMappingStorage) {
         this.casOppijaProperties = casOppijaProperties;
         this.ophProperties = ophProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
-        this.corsFilter = corsFilter;
+        //this.corsFilter = corsFilter;
     }
 
     @Bean
@@ -142,10 +144,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList("caller-id"));
         configuration.setExposedHeaders(Arrays.asList("TGC"));
         source.registerCorsConfiguration("/**", configuration);
-        return new CorsFilter(source);
+        CorsFilter corsFilter = new CorsFilter(source);
+        OmaopintopolkuCorsProcessor omaOpintopolkuCorsProcessor = new OmaopintopolkuCorsProcessor();
+        corsFilter.setCorsProcessor(omaOpintopolkuCorsProcessor);
+        return corsFilter;
     }
 
 //    @Bean

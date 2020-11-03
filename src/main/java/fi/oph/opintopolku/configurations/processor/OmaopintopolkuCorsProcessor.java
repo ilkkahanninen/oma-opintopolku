@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -22,31 +24,40 @@ import org.springframework.web.cors.CorsProcessor;
 import org.springframework.web.cors.CorsUtils;
 
 public class OmaopintopolkuCorsProcessor implements CorsProcessor {
-    private static final Log logger = LogFactory.getLog(OmaopintopolkuCorsProcessor.class);
+    private static final Logger logger = LoggerFactory.getLogger(OmaopintopolkuCorsProcessor.class);
 
-    public OmaopintopolkuCorsProcessor() {
-    }
+    @Override
+    @SuppressWarnings("resource")
+    public boolean processRequest(@Nullable CorsConfiguration config, HttpServletRequest request,
+                                  HttpServletResponse response) throws IOException {
 
-    public boolean processRequest(@Nullable CorsConfiguration config, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.addHeader("Vary", "Origin");
-        response.addHeader("Vary", "Access-Control-Request-Method");
-        response.addHeader("Vary", "Access-Control-Request-Headers");
-         if (response.getHeader("Access-Control-Allow-Origin") != null) {
+        logger.info("OmaopintopolkuCorsProcessor.processRequest...");
+
+        response.addHeader(HttpHeaders.VARY, HttpHeaders.ORIGIN);
+        response.addHeader(HttpHeaders.VARY, HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD);
+        response.addHeader(HttpHeaders.VARY, HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS);
+
+        if (!HttpMethod.OPTIONS.matches(request.getMethod()) && !CorsUtils.isCorsRequest(request)) {
+            return true;
+        }
+
+        if (response.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN) != null) {
             logger.trace("Skip: response already contains \"Access-Control-Allow-Origin\"");
             return true;
-        } else {
-            boolean preFlightRequest = CorsUtils.isPreFlightRequest(request);
-            if (config == null) {
-                if (preFlightRequest) {
-                    this.rejectRequest(new ServletServerHttpResponse(response));
-                    return false;
-                } else {
-                    return true;
-                }
-            } else {
-                return this.handleInternal(new ServletServerHttpRequest(request), new ServletServerHttpResponse(response), config, preFlightRequest);
+        }
+
+        boolean preFlightRequest = CorsUtils.isPreFlightRequest(request);
+        if (config == null) {
+            if (preFlightRequest) {
+                rejectRequest(new ServletServerHttpResponse(response));
+                return false;
+            }
+            else {
+                return true;
             }
         }
+
+        return handleInternal(new ServletServerHttpRequest(request), new ServletServerHttpResponse(response), config, preFlightRequest);
     }
 
     protected void rejectRequest(ServerHttpResponse response) throws IOException {
@@ -55,55 +66,60 @@ public class OmaopintopolkuCorsProcessor implements CorsProcessor {
         response.flush();
     }
 
-    protected boolean handleInternal(ServerHttpRequest request, ServerHttpResponse response, CorsConfiguration config, boolean preFlightRequest) throws IOException {
+    protected boolean handleInternal(ServerHttpRequest request, ServerHttpResponse response,
+                                     CorsConfiguration config, boolean preFlightRequest) throws IOException {
+
         String requestOrigin = request.getHeaders().getOrigin();
-        String allowOrigin = this.checkOrigin(config, requestOrigin);
+        String allowOrigin = checkOrigin(config, requestOrigin);
         HttpHeaders responseHeaders = response.getHeaders();
+
+        logger.info(String.format("CONFIG | requestOrigin: %s | allowOrigin: %s", requestOrigin, allowOrigin));
         if (allowOrigin == null) {
             logger.debug("Reject: '" + requestOrigin + "' origin is not allowed");
-            this.rejectRequest(response);
+            rejectRequest(response);
             return false;
-        } else {
-            HttpMethod requestMethod = this.getMethodToUse(request, preFlightRequest);
-            List<HttpMethod> allowMethods = this.checkMethods(config, requestMethod);
-            if (allowMethods == null) {
-                logger.debug("Reject: HTTP '" + requestMethod + "' is not allowed");
-                this.rejectRequest(response);
-                return false;
-            } else {
-                List<String> requestHeaders = this.getHeadersToUse(request, preFlightRequest);
-                List<String> allowHeaders = this.checkHeaders(config, requestHeaders);
-                if (preFlightRequest && allowHeaders == null) {
-                    logger.debug("Reject: headers '" + requestHeaders + "' are not allowed");
-                    this.rejectRequest(response);
-                    return false;
-                } else {
-                    responseHeaders.setAccessControlAllowOrigin(allowOrigin);
-                    if (preFlightRequest) {
-                        responseHeaders.setAccessControlAllowMethods(allowMethods);
-                    }
-
-                    if (preFlightRequest && !allowHeaders.isEmpty()) {
-                        responseHeaders.setAccessControlAllowHeaders(allowHeaders);
-                    }
-
-                    if (!CollectionUtils.isEmpty(config.getExposedHeaders())) {
-                        responseHeaders.setAccessControlExposeHeaders(config.getExposedHeaders());
-                    }
-
-                    if (Boolean.TRUE.equals(config.getAllowCredentials())) {
-                        responseHeaders.setAccessControlAllowCredentials(true);
-                    }
-
-                    if (preFlightRequest && config.getMaxAge() != null) {
-                        responseHeaders.setAccessControlMaxAge(config.getMaxAge());
-                    }
-
-                    response.flush();
-                    return true;
-                }
-            }
         }
+
+        HttpMethod requestMethod = getMethodToUse(request, preFlightRequest);
+        List<HttpMethod> allowMethods = checkMethods(config, requestMethod);
+        if (allowMethods == null) {
+            logger.debug("Reject: HTTP '" + requestMethod + "' is not allowed");
+            rejectRequest(response);
+            return false;
+        }
+
+        List<String> requestHeaders = getHeadersToUse(request, preFlightRequest);
+        List<String> allowHeaders = checkHeaders(config, requestHeaders);
+        if (preFlightRequest && allowHeaders == null) {
+            logger.debug("Reject: headers '" + requestHeaders + "' are not allowed");
+            rejectRequest(response);
+            return false;
+        }
+
+        responseHeaders.setAccessControlAllowOrigin(allowOrigin);
+
+        if (preFlightRequest) {
+            responseHeaders.setAccessControlAllowMethods(allowMethods);
+        }
+
+        if (preFlightRequest && !allowHeaders.isEmpty()) {
+            responseHeaders.setAccessControlAllowHeaders(allowHeaders);
+        }
+
+        if (!CollectionUtils.isEmpty(config.getExposedHeaders())) {
+            responseHeaders.setAccessControlExposeHeaders(config.getExposedHeaders());
+        }
+
+        if (Boolean.TRUE.equals(config.getAllowCredentials())) {
+            responseHeaders.setAccessControlAllowCredentials(true);
+        }
+
+        if (preFlightRequest && config.getMaxAge() != null) {
+            responseHeaders.setAccessControlMaxAge(config.getMaxAge());
+        }
+
+        response.flush();
+        return true;
     }
 
     @Nullable
@@ -118,7 +134,7 @@ public class OmaopintopolkuCorsProcessor implements CorsProcessor {
 
     @Nullable
     private HttpMethod getMethodToUse(ServerHttpRequest request, boolean isPreFlight) {
-        return isPreFlight ? request.getHeaders().getAccessControlRequestMethod() : request.getMethod();
+        return (isPreFlight ? request.getHeaders().getAccessControlRequestMethod() : request.getMethod());
     }
 
     @Nullable
@@ -128,6 +144,6 @@ public class OmaopintopolkuCorsProcessor implements CorsProcessor {
 
     private List<String> getHeadersToUse(ServerHttpRequest request, boolean isPreFlight) {
         HttpHeaders headers = request.getHeaders();
-        return (List)(isPreFlight ? headers.getAccessControlRequestHeaders() : new ArrayList(headers.keySet()));
+        return (isPreFlight ? headers.getAccessControlRequestHeaders() : new ArrayList<>(headers.keySet()));
     }
 }

@@ -27,7 +27,7 @@ public class ServletContainerConfiguration {
      * tunnistaa ja lisää servlet containerin konfigurointiin
      */
     @Bean
-    //@ConditionalOnProperty("oppijanumerorekisteri.uses-ssl-proxy")
+    @ConditionalOnProperty("oma-opintopolku.uses-ssl-proxy")
     public WebServerFactoryCustomizer sslProxyCustomizer() {
         return (WebServerFactory container) -> {
             if (container instanceof ConfigurableServletWebServerFactory) {

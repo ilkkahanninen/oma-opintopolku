@@ -26,3 +26,18 @@ npm run e2e
 # run all tests
 npm test
 ```
+## Tietokannan käynnistys
+    docker run --rm --name omaopintopolku-db -p 5488:5432 -e POSTGRES_USER=oph -e POSTGRES_PASSWORD=oph -e POSTGRES_DB=omaopintopolku -d postgres:11.5
+
+## Palvelun käynnistys lokaalisti
+    mvn clean package
+    java -jar target/oma-opintopolku-0.1.0-SNAPSHOT.jar
+tai
+
+    mvn clean compile exec:java
+tai käynnistä luokka `fi.oph.opintopolku.App` Intellij IDEA:ssa
+
+Avaa selaimessa:
+
+    http://localhost:8080/oma-opintopolku
+

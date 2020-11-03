@@ -11,6 +11,7 @@ import org.jasig.cas.client.validation.TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
@@ -24,6 +25,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 
@@ -36,14 +38,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private OphProperties ophProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
+    private final CorsFilter corsFilter;
+
 
     @Autowired
     public SecurityConfiguration(CasOppijaProperties casOppijaProperties, OphProperties ophProperties, Environment environment,
-                                 SessionMappingStorage sessionMappingStorage) {
+                                 SessionMappingStorage sessionMappingStorage, @Lazy CorsFilter corsFilter) {
         this.casOppijaProperties = casOppijaProperties;
         this.ophProperties = ophProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
+        this.corsFilter = corsFilter;
     }
 
     @Bean
@@ -115,8 +120,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .cors()
-            .and()
+            .cors().disable()
+            //.headers().disable()
             .csrf().disable()
             .authorizeRequests()
             .antMatchers("/authenticate").authenticated()
@@ -130,17 +135,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
-        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Request-Headers", "*"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("TGC"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-        return source;
+        return new CorsFilter(source);
     }
+
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowCredentials(true);
+//        configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
+//        configuration.setAllowedMethods(Arrays.asList("*"));
+//        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Request-Headers", "*"));
+//        configuration.setExposedHeaders(Arrays.asList("TGC"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

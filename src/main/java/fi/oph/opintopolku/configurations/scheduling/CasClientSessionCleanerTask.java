@@ -24,6 +24,5 @@ public class CasClientSessionCleanerTask extends RecurringTask {
     public void executeRecurringly(TaskInstance taskInstance, ExecutionContext executionContext) {
         sessionMappingStorage.clean();
     }
-
 }
 

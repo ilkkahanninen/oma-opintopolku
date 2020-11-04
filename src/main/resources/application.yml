@@ -31,9 +31,11 @@ cas:
   send-renew: false
   key: oma-opintopolku
 host:
-  host-oppija: untuvaopintopolku.fi
-  host-cas: virkailija.untuvaopintopolku.fi
-  host-alb: untuvaopintopolku.fi
+  host-oppija: localhost
+  host-cas: virkailija.localhost
+  host-oppija-base-url-fi: localhost
+  host-oppija-base-url-en: localhost-en
+  host-oppija-base-url-sv: localhost-sv
 oma-opintopolku:
   uses-ssl-proxy: false
 logback:

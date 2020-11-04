@@ -158,7 +158,6 @@ public class JdbcSessionMappingStorage implements OphSessionMappingStorage {
         public boolean isNew() {
             return false;
         }
-
     }
 
     @SuppressWarnings("deprecation")
@@ -173,7 +172,5 @@ public class JdbcSessionMappingStorage implements OphSessionMappingStorage {
         public Enumeration<String> getIds() {
             return Collections.emptyEnumeration();
         }
-
     }
-
 }

@@ -12,7 +12,6 @@ import org.jasig.cas.client.validation.TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
@@ -22,16 +21,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.CorsProcessor;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 
-//@Profile("!dev")
 @Configuration
 @EnableGlobalMethodSecurity(jsr250Enabled = false, prePostEnabled = true, securedEnabled = true)
 @EnableWebSecurity
@@ -40,7 +35,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private OphProperties ophProperties;
     private Environment environment;
     private SessionMappingStorage sessionMappingStorage;
-//    private final CorsFilter corsFilter;
 
 
     @Autowired
@@ -50,7 +44,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.ophProperties = ophProperties;
         this.environment = environment;
         this.sessionMappingStorage = sessionMappingStorage;
-        //this.corsFilter = corsFilter;
     }
 
     @Bean
@@ -68,7 +61,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
-        String host = environment.getProperty("host.host-alb", "https://" + environment.getRequiredProperty("host.host-oppija"));
         casAuthenticationProvider.setUserDetailsService(new OmaopintopolkuUserDetailsServiceImpl());
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         casAuthenticationProvider.setTicketValidator(ticketValidator());
@@ -124,7 +116,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .addFilter(corsFilter())
             .cors().disable()
-            //.headers().disable()
             .csrf().disable()
             .authorizeRequests()
             .antMatchers("/authenticate").authenticated()
@@ -145,26 +136,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("caller-id"));
-        configuration.setExposedHeaders(Arrays.asList("TGC"));
         source.registerCorsConfiguration("/**", configuration);
         CorsFilter corsFilter = new CorsFilter(source);
         OmaopintopolkuCorsProcessor omaOpintopolkuCorsProcessor = new OmaopintopolkuCorsProcessor();
         corsFilter.setCorsProcessor(omaOpintopolkuCorsProcessor);
         return corsFilter;
     }
-
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowCredentials(true);
-//        configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
-//        configuration.setAllowedMethods(Arrays.asList("*"));
-//        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Request-Headers", "*"));
-//        configuration.setExposedHeaders(Arrays.asList("TGC"));
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

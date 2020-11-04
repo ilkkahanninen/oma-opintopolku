@@ -56,8 +56,6 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
 
         return urlBuilder.build().toUriString();
     }
-
-
 }
 
 

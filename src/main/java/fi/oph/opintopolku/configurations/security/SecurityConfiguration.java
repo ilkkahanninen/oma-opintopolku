@@ -136,7 +136,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("caller-id"));
-        configuration.setExposedHeaders(Arrays.asList("TGC"));
         source.registerCorsConfiguration("/**", configuration);
         CorsFilter corsFilter = new CorsFilter(source);
         OmaopintopolkuCorsProcessor omaOpintopolkuCorsProcessor = new OmaopintopolkuCorsProcessor();

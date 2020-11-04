@@ -24,7 +24,6 @@ cas:
 host:
   host-oppija: {{host_oppija}}
   host-cas: {{host_cas}}
-  host-alb: {{host_alb}}
 oma-opintopolku:
   uses-ssl-proxy: true
 logback:

@@ -33,7 +33,6 @@ cas:
 host:
   host-oppija: untuvaopintopolku.fi
   host-cas: virkailija.untuvaopintopolku.fi
-  host-alb: untuvaopintopolku.fi
 oma-opintopolku:
   uses-ssl-proxy: false
 logback:

@@ -6,22 +6,55 @@ const domains = {
   EN: 'studyinfo.fi'
 };
 
+function fetchUser() {
+  const lang = getLang().toUpperCase();
+  const domain = createDomain(lang);
+  const sessionUrl = domain + '/oma-opintopolku/session'
+  return fetch(sessionUrl, {
+    headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+    credentials: 'include'
+  })
+}
+
 export function getUser() {
   return new Promise((resolve, reject) => {
-    const lang = getLang().toUpperCase();
-    const domain = createDomain(lang);
-    const sessionUrl = domain + '/oma-opintopolku/session'
-      fetch(sessionUrl, {
-      headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
-      credentials: 'include'
-    })
+    // const lang = getLang().toUpperCase();
+    // const domain = createDomain(lang);
+    // const sessionUrl = domain + '/oma-opintopolku/session'
+    //   fetch(sessionUrl, {
+    //   headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+    //   credentials: 'include'
+    // })
+    fetchUser()
       .then((response) => {
         if (response.status === 200) {
             response.json().then((user) => {
             window.home.setUser(user);
             console.log(user);
             resolve(user);
-          })
+          }).catch(err => {
+            console.log('Failed to fetch user, retrying...');
+            fetchUser()
+              // fetch(sessionUrl, {
+              //   headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),
+              //   credentials: 'include'
+              // })
+                .then((response) => {
+                  if (response.status === 200) {
+                    response.json().then((user) => {
+                      window.home.setUser(user);
+                      console.log(user);
+                      resolve(user);
+                    })
+                  } else {
+                    window.home.setLoggedIn(false);
+                    reject(new Error('No session found!'));
+                  }
+                }).catch(err => {
+                console.error(err);
+                reject(new Error('Failed to fetch session!'));
+              });
+            })
         } else {
           window.home.setLoggedIn(false);
           reject(new Error('No session found!'));

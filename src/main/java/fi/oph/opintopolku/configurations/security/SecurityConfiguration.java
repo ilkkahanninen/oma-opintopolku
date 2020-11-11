@@ -133,7 +133,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList("https://untuvaopintopolku.fi", "https://untuvastudyinfo.fi", "https://untuvastudieinfo.fi", "*"));
+        configuration.setAllowedOrigins(Arrays.asList(
+            ophProperties.url("url-oppija-fi"),
+            ophProperties.url("url-oppija-en"),
+            ophProperties.url("url-oppija-sv"),
+            "*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("caller-id"));
         source.registerCorsConfiguration("/**", configuration);

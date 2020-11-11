@@ -24,6 +24,9 @@ cas:
 host:
   host-oppija: {{host_oppija}}
   host-cas: {{host_cas}}
+  host-oppija-base-url-fi: {{oppija_base_url_fi}}
+  host-oppija-base-url-en: {{oppija_base_url_en}}
+  host-oppija-base-url-sv: {{oppija_base_url_sv}}
 oma-opintopolku:
   uses-ssl-proxy: true
 logback:

@@ -7,7 +7,8 @@
     "item1": "view your applications and make modifications to them during application period",
     "item2": "see the results of student admissions",
     "item3": "accept an offer of admission",
-    "link": "Proceed to applications (requires identification)"
+    "link": "Proceed to applications",
+    "linkLoggedOut": "Proceed to applications (requires identification)"
   },
   "koski": {
     "title": "My completed studies (Only available in Finnish/Swedish)",
@@ -17,7 +18,8 @@
     "item1": "Basic education and secondary education from 2018 onwards",
     "item2": "Matriculation examinations from 1990 onwards",
     "item3": "Higher education from 1995 onwards (varies by higher education institution)",
-    "link": "Proceed to studies (requires identification)"
+    "link": "Proceed to studies",
+    "linkLoggedOut": "Proceed to studies (requires identification)"
   },
   "varda": {
     "title": "Early childhood education information (Only available in Finnish/Swedish)",
@@ -31,7 +33,8 @@
     "item1": "personal information",
     "item2": "early childhood education decisions",
     "item3": "early childhood education units",
-    "link": "Go to early childhood education information (requires identification)"
+    "link": "Go to early childhood education information",
+    "linkLoggedOut": "Go to early childhood education information (requires identification)"
   },
   "tietojenikaytto": {
     "title": "How is my data used?"

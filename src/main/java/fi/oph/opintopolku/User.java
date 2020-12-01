@@ -8,4 +8,5 @@ public @Data class User {
     private String birthDay;
     private String personOid;
     private String hetu;
+    private boolean usingValtuudet;
 }

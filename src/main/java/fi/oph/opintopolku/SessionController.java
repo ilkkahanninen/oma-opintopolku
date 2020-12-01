@@ -45,6 +45,9 @@ public class SessionController {
         user.setBirthDay(parseDateStringFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "")));
         user.setPersonOid((String) attributes.getOrDefault("personOid", "NOT_FOUND"));
         user.setHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND"));
+        user.setUsingValtuudet(isUsingValtuudet(attributes));
+
+        logger.info("Returning user {}", user.toString());
         return user;
     }
 
@@ -53,6 +56,10 @@ public class SessionController {
     @GetMapping
     public RedirectView authenticate() {
         return new RedirectView("/oma-opintopolku/");
+    }
+
+    private static boolean isUsingValtuudet(Map<String, Object> attributes) {
+        return attributes.containsKey("impersonatorNationalIdentificationNumber");
     }
 
     private static String parseDateStringFromHetu(String hetu) {

@@ -12,7 +12,8 @@ class Home extends React.Component {
         name: "",
         birthDay: "",
         personOid: "",
-        hetu: ""
+        hetu: "",
+        isUsingValtuudet: false
       },
       isLoggedIn: false
     }
@@ -32,7 +33,7 @@ class Home extends React.Component {
     return (
     <Fragment>
       <Greeting user={this.state.user} isLoggedIn={this.state.isLoggedIn} />
-      <Selection isLoggedIn={this.state.isLoggedIn}/>
+      <Selection isLoggedIn={this.state.isLoggedIn} isUsingValtuudet={this.state.user.isUsingValtuudet}/>
     </Fragment>
   )}
 }

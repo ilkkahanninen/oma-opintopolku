@@ -8,7 +8,8 @@
     "item2": "see the results of student admissions",
     "item3": "accept an offer of admission",
     "link": "Proceed to applications",
-    "linkLoggedOut": "Proceed to applications (requires identification)"
+    "linkLoggedOut": "Proceed to applications (requires identification)",
+    "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
   "koski": {
     "title": "My completed studies (Only available in Finnish/Swedish)",
@@ -19,7 +20,8 @@
     "item2": "Matriculation examinations from 1990 onwards",
     "item3": "Higher education from 1995 onwards (varies by higher education institution)",
     "link": "Proceed to studies",
-    "linkLoggedOut": "Proceed to studies (requires identification)"
+    "linkLoggedOut": "Proceed to studies (requires identification)",
+    "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
   "varda": {
     "title": "Early childhood education information (Only available in Finnish/Swedish)",
@@ -34,7 +36,8 @@
     "item2": "early childhood education decisions",
     "item3": "early childhood education units",
     "link": "Go to early childhood education information",
-    "linkLoggedOut": "Go to early childhood education information (requires identification)"
+    "linkLoggedOut": "Go to early childhood education information (requires identification)",
+    "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
   "tietojenikaytto": {
     "title": "How is my data used?"

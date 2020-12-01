@@ -8,7 +8,8 @@
     "item2": "se dina antagningsresultat",
     "item3": "ta emot  studieplatsen",
     "link": "Fortsätt till ansökningarna",
-    "linkLoggedOut": "Fortsätt till ansökningarna (kräver identifiering)"
+    "linkLoggedOut": "Fortsätt till ansökningarna (kräver identifiering)",
+    "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
   },
   "koski": {
     "title": "Mina studieprestationer",
@@ -19,7 +20,9 @@
     "item2": "studentexamina från och med 1990",
     "item3": "högskoleutbildning från och med 1995 (varierar enligt högskola)",
     "link": "Fortsätt till studierna",
-    "linkLoggedOut": "Fortsätt till studierna (kräver identifiering)"
+    "linkLoggedOut": "Fortsätt till studierna (kräver identifiering)",
+    "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
+
   },
   "varda": {
     "title": "Uppgifter om småbarnspedagogik",
@@ -34,7 +37,8 @@
     "item2": "uppgifter om beslut om småbarnspedagogik",
     "item3": "uppgifter om barnets deltagande i småbarnspedagogisk verksamhet",
     "link": "Fortsätt till uppgifterna om småbarnspedagogik",
-    "linkLoggedOut": "Fortsätt till uppgifterna om småbarnspedagogik (kräver identifiering)"
+    "linkLoggedOut": "Fortsätt till uppgifterna om småbarnspedagogik (kräver identifiering)",
+    "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
   },
   "tietojenikaytto": {
     "title": "Hur används mina uppgifter?"

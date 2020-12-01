@@ -8,7 +8,8 @@
     "item2": "nähdä opiskelijavalinnan tulokset",
     "item3": "ottaa opiskelupaikan vastaan",
     "link": "Siirry hakemuksiin",
-    "linkLoggedOut": "Siirry hakemuksiin (vaatii tunnistautumisen)"
+    "linkLoggedOut": "Siirry hakemuksiin (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "koski": {
     "title": "Omat opintosuoritukseni",
@@ -19,7 +20,8 @@
     "item2": "ylioppilastutkinnot vuodesta 1990 alkaen",
     "item3": "korkeakoulusta vuodesta 1995 alkaen (tässä voi olla korkeakoulukohtaisia poikkeuksia)",
     "link": "Siirry opintosuorituksiin",
-    "linkLoggedOut": "Siirry opintosuorituksiin (vaatii tunnistautumisen)"
+    "linkLoggedOut": "Siirry opintosuorituksiin (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "varda": {
     "title": "Varhaiskasvatustiedot",
@@ -34,7 +36,8 @@
     "item2": "varhaiskasvatuspäätökset",
     "item3": "varhaiskasvatuksen toimipaikat",
     "link": "Siirry varhaiskasvatustietoihin",
-    "linkLoggedOut": "Siirry varhaiskasvatustietoihin (vaatii tunnistautumisen)"
+    "linkLoggedOut": "Siirry varhaiskasvatustietoihin (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"

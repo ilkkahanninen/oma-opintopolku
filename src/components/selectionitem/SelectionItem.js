@@ -1,7 +1,6 @@
 import React from 'react';
 import { I18n} from 'react-i18next';
 import styles from './SelectionItem.css';
-import lukkoImg from 'Static/img/lukko_white.svg';
 
 const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
   <I18n ns="selection">
@@ -32,8 +31,11 @@ const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
           </div>
         </div>
         <div className={styles['link-container']}>
-          <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={link}>
-            <span className={styles['link-text']}>{t(namespace + '.link')}</span>
+          <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={ link }>
+            { !isLoggedIn
+              ? <span className={styles['link-text']}>{t(namespace + '.linkLoggedOut')}</span>
+              : <span className={styles['link-text']}>{t(namespace + '.link')}</span>
+            }
           </a>
         </div>
       </div>

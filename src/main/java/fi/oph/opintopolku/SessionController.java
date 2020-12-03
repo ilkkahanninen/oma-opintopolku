@@ -35,23 +35,7 @@ public class SessionController {
         AttributePrincipal principal = casAuthenticationToken.getAssertion().getPrincipal();
         Map<String, Object> attributes = principal.getAttributes();
 
-        val user = new User();
-
-        String attributesAsString = attributes.keySet().stream().map(k -> k + ":" + attributes.get(k))
-            .collect(Collectors.joining(", ", "{", "}" ));
-        logger.info("Setting user properties, data: {}", attributesAsString);
-
-        boolean isUsingValtuudet = isUsingValtuudet(attributes);
-        String displayName = !isUsingValtuudet
-            ? (String) attributes.getOrDefault("displayName", "NOT_FOUND")
-            : (String) attributes.getOrDefault("impersonatorDisplayName", "NOT_FOUND");
-
-        user.setName(displayName);
-        user.setBirthDay(parseDateStringFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "")));
-        user.setPersonOid((String) attributes.getOrDefault("personOid", "NOT_FOUND"));
-        user.setHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND"));
-        user.setUsingValtuudet(isUsingValtuudet);
-
+        val user = createUser(attributes);
         logger.info("Returning user {}", user.toString());
         return user;
     }
@@ -66,6 +50,36 @@ public class SessionController {
     private static boolean isUsingValtuudet(Map<String, Object> attributes) {
         return attributes.containsKey("impersonatorNationalIdentificationNumber")
             || attributes.containsKey("impersonatorDisplayName");
+    }
+
+    private static User createUser(Map<String, Object> attributes) {
+        val user = new User();
+
+        String attributesAsString = attributes.keySet().stream().map(k -> k + ":" + attributes.get(k))
+            .collect(Collectors.joining(", ", "{", "}" ));
+        logger.info("Setting user properties, data: {}", attributesAsString);
+
+        boolean isUsingValtuudet = isUsingValtuudet(attributes);
+        String displayName = !isUsingValtuudet
+            ? (String) attributes.getOrDefault("displayName", "NOT_FOUND")
+            : (String) attributes.getOrDefault("impersonatorDisplayName", "NOT_FOUND");
+        String birthDay = !isUsingValtuudet
+            ? parseDateStringFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", ""))
+            : parseDateStringFromHetu((String) attributes.getOrDefault("impersonatorNationalIdentificationNumber", ""));
+        String personOid = !isUsingValtuudet
+            ? (String) attributes.getOrDefault("personOid", "NOT_FOUND")
+            : (String) attributes.getOrDefault("impersonatorPersonOid", "NOT_FOUND");
+        String hetu = !isUsingValtuudet
+            ? (String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND")
+            : (String) attributes.getOrDefault("impersonatorNationalIdentificationNumber", "NOT_FOUND");
+
+        user.setName(displayName);
+        user.setBirthDay(birthDay);
+        user.setPersonOid(personOid);
+        user.setHetu(hetu);
+        user.setUsingValtuudet(isUsingValtuudet);
+
+        return user;
     }
 
     private static String parseDateStringFromHetu(String hetu) {

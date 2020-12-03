@@ -41,11 +41,16 @@ public class SessionController {
             .collect(Collectors.joining(", ", "{", "}" ));
         logger.info("Setting user properties, data: {}", attributesAsString);
 
-        user.setName((String) attributes.getOrDefault("displayName", "NOT_FOUND"));
+        boolean isUsingValtuudet = isUsingValtuudet(attributes);
+        String displayName = !isUsingValtuudet
+            ? (String) attributes.getOrDefault("displayName", "NOT_FOUND")
+            : (String) attributes.getOrDefault("impersonatorDisplayName", "NOT_FOUND");
+
+        user.setName(displayName);
         user.setBirthDay(parseDateStringFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "")));
         user.setPersonOid((String) attributes.getOrDefault("personOid", "NOT_FOUND"));
         user.setHetu((String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND"));
-        user.setUsingValtuudet(isUsingValtuudet(attributes));
+        user.setUsingValtuudet(isUsingValtuudet);
 
         logger.info("Returning user {}", user.toString());
         return user;
@@ -59,7 +64,8 @@ public class SessionController {
     }
 
     private static boolean isUsingValtuudet(Map<String, Object> attributes) {
-        return attributes.containsKey("impersonatorNationalIdentificationNumber");
+        return attributes.containsKey("impersonatorNationalIdentificationNumber")
+            || attributes.containsKey("impersonatorDisplayName");
     }
 
     private static String parseDateStringFromHetu(String hetu) {

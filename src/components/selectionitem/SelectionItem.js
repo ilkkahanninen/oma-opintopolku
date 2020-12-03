@@ -31,12 +31,17 @@ const SelectionItem = ({isLoggedIn, usingValtuudet, namespace, icon, link}) => (
           </div>
         </div>
         <div className={styles['link-container']}>
-          <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={ !usingValtuudet ? link : "" }>
-            { !isLoggedIn
-              ? <span className={styles['link-text']}>{t(namespace + '.linkLoggedOut')}</span>
-              : <span className={styles['link-text']}>{ !usingValtuudet ? t(namespace + '.link') : t(namespace + '.linkUsingValtuudet')}</span>
-            }
-          </a>
+          { !usingValtuudet
+            ? <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={ link }>
+                { !isLoggedIn
+                  ? <span className={styles['link-text']}>{t(namespace + '.linkLoggedOut')}</span>
+                  : <span className={styles['link-text']}>{t(namespace + '.link')}</span>
+                }
+              </a>
+            : <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={""}>
+                <span className={styles['link-text-disabled-valtuudet']}>{t(namespace + '.linkUsingValtuudet')}</span>
+              </a>
+          }
         </div>
       </div>
     )}

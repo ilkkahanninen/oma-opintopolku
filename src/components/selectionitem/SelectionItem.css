@@ -119,3 +119,9 @@
   line-height: 22px;
   text-align: center;
 }
+
+:local(.link-text-disabled-valtuudet) {
+  line-height: 22px;
+  text-align: center;
+  background-color: #b2b2b2;
+}

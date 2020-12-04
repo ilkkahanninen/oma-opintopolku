@@ -48,8 +48,9 @@ public class SessionController {
     }
 
     private static boolean isUsingValtuudet(Map<String, Object> attributes) {
-        return attributes.containsKey("impersonatorNationalIdentificationNumber")
-            || attributes.containsKey("impersonatorDisplayName");
+        String impersonatorHetu = (String) attributes.getOrDefault("impersonatorNationalIdentificationNumber", "");
+        String impersonatorName = (String) attributes.getOrDefault("impersonatorDisplayName", "");
+        return !impersonatorHetu.isEmpty() || !impersonatorName.isEmpty();
     }
 
     private static User createUser(Map<String, Object> attributes) {

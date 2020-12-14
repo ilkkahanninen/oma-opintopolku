@@ -2,7 +2,7 @@ import React from 'react';
 import { I18n} from 'react-i18next';
 import styles from './SelectionItem.css';
 
-const SelectionItem = ({isLoggedIn, usingValtuudet, namespace, icon, link}) => (
+const SelectionItem = ({isLoggedIn, disableForValtuudet, namespace, icon, link}) => (
   <I18n ns="selection">
     {t => (
       <div className={styles['flex-item']}>
@@ -31,7 +31,7 @@ const SelectionItem = ({isLoggedIn, usingValtuudet, namespace, icon, link}) => (
           </div>
         </div>
         <div className={styles['link-container']}>
-          { !usingValtuudet
+          { !disableForValtuudet
             ? <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={ link }>
                 { !isLoggedIn
                   ? <span className={styles['link-text']}>{t(namespace + '.linkLoggedOut')}</span>

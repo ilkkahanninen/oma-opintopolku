@@ -10,9 +10,9 @@ import tietojenikayttoImg from 'Static/img/tietojenikaytto.svg';
 const Selection = ({isLoggedIn, usingValtuudet}) => (
   <React.Fragment>
     <div className={styles['flex-container']}>
-      <SelectionItem isLoggedIn={isLoggedIn} usingValtuudet={usingValtuudet} namespace='omatsivut' icon={omatsivutImg} link='/omatsivut' />
-      <SelectionItem isLoggedIn={isLoggedIn} usingValtuudet={usingValtuudet} namespace='koski' icon={koskiImg} link='/koski/omattiedot' />
-      <SelectionItem isLoggedIn={isLoggedIn} usingValtuudet={usingValtuudet} namespace='varda' icon={vardaImg} link='/varda' />
+      <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='omatsivut' icon={omatsivutImg} link='/omatsivut' />
+      <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='koski' icon={koskiImg} link='/koski/omattiedot' />
+      <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={false} namespace='varda' icon={vardaImg} link='/varda' />
     </div>
     <div className={styles['bottom-container']}>
       <Link isLoggedIn={isLoggedIn} namespace='tietojenikaytto' icon={tietojenikayttoImg} link='/koski/omadata/kayttooikeudet' />

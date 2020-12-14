@@ -15,7 +15,9 @@ const Selection = ({isLoggedIn, usingValtuudet}) => (
       <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={false} namespace='varda' icon={vardaImg} link='/varda' />
     </div>
     <div className={styles['bottom-container']}>
-      <Link isLoggedIn={isLoggedIn} namespace='tietojenikaytto' icon={tietojenikayttoImg} link='/koski/omadata/kayttooikeudet' />
+      {!usingValtuudet
+        ? <Link isLoggedIn={isLoggedIn} namespace='tietojenikaytto' icon={tietojenikayttoImg} link='/koski/omadata/kayttooikeudet' />
+        : null}
     </div>
   </React.Fragment>
 );

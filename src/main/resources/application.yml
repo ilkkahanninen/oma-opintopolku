@@ -1,0 +1,42 @@
+server:
+  servlet:
+    context-path: /oma-opintopolku
+    session:
+      cookie:
+        name: JSESSIONID
+  port: 8080
+spring:
+  session:
+    store-type: jdbc
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5488/omaopintopolku?ApplicationName=omaopintopolku
+    username: oph
+    password: oph
+    hikari:
+      maximum-pool-size: 2
+      connection-timeout: 10000
+      max-lifetime: 900000
+  flyway:
+    enabled: true
+    table: schema_table_omaopintopolku
+    # Only for initial production release, set false afterwards
+    baseline-on-migrate: false
+    # If DB is not empty will not run migrations until this version
+    #baseline-version: 20180423104403142
+    out-of-order: true
+cas:
+  service: http://localhost:${server.port}/oma-opintopolku
+  send-renew: false
+  key: oma-opintopolku
+host:
+  host-oppija: localhost
+  host-cas: virkailija.localhost
+  host-oppija-base-url-fi: localhost
+  host-oppija-base-url-en: localhost-en
+  host-oppija-base-url-sv: localhost-sv
+oma-opintopolku:
+  uses-ssl-proxy: false
+logback:
+  access: false

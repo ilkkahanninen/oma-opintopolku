@@ -4,6 +4,7 @@ jdk:
 - openjdk8
 services:
 - docker
+- postgresql
 cache:
   directories:
   - $HOME/.m2
@@ -19,9 +20,17 @@ install:
 - source ci-tools/common/setup-tools.sh
 - export ARTIFACT_NAME="oma-opintopolku"
 
+before_script:
+  - psql -c "CREATE USER \"oph\" PASSWORD 'oph';" -U postgres
+  - psql -c "CREATE DATABASE \"omaopintopolku\" OWNER 'oph';" -U postgres
+  # regrettably, migrations require extensive rights:
+  - psql -c "ALTER ROLE \"oph\" WITH superuser;" -U postgres
+
 script:
 - mvn clean install -B -Dbranch=${TRAVIS_BRANCH} -Drevision=${TRAVIS_COMMIT} -DbuildNumber=${TRAVIS_BUILD_NUMBER}
 - cp -v target/oma-opintopolku-*.jar $DOCKER_BUILD_DIR/artifact/oma-opintopolku.jar
+
+- cp -vr src/main/resources/oph-configuration $DOCKER_BUILD_DIR/config/
 
 - export BASE_IMAGE="baseimage-fatjar-openjdk8:master"
 - ./ci-tools/common/pull-image.sh

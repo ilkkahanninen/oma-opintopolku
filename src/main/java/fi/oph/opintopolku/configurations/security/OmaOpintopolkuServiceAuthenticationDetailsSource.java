@@ -11,25 +11,23 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import javax.servlet.http.HttpServletRequest;
 
 public class OmaOpintopolkuServiceAuthenticationDetailsSource extends ServiceAuthenticationDetailsSource {
-    private final ServiceProperties serviceProperties;
     private static final Logger logger = LoggerFactory.getLogger(OmaopintopolkuCorsProcessor.class);
 
     public OmaOpintopolkuServiceAuthenticationDetailsSource(ServiceProperties serviceProperties) {
         super(serviceProperties);
-        this.serviceProperties = serviceProperties;
     }
 
     @Override
     public ServiceAuthenticationDetails buildDetails(HttpServletRequest request) {
-        return new OmaOpintopolkuServiceAuthenticationDetailsSource.OmaOpintopolkuAuthenticationDetails(request, serviceProperties.getService());
+        return new OmaOpintopolkuServiceAuthenticationDetailsSource.OmaOpintopolkuAuthenticationDetails(request);
     }
 
     public static class OmaOpintopolkuAuthenticationDetails extends WebAuthenticationDetails implements ServiceAuthenticationDetails{
         private final String serviceUrl;
 
-        public OmaOpintopolkuAuthenticationDetails(HttpServletRequest request, String serviceUrl) {
+        public OmaOpintopolkuAuthenticationDetails(HttpServletRequest request) {
             super(request);
-            logger.info("Got request: " + request.getRequestURL().toString() + " setting this as serviceUrl");
+            logger.debug("Got request: " + request.getRequestURL().toString() + " setting this as serviceUrl");
             this.serviceUrl = request.getRequestURL().toString();
         }
 

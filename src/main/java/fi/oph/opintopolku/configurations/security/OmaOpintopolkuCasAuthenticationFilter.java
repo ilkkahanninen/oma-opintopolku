@@ -9,7 +9,6 @@ public class OmaOpintopolkuCasAuthenticationFilter extends OpintopolkuCasAuthent
     @Autowired
     public OmaOpintopolkuCasAuthenticationFilter(ServiceProperties serviceProperties) {
         super(serviceProperties);
-        //setServiceProperties(serviceProperties);
         setAuthenticationDetailsSource(new OmaOpintopolkuServiceAuthenticationDetailsSource(serviceProperties));
     }
 }

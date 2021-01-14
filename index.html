@@ -7,8 +7,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-    <!-- Piwik -->
+    <!-- Analytics -->
     <script type="text/javascript">
+      // Opintopolku Matomo
       var siteId = null;
       if (document.domain === 'opintopolku.fi') {
         siteId = '4';
@@ -20,6 +21,8 @@
         siteId = '1';
       } else if (document.domain.indexOf('demo') === 0) {
         siteId = '15';
+      } else {
+        siteId = '2'
       }
 
       if (siteId !== null) {
@@ -35,11 +38,80 @@
           g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
         })();
       }
+
+      // KEHA Matomo
+      var siteDomain = document.domain;
+      var matomoSiteUrl;
+      switch (siteDomain) {
+        case "opintopolku.fi":
+        case "studieinfo.fi":
+        case "studyinfo.fi":
+          matomoSiteUrl = "https://analytiikka.ahtp.fi/";
+          break;
+        default:
+          matomoSiteUrl = "https://keha-matomo-sdg-qa-qa.azurewebsites.net/"; // Testi
+      }
+      var cookieconsentSettings = {
+        // Urls where matomo files can be found on the (matomo) server.
+        matomoSiteUrl: matomoSiteUrl,
+        matomoSiteId: "8",
+        // Params that are included in the tracking requests. See https://developer.matomo.org/api-reference/tracking-api
+        includedParams: ["idsite", "rec", "action_name", "url", "_id", "rand", "apiv"],
+      };
+      var hasInit = false;
+      var initMatomoTracker = function () {
+        try {
+          if (hasInit) return;
+          hasInit = true;
+          var tracker;
+          if (typeof Matomo !== 'undefined') {
+            tracker = Matomo;
+          } else {
+            tracker = Piwik;
+          }
+          var url = cookieconsentSettings.matomoSiteUrl;
+          var fixedUrl = url.charAt(url.length - 1) === '/' ? url : url + '/';
+          matomoTracker = tracker.getTracker(fixedUrl + "matomo.php", cookieconsentSettings.matomoSiteId);
+          var customRequestProcess = function (request) {
+            try {
+              var pairs = request.split("&");
+              var requestParametersArray = [];
+              for (var index = 0; index < pairs.length; ++index) {
+                var pair = pairs[index].split("=");
+                if (cookieconsentSettings.includedParams.indexOf(pair[0]) === -1) {
+                  continue;
+                }
+                requestParametersArray.push(pair[0] + "=" + pair[1]);
+              }
+              var osIndex = navigator.userAgent.indexOf(")");
+              var ua =
+                osIndex !== -1
+                  ? navigator.userAgent.substring(0, osIndex + 1)
+                  : "Mozilla/5.0";
+              requestParametersArray.push("ua=" + ua);
+              return requestParametersArray.join("&");
+            } catch (err) {
+              return request;
+            }
+          };
+          matomoTracker.setCustomRequestProcessing(customRequestProcess);
+          matomoTracker.trackPageView();
+          matomoTracker.enableLinkTracking();
+        } catch (err) { }
+      };
+      if (typeof Matomo === 'undefined') {
+        window.matomoAsyncInit = initMatomoTracker;
+        window.piwikAsyncInit = initMatomoTracker;
+      }
+      else {
+        initMatomoTracker();
+      }
     </script>
-    <!-- End Piwik Code -->
+    <!-- End Analytics Code -->
   </head>
   <body>
     <div id="content"></div>
     <script defer id="apply-raamit" type="text/javascript" src="/oppija-raamit/js/apply-raamit.js"></script>
+    <script defer id="apply-modal" type="text/javascript" src="/oppija-raamit/js/apply-modal.js"></script>
   </body>
 </html>

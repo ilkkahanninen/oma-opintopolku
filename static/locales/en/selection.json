@@ -23,16 +23,16 @@
   },
   "varda": {
     "title": "Early childhood education information (Only available in Finnish/Swedish)",
-    "subtitle": "View information about the child whose custodian you are as available in Varda, the national data warehouse for early childhood education and care.",
+    "subtitle": "View information stored in the national data warehouse for early childhood education and care, Varda.",
     "subtitleLink": {
-      "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
+      "href": "https://wiki.eduuni.fi/pages/viewpage.action?pageId=190613650",
       "text": "Read more"
     },
     "icon": "Ikoni kahdesta paperiarkista osin limittäin",
     "label": "Information found:",
-    "item1": "personal information",
-    "item2": "early childhood education decisions",
-    "item3": "early childhood education units",
+    "item1": "early childhood education information from children whose custodian you are",
+    "item2": "your early childhood education customer payment information",
+    "item3": "your early childhood education employee records",
     "link": "Proceed to view information stored in Varda",
     "linkLoggedOut": "Proceed to view information stored in Varda (requires identification)"
   },

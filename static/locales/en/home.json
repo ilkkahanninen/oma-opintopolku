@@ -1,6 +1,6 @@
 {
-  "description": "In My Studyinfo you can view your completed studies and see your applications to Finnish Educational Institutions.",
-  "greeting": "Welcome to My Studyinfo!",
+  "description": "You are logged in and you can view your completed studies, see your applications to Finnish Educational Institutions and see what information is stored in the national data warehouse for early childhood education and care - Varda.",
+  "greeting": "Welcome!",
   "login": {
     "header": "Log in to My Studyinfo",
     "info": "In order to log in you must identify yourself by using Finnish bank identification codes, mobile certificate or certificate card. You will be logged in after you have selected the service that you wish to access."

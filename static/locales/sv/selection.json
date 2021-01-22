@@ -33,8 +33,8 @@
     "item1": "personuppgifter",
     "item2": "uppgifter om beslut om småbarnspedagogik",
     "item3": "uppgifter om barnets deltagande i småbarnspedagogisk verksamhet",
-    "link": "Fortsätt till vyn med uppgifter som sparats Varda",
-    "linkLoggedOut": "Fortsätt till vyn med uppgifter som sparats Varda (kräver identifiering)"
+    "link": "Fortsätt till vyn med uppgifter som sparats i Varda",
+    "linkLoggedOut": "Fortsätt till vyn med uppgifter som sparats i Varda (kräver identifiering)"
   },
   "tietojenikaytto": {
     "title": "Hur används mina uppgifter?"

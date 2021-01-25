@@ -22,17 +22,17 @@
     "linkLoggedOut": "Proceed to studies (requires identification)"
   },
   "varda": {
-    "title": "Early childhood education information (Only available in Finnish/Swedish)",
-    "subtitle": "View information stored in the national data warehouse for early childhood education and care, Varda.",
+    "title": "The national data warehouse for early childhood education and care Varda (Only available in Finnish/Swedish)",
+    "subtitle": "View information stored in Varda, the national data warehouse on early childhood education and care.",
     "subtitleLink": {
       "href": "https://wiki.eduuni.fi/pages/viewpage.action?pageId=190613650",
-      "text": "Read more"
+      "text": "Read more about Varda"
     },
     "icon": "Ikoni kahdesta paperiarkista osin limittäin",
-    "label": "Information found:",
-    "item1": "early childhood education information from children whose custodian you are",
-    "item2": "your early childhood education customer payment information",
-    "item3": "your early childhood education employee records",
+    "label": "You can view the following information about you and your child:",
+    "item1": "early childhood education and care data about your child",
+    "item2": "your own fees on early childhood education and care",
+    "item3": "your employment data if you work in early childhood education and care",
     "link": "Proceed to view information stored in Varda",
     "linkLoggedOut": "Proceed to view information stored in Varda (requires identification)"
   },

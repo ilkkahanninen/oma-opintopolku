@@ -1,8 +1,8 @@
 {
-  "description": "I Min Studieinfo kan du granska dina tidigare studieprestationer eller ansökningar till olika läroanstalter.",
-  "greeting": "Välkommen till Min Studieinfo!",
+  "description": "Du har loggat in och du kan granska dina tidigare studieprestationer, ansökningar till olika läroanstalter eller uppgifter som har sparats i Informationsresursen inom småbarnspedagogik (Varda).",
+  "greeting": "Välkommen!",
   "login": {
     "header": "Logga in i Min Studieinfo",
-    "info": "För att logga in måste du identifiera dig med nätbankskoder, mobilcertifikat eller elektroniskt id-kort. Du är inloggad då du väljer önskad tjänst."
+    "info": "För att logga in måste du identifiera dig med nätbankskoder, mobilcertifikat eller elektroniskt id-kort. Du blir inloggad då du väljer önskad tjänst."
   }
 }

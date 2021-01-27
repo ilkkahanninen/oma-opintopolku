@@ -24,20 +24,19 @@
     "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
   "varda": {
-    "title": "Early childhood education information (Only available in Finnish/Swedish)",
-    "subtitle": "View information about the child whose custodian you are as available in Varda, the national data warehouse for early childhood education and care.",
+    "title": "The national data warehouse for early childhood education and care Varda (Only available in Finnish/Swedish)",
+    "subtitle": "View information stored in Varda, the national data warehouse on early childhood education and care.",
     "subtitleLink": {
-      "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
-      "text": "Read more"
+      "href": "https://wiki.eduuni.fi/pages/viewpage.action?pageId=190613650",
+      "text": "Read more about Varda"
     },
     "icon": "Ikoni kahdesta paperiarkista osin limittäin",
-    "label": "Information found:",
-    "item1": "personal information",
-    "item2": "early childhood education decisions",
-    "item3": "early childhood education units",
-    "link": "Go to early childhood education information",
-    "linkLoggedOut": "Go to early childhood education information (requires identification)",
-    "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
+    "label": "You can view the following information about you and your child:",
+    "item1": "early childhood education and care data about your child",
+    "item2": "your own fees on early childhood education and care",
+    "item3": "your employment data if you work in early childhood education and care",
+    "link": "Proceed to view information stored in Varda",
+    "linkLoggedOut": "Proceed to view information stored in Varda (requires identification)"
   },
   "tietojenikaytto": {
     "title": "How is my data used?"

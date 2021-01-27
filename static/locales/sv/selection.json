@@ -25,20 +25,19 @@
 
   },
   "varda": {
-    "title": "Uppgifter om småbarnspedagogik",
-    "subtitle": "Granska i egenskap av vårdnadshavare uppgifter om ditt barn som finns i informationsresursen inom småbarnspedagogiken Varda.",
+    "title": "Informationsresursen inom småbarnspedagogiken Varda",
+    "subtitle": "Granska uppgifter som sparats i den nationella informationsresursen inom småbarnspedagogiken.",
     "subtitleLink": {
-      "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
+      "href": "https://wiki.eduuni.fi/pages/viewpage.action?pageId=190613650",
       "text": "Läs mer om Varda"
     },
     "icon": "Ikoni kahdesta paperiarkista osin limittäin",
-    "label": "Tillgänglig information:",
-    "item1": "personuppgifter",
-    "item2": "uppgifter om beslut om småbarnspedagogik",
-    "item3": "uppgifter om barnets deltagande i småbarnspedagogisk verksamhet",
-    "link": "Fortsätt till uppgifterna om småbarnspedagogik",
-    "linkLoggedOut": "Fortsätt till uppgifterna om småbarnspedagogik (kräver identifiering)",
-    "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
+    "label": "Du kan granska:",
+    "item1": "ditt barns uppgifter om småbarnspedagogik om du är barnets vårdnadshavare",
+    "item2": "dina egna klientavgifter inom småbarnspedagogiken",
+    "item3": "dina egna arbetstagaruppgifter inom småbarnspedagogiken",
+    "link": "Fortsätt till vyn med uppgifter som sparats i Varda",
+    "linkLoggedOut": "Fortsätt till vyn med uppgifter som sparats i Varda (kräver identifiering)"
   },
   "tietojenikaytto": {
     "title": "Hur används mina uppgifter?"

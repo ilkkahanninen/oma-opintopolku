@@ -103,6 +103,17 @@
   text-decoration: none;
 }
 
+:local(.link-disabled) {
+  display: flex;
+  background-color: #b2b2b2;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  border: 0;
+  text-decoration: none;
+  padding: 0.7rem 2.5rem;
+}
+
 :local(.link-loggedin) {
   padding: 0.7rem 2.5rem;
 }
@@ -118,4 +129,11 @@
 :local(.link-text) {
   line-height: 22px;
   text-align: center;
+}
+
+:local(.link-text-disabled-valtuudet) {
+  line-height: 22px;
+  text-align: center;
+  background-color: #b2b2b2;
+  cursor: not-allowed;
 }

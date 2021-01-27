@@ -8,7 +8,8 @@ const domains = {
 
 function fetchUser() {
   const lang = getLang().toUpperCase();
-  const domain = createDomain(lang);
+  //const domain = createDomain(lang);
+  const domain = `${window.location.protocol}//${window.location.hostname}`;
   const sessionUrl = domain + '/oma-opintopolku/session'
   return fetch(sessionUrl, {
     headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku.frontend'}),

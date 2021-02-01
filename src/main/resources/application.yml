@@ -23,8 +23,6 @@ spring:
     table: schema_table_omaopintopolku
     # Only for initial production release, set false afterwards
     baseline-on-migrate: false
-    # If DB is not empty will not run migrations until this version
-    #baseline-version: 20180423104403142
     out-of-order: true
 cas:
   service: http://localhost:${server.port}/oma-opintopolku

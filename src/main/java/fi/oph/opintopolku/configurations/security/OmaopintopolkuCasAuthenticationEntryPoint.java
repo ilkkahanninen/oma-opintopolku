@@ -2,6 +2,8 @@ package fi.oph.opintopolku.configurations.security;
 
 import fi.oph.opintopolku.configurations.ConfigEnums;
 import org.jasig.cas.client.util.CommonUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -12,6 +14,7 @@ import java.net.URISyntaxException;
 
 public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthenticationEntryPoint {
     private final static String valtuudet_enabled = ConfigEnums.VALTUUDET_ENABLED.value();
+    private static final Logger logger = LoggerFactory.getLogger(OmaopintopolkuCasAuthenticationEntryPoint.class);
 
     @Override
     protected String createServiceUrl(final HttpServletRequest request,
@@ -21,8 +24,7 @@ public class OmaopintopolkuCasAuthenticationEntryPoint extends CasAuthentication
         try {
             serviceUrl = getLocalizedServiceUrl(request.getRequestURL().toString());
         } catch (URISyntaxException e) {
-            //TODO: should we continue with default serviceUrl?
-            e.printStackTrace();
+            logger.error("Failed to get localized service url." + e);
         }
         super.getServiceProperties().setService(serviceUrl);
         super.setLoginUrl(getLocalizedLoginUrl(serviceUrl));

@@ -1,6 +1,5 @@
 package fi.oph.opintopolku.configurations.security;
 
-
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SingleColumnRowMapper;

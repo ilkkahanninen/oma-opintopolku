@@ -8,7 +8,8 @@
     "item2": "nähdä opiskelijavalinnan tulokset",
     "item3": "ottaa opiskelupaikan vastaan",
     "link": "Siirry hakemuksiin",
-    "linkLoggedOut": "Siirry hakemuksiin (vaatii tunnistautumisen)"
+    "linkLoggedOut": "Siirry hakemuksiin (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "koski": {
     "title": "Omat opintosuoritukseni",
@@ -19,22 +20,24 @@
     "item2": "ylioppilastutkinnot vuodesta 1990 alkaen",
     "item3": "korkeakoulusta vuodesta 1995 alkaen (tässä voi olla korkeakoulukohtaisia poikkeuksia)",
     "link": "Siirry opintosuorituksiin",
-    "linkLoggedOut": "Siirry opintosuorituksiin (vaatii tunnistautumisen)"
+    "linkLoggedOut": "Siirry opintosuorituksiin (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "varda": {
-    "title": "Varhaiskasvatustiedot",
-    "subtitle": "Katsele varhaiskasvatuksen tietovaranto Vardasta löytyviä huollettavasi tietoja.",
+    "title": "Varhaiskasvatuksen tietovaranto Varda",
+    "subtitle": "Katsele kansalliseen varhaiskasvatuksen tietovarantoon tallennettuja tietoja.",
     "subtitleLink": {
-      "href": "https://confluence.csc.fi/pages/viewpage.action?pageId=85045414",
+      "href": "https://wiki.eduuni.fi/pages/viewpage.action?pageId=190613650",
       "text": "Lue lisää Vardasta"
     },
     "icon": "Ikoni kahdesta paperiarkista osin limittäin",
-    "label": "Löytyvät tiedot:",
-    "item1": "henkilötiedot",
-    "item2": "varhaiskasvatuspäätökset",
-    "item3": "varhaiskasvatuksen toimipaikat",
-    "link": "Siirry varhaiskasvatustietoihin",
-    "linkLoggedOut": "Siirry varhaiskasvatustietoihin (vaatii tunnistautumisen)"
+    "label": "Voit tarkastella:",
+    "item1": "huollettavasi varhaiskasvatustietoja",
+    "item2": "omia varhaiskasvatuksen asiakasmaksutietojasi",
+    "item3": "omia varhaiskasvatuksen työntekijätietojasi",
+    "link": "Siirry katselemaan Vardaan tallennettuja tietoja",
+    "linkLoggedOut": "Siirry katselemaan Vardaan tallennettuja tietoja (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"

@@ -2,7 +2,7 @@ import React from 'react';
 import { I18n} from 'react-i18next';
 import styles from './SelectionItem.css';
 
-const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
+const SelectionItem = ({isLoggedIn, disableForValtuudet, namespace, icon, link}) => (
   <I18n ns="selection">
     {t => (
       <div className={styles['flex-item']}>
@@ -31,12 +31,15 @@ const SelectionItem = ({isLoggedIn, namespace, icon, link}) => (
           </div>
         </div>
         <div className={styles['link-container']}>
-          <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={ link }>
-            { !isLoggedIn
-              ? <span className={styles['link-text']}>{t(namespace + '.linkLoggedOut')}</span>
-              : <span className={styles['link-text']}>{t(namespace + '.link')}</span>
-            }
-          </a>
+          { !disableForValtuudet
+            ? <a className={`${styles.link} ${isLoggedIn ? styles['link-loggedin'] : styles['link-loggedout']}`} href={ link }>
+                { !isLoggedIn
+                  ? <span className={styles['link-text']}>{t(namespace + '.linkLoggedOut')}</span>
+                  : <span className={styles['link-text']}>{t(namespace + '.link')}</span>
+                }
+              </a>
+            : <span className={`${styles['link-disabled']} ${styles['link-text-disabled-valtuudet']}`}>{t(namespace + '.linkUsingValtuudet')}</span>
+          }
         </div>
       </div>
     )}

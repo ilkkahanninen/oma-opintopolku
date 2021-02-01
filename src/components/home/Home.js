@@ -10,7 +10,10 @@ class Home extends React.Component {
     this.state = {
       user: {
         name: "",
-        birthDay: new Date()
+        birthDay: "",
+        personOid: "",
+        hetu: "",
+        usingValtuudet: false
       },
       isLoggedIn: false
     }
@@ -30,7 +33,7 @@ class Home extends React.Component {
     return (
     <Fragment>
       <Greeting user={this.state.user} isLoggedIn={this.state.isLoggedIn} />
-      <Selection isLoggedIn={this.state.isLoggedIn}/>
+      <Selection isLoggedIn={this.state.isLoggedIn} usingValtuudet={this.state.user.usingValtuudet}/>
     </Fragment>
   )}
 }

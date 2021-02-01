@@ -1,0 +1,33 @@
+#
+# TÄHÄN TIEDOSTOON EI SAA TALLENTAA YMPÄRISTÖKOHTAISIA ARVOJA MUUTOIN KUIN MUUTTUJINA!!!
+#
+# Tämä tiedosto toimii pohjana oph-configuration/common.properties tiedostolle,
+# joka asettaa tomcatin ympäristökohtaiset arvot.
+#
+
+# Aseta vähintään nämä ympäristökohtaiset arvot
+
+spring:
+  # jpa:
+  #  properties:
+  #    hibernate.integration.envers.enabled: {{omaopintopolku_versiointi_kaytossa | default('true')}}
+  datasource:
+    url: jdbc:postgresql://{{host_postgresql_omaopintopolku_host}}:{{host_postgresql_omaopintopolku_port}}/{{host_postgresql_omaopintopolku_db | default('omaopintopolku')}}?ApplicationName=omaopintopolku
+    username: {{postgres_app_user}}
+    password: {{omaopintopolku_db_app_password}}
+    hikari:
+      maximum-pool-size: {{host_postgresql_omaopintopolku_maximum_pool_size | default('20')}}
+      connection-timeout: {{host_postgresql_omaopintopolku_connection_timeout | default('10000')}}
+      max-lifetime: {{host_postgresql_omaopintopolku_max_lifetime | default('900000')}}
+cas:
+  service: https://{{host_oppija}}/oma-opintopolku
+host:
+  host-oppija: {{host_oppija}}
+  host-cas: {{host_cas}}
+  host-oppija-base-url-fi: {{oppija_base_url_fi}}
+  host-oppija-base-url-en: {{oppija_base_url_en}}
+  host-oppija-base-url-sv: {{oppija_base_url_sv}}
+oma-opintopolku:
+  uses-ssl-proxy: true
+logback:
+  access: true

@@ -18,6 +18,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
@@ -25,6 +26,8 @@ import java.util.stream.Collectors;
 public class SessionController {
     final static DateTimeFormatter formatter = DateTimeFormat.forPattern("ddMMYY");
     private static final Logger logger = LoggerFactory.getLogger(SessionController.class);
+
+    private static final String HETU_REGEX = "^(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])([5-9]\\d\\+|\\d\\d-|[01]\\dA)\\d{3}[\\dABCDEFHJKLMNPRSTUVWXY]$";
 
     @RequestMapping(value = "/session")
     @PreAuthorize("isAuthenticated()")
@@ -62,17 +65,17 @@ public class SessionController {
 
         boolean isUsingValtuudet = isUsingValtuudet(attributes);
         String displayName = !isUsingValtuudet
-            ? (String) attributes.getOrDefault("displayName", "NOT_FOUND")
-            : (String) attributes.getOrDefault("impersonatorDisplayName", "NOT_FOUND");
+            ? (String) attributes.getOrDefault("displayName", "")
+            : (String) attributes.getOrDefault("impersonatorDisplayName", "");
         String birthDay = !isUsingValtuudet
             ? parseDateStringFromHetu((String) attributes.getOrDefault("nationalIdentificationNumber", ""))
             : parseDateStringFromHetu((String) attributes.getOrDefault("impersonatorNationalIdentificationNumber", ""));
         String personOid = !isUsingValtuudet
-            ? (String) attributes.getOrDefault("personOid", "NOT_FOUND")
-            : (String) attributes.getOrDefault("impersonatorPersonOid", "NOT_FOUND");
+            ? (String) attributes.getOrDefault("personOid", "")
+            : (String) attributes.getOrDefault("impersonatorPersonOid", "");
         String hetu = !isUsingValtuudet
-            ? (String) attributes.getOrDefault("nationalIdentificationNumber", "NOT_FOUND")
-            : (String) attributes.getOrDefault("impersonatorNationalIdentificationNumber", "NOT_FOUND");
+            ? (String) attributes.getOrDefault("nationalIdentificationNumber", "")
+            : (String) attributes.getOrDefault("impersonatorNationalIdentificationNumber", "");
 
         user.setName(displayName);
         user.setBirthDay(birthDay);
@@ -84,7 +87,7 @@ public class SessionController {
     }
 
     private static String parseDateStringFromHetu(String hetu) {
-        if (hetu != null) {
+        if (hetu != null && Pattern.compile(HETU_REGEX).matcher(hetu).matches()) {
             Locale locale = new Locale("fi","fi");
             DateTime dt = formatter.parseDateTime(hetu.substring(0, 6));
             DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, locale);

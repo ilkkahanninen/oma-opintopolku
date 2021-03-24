@@ -33,6 +33,9 @@ export function getUser() {
                     window.home.setUser(user);
                     console.log(user);
                     resolve(user);
+                  }).catch(err => {
+                    console.error(err);
+                    reject(new Error('No session found!'));
                   })
                 } else {
                   window.home.setLoggedIn(false);

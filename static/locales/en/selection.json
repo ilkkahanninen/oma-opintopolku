@@ -39,6 +39,42 @@
     "linkLoggedOut": "Proceed to view information stored in Varda (requires identification)",
     "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
+  "oti": {
+	"title": "OTI - Registration for the certificate in educational administration exam (Only available in Finnish/Swedish)",
+    "subtitle": "Register for a certificate in educational administration exam.",
+    "icon": "Kirjekuorta esittävä ikoni",
+	"label": "When registering for a exam for certificate in education administration, please follow the instructions:",
+    "item1": "search for a test centre through the link below",
+    "item2": "enter your personal and contact details in the registration system",
+    "item3": "pay exam fee as you register",
+    "link": "Proceed to certificate in educational administration exam registration",
+    "linkLoggedOut": "Proceed to certificate in educational administration exam registration",
+    "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
+  },
+  "yki": {
+    "title": "YKI - Registration for the National Certificate of Language Proficiency tests",
+    "subtitle": "Register for a language proficiency test (YKI).",
+    "icon": "Kirjekuorta esittävä ikoni",
+	"label": "When registering for a Finnish National Language Proficiency test (YKI), please follow the instructions:",
+    "item1": "search for a test centre through the link below",
+    "item2": "enter your personal and contact details in the registration system",
+    "item3": "you will get an email with a payment link",
+    "link": "Proceed to YKI-test registration",
+    "linkLoggedOut": "Proceed to YKI-test registration",
+    "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
+  },
+  "virkailija": {
+	  "title": "Education admin's Studyinfo (Available mostly in Finnish/Swedish)",
+	  "subtitle": "Use education administration services provided by the Finnish National Agency for Education (EDUFI). In order to use the services, you need separate access rights for them.",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "You can log in to admin's Studyinfo via:",
+	  "item1": "username and password",
+	  "item2": "Haka Identity Federation",
+	  "item3": "Suomi.fi -identification",
+	  "link": "Proceed to administrator's Studyinfo",
+	  "linkLoggedOut": "Proceed to administrator's Studyinfo",
+	  "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
+  },
   "tietojenikaytto": {
     "title": "How is my data used?"
   }

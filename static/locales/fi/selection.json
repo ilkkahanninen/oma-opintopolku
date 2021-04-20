@@ -74,7 +74,7 @@
 	  "link": "Siirry virkailijan Opintopolkuun",
 	  "linkLoggedOut": "Siirry virkailijan Opintopolkuun",
 	  "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
-  }
+  },
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"
   }

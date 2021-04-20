@@ -5,9 +5,9 @@ import styles from './Selection.css';
 import koskiImg from 'Static/img/opintoni_white.svg';
 import vardaImg from 'Static/img/opintoni_white.svg';
 import omatsivutImg from 'Static/img/hakemukseni_white.svg';
-import otiImg from 'Static/img/hakemukseni_white';
-import ykiImg from 'Static/img/hakemukseni_white';
-import virkailijaImg from 'Static/img/opintoni_white';
+import otiImg from 'Static/img/hakemukseni_white.svg';
+import ykiImg from 'Static/img/hakemukseni_white.svg';
+import virkailijaImg from 'Static/img/opintoni_white.svg';
 import tietojenikayttoImg from 'Static/img/tietojenikaytto.svg';
 
 const Selection = ({isLoggedIn, usingValtuudet}) => (

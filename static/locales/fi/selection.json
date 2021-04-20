@@ -39,6 +39,42 @@
     "linkLoggedOut": "Siirry katselemaan Vardaan tallennettuja tietoja (vaatii tunnistautumisen)",
     "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
+  "oti": {
+	"title": "OTI - opetushallinnon tutkintoon ilmoittautuminen",
+    "subtitle": "Ilmoittaudu opetushallinnon tutkintoon.",
+    "icon": "Kirjekuorta esittävä ikoni",
+	"label": "Kun haluat ilmoittautua opetushallinnon tutkintoon, toimi näin:",
+    "item1": "etsi tutkintopaikkaa alla olevasta linkistä",
+    "item2": "täytä ilmoittautumisjärjestelmään henkilö- ja yhteystietosi",
+    "item3": "maksa tutkintomaksu ilmoittautuessasi",
+    "link": "Siirry opetushallinnon tutkintoon ilmoittautumiseen",
+    "linkLoggedOut": "Siirry opetushallinnon tutkintoon ilmoittautumiseen",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
+  "yki": {
+    "title": "YKI - yleiseen kielitutkintoon ilmoittautuminen",
+    "subtitle": "Ilmoittaudu yleiseen kielitutkintoon.",
+    "icon": "Kirjekuorta esittävä ikoni",
+	"label": "Kun haluat ilmoittautua yleiseen kielitutkintoon, toimi näin:",
+    "item1": "etsi tutkintopaikkaa alla olevasta linkistä",
+    "item2": "täytä ilmoittautumisjärjestelmään henkilö- ja yhteystietosi",
+    "item3": "saat sähköpostiisi viestin ja maksulinkin",
+    "link": "Siirry yleiseen kielitutkintoon ilmoittautumiseen",
+    "linkLoggedOut": "Siirry yleiseen kielitutkintoon ilmoittautumiseen",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
+  "virkailija": {
+	  "title": "Opetushallinnon virkailijan Opintopolku",
+	  "subtitle": "Käytä OPH:n tarjoamia opetushallinnon sähköisiä palveluita. Jotta voit käyttää palveluita tarvitset niitä varten erilliset käyttöoikeudet.",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "Voit kirjautua virkailijan palveluihin:",
+	  "item1": "paikallisilla tunnuksilla",
+	  "item2": "Haka-käyttäjätunnistusjärjestelmän kautta",
+	  "item3": "Suomi.fi -tunnistautumisen kautta",
+	  "link": "Siirry virkailijan Opintopolkuun",
+	  "linkLoggedOut": "Siirry virkailijan Opintopolkuun",
+	  "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  }
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"
   }

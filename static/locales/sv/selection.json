@@ -40,6 +40,42 @@
     "linkLoggedOut": "Fortsätt till vyn med uppgifter som sparats i Varda (kräver identifiering)",
     "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
   },
+  "oti": {
+	"title": "OTI - anmälan till examen i undervisningsförvaltning",
+    "subtitle": "Anmäl sig till examen i undervisningsförvaltning.",
+    "icon": "Kirjekuorta esittävä ikoni",
+	"label": "När du vill anmäla dig till examen i undervisningsförvaltning, följ anvisningarna:",
+    "item1": "sök en examensplats genom länken nedan",
+    "item2": "fyll dina person- och kontaktuppgifter i anmälningssystemet",
+    "item3": "betala avgiften för examen i samband med anmälan i anmälningssystemet",
+    "link": "Fortsätt till anmälan till examen i undervisningsförvaltning",
+    "linkLoggedOut": "Fortsätt till anmälan till examen i undervisningsförvaltning",
+    "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
+  },
+  "yki": {
+    "title": "YKI - anmälan till allmänna språkexamina",
+    "subtitle": "Anmäl sig till språkexamina.",
+    "icon": "Kirjekuorta esittävä ikoni",
+	"label": "När du vill anmäla dig till en allmän språkexamen, följ anvisningarna:",
+    "item1": "sök en examensplats genom länken nedan",
+    "item2": "fyll dina person- och kontaktuppgifter i anmälningssystemet",
+    "item3": "du får ett meddelande och en betalningslänk via e-post",
+    "link": "Fortsätt till anmälningssystemet",
+    "linkLoggedOut": "Fortsätt till anmälningssystemet",
+    "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
+  },
+  "virkailija": {
+	  "title": "Utbildningsförvaltningens administratörens Studieinfo",
+	  "subtitle": "Använd de elektroniska utbildningstjänster som tillhandahålls av UBS. För att kunna använda tjänsterna behöver du separata användarrätter för dem.",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "Du kan logga in på administratörens tjänster på följande sätt:",
+	  "item1": "med hjälp av användarnamn och lösenord",
+	  "item2": "med hjälp av Haka-användarautentiseringssystem",
+	  "item3": "med hjälp av suomi.fi-identifiering",
+	  "link": "Fortsätt till administratörens Studieinfo",
+	  "linkLoggedOut": "Fortsätt till administratörens Studieinfo",
+	  "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
+  },
   "tietojenikaytto": {
     "title": "Hur används mina uppgifter?"
   }

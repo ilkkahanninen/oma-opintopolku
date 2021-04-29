@@ -23,6 +23,17 @@
     "linkLoggedOut": "Siirry opintosuorituksiin (vaatii tunnistautumisen)",
     "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
+  "ehoks": {
+	"title": "eHOKS - henkilökohtaisen osaamisen kehittämissuunnitelma",
+	"subtitle": "Henkilökohtainen osaamisen kehittämissuunnitelma on käytännön työväline opiskelijalle, opettajille ja ohjaajille ammatillisissa oppilaitoksessa ja työpaikoilla.",
+	"icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	"label": "eHOKS on palvelu ammatillisten opintojen suunnitteluun. Palveluun voit kirjautua:",
+	"item1": "Opiskelijana, jolloin pääset oman henkilökohtaiseen opintojen suunnitteluun",
+	"item2": "Koulutuksenjärjestäjänä, jolloin pääset ohjattavien opiskelijoiden suunnitelmiin",
+	"link": "Siirry eHOKS-palveluun",
+	"linkLoggedOut": "Siirry eHOKS-palveluun",
+	"linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
   "varda": {
     "title": "Varhaiskasvatuksen tietovaranto Varda",
     "subtitle": "Katsele kansalliseen varhaiskasvatuksen tietovarantoon tallennettuja tietoja.",
@@ -38,6 +49,18 @@
     "link": "Siirry katselemaan Vardaan tallennettuja tietoja",
     "linkLoggedOut": "Siirry katselemaan Vardaan tallennettuja tietoja (vaatii tunnistautumisen)",
     "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
+  "varda-rekisterointi": {
+	"title": "Yksityisten varhaiskasvatuksen palveluntuottajien rekisteröityminen Vardaa varten",
+	"subtitle": "Yksityinen varhaiskasvatuksen palveluntuottaja (yksityinen päiväkoti, perhepäiväkoti tai ryhmäperhepäiväkoti) rekisteröi tiedot organisaatiostaan varhaiskasvatuksen tietovarantoon.",
+	"icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	"label": "Tallennettavia tietoja ovat:",
+	"item1": "organisaatio",
+	"item2": "toimipaikka",
+	"item3": "lapset",
+	"link": "Siirry varda-rekisteröintiin",
+	"linkLoggedOut": "Siirry varda-rekisteröintiin",
+	"linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "oti": {
 	"title": "OTI - opetushallinnon tutkintoon ilmoittautuminen",
@@ -64,16 +87,16 @@
     "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "virkailija": {
-	  "title": "Opetushallinnon virkailijan Opintopolku",
-	  "subtitle": "Käytä OPH:n tarjoamia opetushallinnon sähköisiä palveluita. Jotta voit käyttää palveluita tarvitset niitä varten erilliset käyttöoikeudet.",
-	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
-	  "label": "Voit kirjautua virkailijan palveluihin:",
-	  "item1": "paikallisilla tunnuksilla",
-	  "item2": "Haka-käyttäjätunnistusjärjestelmän kautta",
-	  "item3": "Suomi.fi -tunnistautumisen kautta",
-	  "link": "Siirry virkailijan Opintopolkuun",
-	  "linkLoggedOut": "Siirry virkailijan Opintopolkuun",
-	  "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+	"title": "Virkailijan Opintopolku",
+	"subtitle": "Käytä OPH:n tarjoamia opetushallinnon sähköisiä palveluita. Jotta voit käyttää palveluita tarvitset niitä varten erilliset käyttöoikeudet.",
+	"icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	"label": "Voit kirjautua virkailijan palveluihin:",
+	"item1": "paikallisilla tunnuksilla",
+	"item2": "Haka-käyttäjätunnistusjärjestelmän kautta",
+	"item3": "Suomi.fi -tunnistautumisen kautta",
+	"link": "Siirry virkailijan Opintopolkuun",
+	"linkLoggedOut": "Siirry virkailijan Opintopolkuun",
+	"linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"

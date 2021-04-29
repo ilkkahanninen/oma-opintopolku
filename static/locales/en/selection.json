@@ -23,6 +23,18 @@
     "linkLoggedOut": "Proceed to studies (requires identification)",
     "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
+    "ehoks": {
+	  "title": "eHOKS - Personal Competence Development Plan (Only available in Finnish/Swedish)",
+	  "subtitle": "eHOKS is a service for planning professional studies. The Personal Competence Development Plan is a practical tool for students, teachers in vocational schools and tutors in  workplaces.",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "The service is available for:",
+	  "item1": "students in vocational training",
+	  "item2": "vocational school staff",
+	  "item3": "actors in the working life",
+	  "link": "Proceed to eHOKS service",
+	  "linkLoggedOut": "Proceed to eHOKS service",
+	  "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
+  },
   "varda": {
     "title": "The national data warehouse for early childhood education and care Varda (Only available in Finnish/Swedish)",
     "subtitle": "View information stored in Varda, the national data warehouse on early childhood education and care.",
@@ -38,6 +50,18 @@
     "link": "Proceed to view information stored in Varda",
     "linkLoggedOut": "Proceed to view information stored in Varda (requires identification)",
     "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
+  },
+  "varda-rekisterointi": {
+	  "title": "Registration of private early childhood education providers for Varda (Only available in Finnish/Swedish)",
+	  "subtitle": "A private early childhood education service provider (private daycare, family daycare, or group family daycare) registers information about their organization in the national data warehouse for early childhood education and care.",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "The data to be registered are:",
+	  "item1": "organization",
+	  "item2": "place of business",
+	  "item3": "children",
+	  "link": "Proceed to Varda registration",
+	  "linkLoggedOut": "Proceed to Varda registration",
+	  "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
   "oti": {
 	"title": "OTI - Registration for the certificate in educational administration exam (Only available in Finnish/Swedish)",
@@ -74,7 +98,7 @@
 	  "link": "Proceed to administrator's Studyinfo",
 	  "linkLoggedOut": "Proceed to administrator's Studyinfo",
 	  "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
-  },
+   },
   "tietojenikaytto": {
     "title": "How is my data used?"
   }

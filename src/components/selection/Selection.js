@@ -15,8 +15,10 @@ const Selection = ({isLoggedIn, usingValtuudet}) => (
     <div className={styles['flex-container']}>
       <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='omatsivut' icon={omatsivutImg} link='/omatsivut' />
       <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='koski' icon={koskiImg} link='/koski/omattiedot' />
+	    <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='ehoks' icon={koskiImg} link='/ehoks' />
       <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={false} namespace='varda' icon={vardaImg} link='/varda' />
-      <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='oti' icon={otiImg} link='https://oti.opintopolku.fi' />
+	    <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='varda-rekisterointi' icon={virkailijaImg} link='https://virkailija.opintopolku.fi/varda-rekisterointi' />
+	    <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='oti' icon={otiImg} link='https://oti.opintopolku.fi' />
 	    <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='yki' icon={ykiImg} link='https://yki.opintopolku.fi/yki/ilmoittautuminen' />
 	    <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='virkailija' icon={virkailijaImg} link='https://virkailija.opintopolku.fi' />
     </div>

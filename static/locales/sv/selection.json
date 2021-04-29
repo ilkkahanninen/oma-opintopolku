@@ -24,6 +24,18 @@
     "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
 
   },
+    "ehoks": {
+	  "title": "ePUK - Den personliga utvecklingsplanen",
+	  "subtitle": "ePUK är en tjänst för planering av professionella studier. Den personliga utvecklingsplanen för kunnandet är ett verktyg för studerande, lärare och handledare i läroanstalter och på arbetsplatser.",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "Tjänsten är tillgänglig för:",
+	  "item1": "studerande i yrkesutbildning",
+	  "item2": "läroanstaltens representanter",
+	  "item3": "arbetslivsaktörer",
+	  "link": "Fortsätt till ePUK-tjänsten",
+	  "linkLoggedOut": "Fortsätt till ePUK-tjänsten",
+	  "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
+  },
   "varda": {
     "title": "Informationsresursen inom småbarnspedagogiken Varda",
     "subtitle": "Granska uppgifter som sparats i den nationella informationsresursen inom småbarnspedagogiken.",
@@ -39,6 +51,18 @@
     "link": "Fortsätt till vyn med uppgifter som sparats i Varda",
     "linkLoggedOut": "Fortsätt till vyn med uppgifter som sparats i Varda (kräver identifiering)",
     "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
+  },
+  "varda-rekisterointi": {
+	  "title": "Registrering av privata serviceproducenter inom småbarnspedagogik inför Varda",
+	  "subtitle": "Privata serviceproducenter inom småbarnspedagogik ska föra in sina uppgifter i informationsresursen inom småbarnspedagogiken (Varda)",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "Uppgifterna som ska registreras är:",
+	  "item1": "organisation",
+	  "item2": "verksamhetsställe",
+	  "item3": "barn",
+	  "link": "Fortsätt till Varda-registrering",
+	  "linkLoggedOut": "Fortsätt till Varda-registrering",
+	  "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
   },
   "oti": {
 	"title": "OTI - anmälan till examen i undervisningsförvaltning",

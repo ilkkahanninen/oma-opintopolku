@@ -25,11 +25,12 @@
   },
   "ehoks": {
 	"title": "eHOKS - henkilökohtaisen osaamisen kehittämissuunnitelma",
-	"subtitle": "Henkilökohtainen osaamisen kehittämissuunnitelma on käytännön työväline opiskelijalle, opettajille ja ohjaajille ammatillisissa oppilaitoksessa ja työpaikoilla.",
+	"subtitle": "eHOKS on palvelu ammatillisten opintojen suunnitteluun. Henkilökohtainen osaamisen kehittämissuunnitelma on käytännön työväline opiskelijalle, opettajille ja ohjaajille ammatillisissa oppilaitoksessa ja työpaikoilla.",
 	"icon": "Ikoni kahdesta paperiarkista osin limittäin",
-	"label": "eHOKS on palvelu ammatillisten opintojen suunnitteluun. Palveluun voit kirjautua:",
-	"item1": "Opiskelijana, jolloin pääset oman henkilökohtaiseen opintojen suunnitteluun",
-	"item2": "Koulutuksenjärjestäjänä, jolloin pääset ohjattavien opiskelijoiden suunnitelmiin",
+	"label": "Palvelu on saatavilla:",
+	"item1": "ammatillisessa koulutuksessa opiskeleville",
+	"item2": "koulutuksenjärjestäjille",
+	"item3": "työelämän toimijoille",
 	"link": "Siirry eHOKS-palveluun",
 	"linkLoggedOut": "Siirry eHOKS-palveluun",
 	"linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."

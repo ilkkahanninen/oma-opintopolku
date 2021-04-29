@@ -3,6 +3,6 @@
   "greeting": "Välkommen!",
   "login": {
     "header": "Logga in i Min Studieinfo",
-    "info": "För att logga in måste du identifiera dig med nätbankskoder, mobilcertifikat eller elektroniskt id-kort. Du blir inloggad då du väljer önskad tjänst."
+    "info": "För att logga in måste du identifiera dig med finska nätbankskoder, mobilcertifikat eller elektroniskt id-kort. Du blir inloggad då du väljer önskad tjänst."
   }
 }

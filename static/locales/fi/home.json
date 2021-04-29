@@ -3,6 +3,6 @@
   "greeting": "Tervetuloa!",
   "login": {
     "header": "Kirjaudu sisään Oma Opintopolkuun",
-    "info": "Kirjautumista varten sinun tulee tunnistautua pankkitunnuksella, mobiilivarmenteella tai sirullisella henkilökortilla. Kirjaudut sisään valitessasi mihin palveluun siirryt."
+    "info": "Kirjautumista varten sinun tulee tunnistautua suomalaisella pankkitunnuksella, mobiilivarmenteella tai sirullisella henkilökortilla. Kirjaudut sisään valitessasi mihin palveluun siirryt."
   }
 }

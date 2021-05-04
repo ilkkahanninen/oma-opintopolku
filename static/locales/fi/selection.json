@@ -93,7 +93,7 @@
 	"icon": "Ikoni kahdesta paperiarkista osin limittäin",
 	"label": "Voit kirjautua virkailijan palveluihin:",
 	"item1": "Opintopolun tunnuksella ja salasanalla",
-	"item2": "Haka-kirjautumisella",
+	"item2": "Haka-tunnuksella",
 	"item3": "Suomi.fi -tunnistautumisen kautta",
 	"link": "Siirry virkailijan Opintopolkuun",
 	"linkLoggedOut": "Siirry virkailijan Opintopolkuun",

@@ -89,7 +89,7 @@
   },
   "virkailija": {
 	  "title": "Education admin's Studyinfo (Available mostly in Finnish/Swedish)",
-	  "subtitle": "Use education administration services provided by the Finnish National Agency for Education (EDUFI). In order to use the services, you need separate access rights for them.",
+	  "subtitle": "Use services for education administration professionals. In order to use the services, you need separate access rights for them.",
 	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
 	  "label": "You can log in to admin's Studyinfo via:",
 	  "item1": "username and password",

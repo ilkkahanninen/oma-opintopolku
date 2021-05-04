@@ -89,7 +89,7 @@
   },
   "virkailija": {
 	"title": "Virkailijan Opintopolku",
-	"subtitle": "Käytä OPH:n tarjoamia opetushallinnon sähköisiä palveluita. Jotta voit käyttää palveluita tarvitset niitä varten erilliset käyttöoikeudet.",
+	"subtitle": "Käytä opetushallinnon virkailijoille tarkoitettuja sähköisiä palveluita. Tarvitset niihin erilliset käyttöoikeudet.",
 	"icon": "Ikoni kahdesta paperiarkista osin limittäin",
 	"label": "Voit kirjautua virkailijan palveluihin:",
 	"item1": "paikallisilla tunnuksilla",

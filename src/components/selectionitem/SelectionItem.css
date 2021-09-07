@@ -124,6 +124,7 @@
 
 :local(.link-image) {
   margin-right: 15px;
+  fill: #3A7A10;
 }
 
 :local(.link-text) {

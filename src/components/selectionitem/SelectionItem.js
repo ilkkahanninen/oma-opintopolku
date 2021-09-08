@@ -18,7 +18,7 @@ const SelectionItem = ({isLoggedIn, disableForValtuudet, namespace, icon, link})
             {t(namespace + '.subtitle')}
             &nbsp;
             {t(namespace + '.subtitleLink') !== namespace + '.subtitleLink'
-              ? <a href={t(namespace + '.subtitleLink.href')} target="_blank">{t(namespace + '.subtitleLink.text')}</a>
+              ? <a href={t(namespace + '.subtitleLink.href')} target="_blank" class="text-link">{t(namespace + '.subtitleLink.text')}</a>
               : null}
           </p>
           <div className={styles['list-wrapper']}>

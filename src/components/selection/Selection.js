@@ -13,6 +13,7 @@ const Selection = ({isLoggedIn, usingValtuudet}) => (
       <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='omatsivut' icon={omatsivutImg} link='/omatsivut' />
       <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='koski' icon={koskiImg} link='/koski/omattiedot' />
       <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={false} namespace='varda' icon={vardaImg} link='/varda' />
+      <SelectionItem isLoggedIn={isLoggedIn} disableForValtuudet={usingValtuudet} namespace='ehoks' icon={koskiImg} link='/ehoks' />
     </div>
     <div className={styles['bottom-container']}>
       {!usingValtuudet

@@ -39,6 +39,18 @@
     "linkLoggedOut": "Siirry katselemaan Vardaan tallennettuja tietoja (vaatii tunnistautumisen)",
     "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
+  "ehoks": {
+	"title": "eHOKS - henkilökohtaisen osaamisen kehittämissuunnitelma",
+	"subtitle": "eHOKS on palvelu ammatillisten opintojen suunnitteluun. Henkilökohtainen osaamisen kehittämissuunnitelma on käytännön työväline opiskelijalle, opettajille ja ohjaajille ammatillisissa oppilaitoksessa ja työpaikoilla.",
+	"icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	"label": "Palvelu on saatavilla:",
+	"item1": "ammatillisessa koulutuksessa opiskeleville",
+	"item2": "koulutuksenjärjestäjille",
+	"item3": "työelämän toimijoille",
+	"link": "Siirry eHOKS-palveluun",
+	"linkLoggedOut": "Siirry eHOKS-palveluun",
+	"linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
   "tietojenikaytto": {
     "title": "Tietojeni käyttö"
   }

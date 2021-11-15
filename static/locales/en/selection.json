@@ -39,6 +39,18 @@
     "linkLoggedOut": "Proceed to view information stored in Varda (requires identification)",
     "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
+  "ehoks": {
+	  "title": "eHOKS - Personal Competence Development Plan (Only available in Finnish/Swedish)",
+	  "subtitle": "eHOKS is a service for planning professional studies. The Personal Competence Development Plan is a practical tool for students, teachers in vocational schools and tutors in  workplaces.",
+	  "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+	  "label": "The service is available for:",
+	  "item1": "students in vocational training",
+	  "item2": "vocational school staff",
+	  "item3": "actors in the working life",
+	  "link": "Proceed to eHOKS service",
+	  "linkLoggedOut": "Proceed to eHOKS service",
+	  "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
+  },
   "tietojenikaytto": {
     "title": "How is my data used?"
   }

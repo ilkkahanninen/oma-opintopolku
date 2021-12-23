@@ -23,6 +23,18 @@
     "linkLoggedOut": "Proceed to studies (requires identification)",
     "linkUsingValtuudet": "You can proceed to this service after you have logged out of the current e-Authorizations session."
   },
+  "valpas": {
+    "title": "TODO-EN Oppivelvollisuuden suorittamisen seurantapalvelu Valpas",
+    "subtitle": "TODO-EN Katsele oppivelvollisuuden seurantapalveluun tallennettuja tietoja.",
+    "icon": "TODO-EN Ikoni kahdesta paperiarkista osin limittäin",
+    "label": "TODO-EN Voit tarkastella:",
+    "item1": "TODO-EN huollettavasi oppivelvollisuuden suorittamiseen liittyviä tietoja",
+    "item2": "TODO-EN omia oppivelvollisuuden suorittamiseen liittyviä tietojasi",
+    "item3": "TODO-EN jotain muuta, käyttöliittymä haluaa kolmannen bulletin",
+    "link": "TODO-EN Siirry Valpas-palveluun",
+    "linkLoggedOut": "TODO-EN Siirry Valpas-palveluun (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "TODO-EN Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
   "varda": {
     "title": "The national data warehouse for early childhood education and care Varda (Only available in Finnish/Swedish)",
     "subtitle": "View information stored in Varda, the national data warehouse on early childhood education and care.",

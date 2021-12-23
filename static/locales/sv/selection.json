@@ -24,6 +24,18 @@
     "linkUsingValtuudet": "Du kan fortsätta till den här tjänsten när du har loggat ut från den aktuella sessionen med fullmakter."
 
   },
+  "valpas": {
+    "title": "TODO-SV Oppivelvollisuuden suorittamisen seurantapalvelu Valpas",
+    "subtitle": "TODO-SV Katsele oppivelvollisuuden seurantapalveluun tallennettuja tietoja.",
+    "icon": "TODO-SV Ikoni kahdesta paperiarkista osin limittäin",
+    "label": "TODO-SV Voit tarkastella:",
+    "item1": "TODO-SV huollettavasi oppivelvollisuuden suorittamiseen liittyviä tietoja",
+    "item2": "TODO-SV omia oppivelvollisuuden suorittamiseen liittyviä tietojasi",
+    "item3": "TODO-SV jotain muuta, käyttöliittymä haluaa kolmannen bulletin",
+    "link": "TODO-SV Siirry Valpas-palveluun",
+    "linkLoggedOut": "TODO-SV Siirry Valpas-palveluun (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "TODO-SV Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
   "varda": {
     "title": "Informationsresursen inom småbarnspedagogiken Varda",
     "subtitle": "Granska uppgifter som sparats i den nationella informationsresursen inom småbarnspedagogiken.",

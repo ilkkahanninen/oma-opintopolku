@@ -23,6 +23,18 @@
     "linkLoggedOut": "Siirry opintosuorituksiin (vaatii tunnistautumisen)",
     "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
   },
+  "valpas": {
+    "title": "Oppivelvollisuuden suorittamisen seurantapalvelu Valpas",
+    "subtitle": "Katsele oppivelvollisuuden seurantapalveluun tallennettuja tietoja.",
+    "icon": "Ikoni kahdesta paperiarkista osin limittäin",
+    "label": "Voit tarkastella:",
+    "item1": "huollettavasi oppivelvollisuuden suorittamiseen liittyviä tietoja",
+    "item2": "omia oppivelvollisuuden suorittamiseen liittyviä tietojasi",
+    "item3": "TODO jotain muuta, käyttöliittymä haluaa kolmannen bulletin",
+    "link": "Siirry Valpas-palveluun",
+    "linkLoggedOut": "Siirry Valpas-palveluun (vaatii tunnistautumisen)",
+    "linkUsingValtuudet": "Voit siirtyä palveluun kirjauduttuasi ulos valtuuksia käyttävästä palvelusta."
+  },
   "varda": {
     "title": "Varhaiskasvatuksen tietovaranto Varda",
     "subtitle": "Katsele kansalliseen varhaiskasvatuksen tietovarantoon tallennettuja tietoja.",
